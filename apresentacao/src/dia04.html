@@ -1,0 +1,222 @@
+<!-- ===================== DIA 4 · 05/11 ===================== -->
+<section class="slide daycover" data-theme="Dia 4 · Abertura" data-day="4" data-date="qui, 05/11" data-title="Circuitos eletropneumáticos e trajeto-passo">
+  <div class="content">
+    <div class="dc-head anim"><span class="dc-num">Dia 4</span><span class="dc-date">quinta-feira, 05/11</span><span class="dc-tag pr">Teoria + simulação</span></div>
+    <h1 class="engrave" aria-label="Circuitos eletropneumáticos">
+      <span class="ln t1" style="--l:0"><span class="txt">Circuitos</span><span class="beam"></span></span>
+      <span class="ln t2" style="--l:.7"><span class="txt">eletropneumáticos</span><span class="beam"></span></span>
+    </h1>
+    <p class="lead anim">Ler e montar o diagrama elétrico que comanda os cilindros.</p>
+    <ol class="agenda anim">
+      <li><b>13:30 · Aula 1</b>Diagrama elétrico; comando direto e indireto</li>
+      <li><b>14:15 · Aula 2</b>Lógicas OU e E</li>
+      <li><b>15:00 · Aula 3</b>Auto-retenção e duplo solenoide</li>
+      <li><b>16:00 · Aula 4</b>Retorno automático, ciclo contínuo e temporizador</li>
+      <li><b>16:45 · Aula 5</b>Diagrama trajeto-passo</li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 4 · Diagrama elétrico">
+  <div class="content">
+    <h2 class="title sm anim">Como ler um diagrama elétrico de comando</h2>
+    <div class="two wr mid">
+      <ul class="list sm anim">
+        <li>Duas linhas de alimentação: <b>+24 V</b> e <b>0 V</b>.</li>
+        <li>Cada caminho entre elas é uma <b>linha (ou degrau)</b>, numerada.</li>
+        <li><b>Contatos</b> (botões, relés, sensores) ficam no começo da linha.</li>
+        <li>A <b>carga</b> (bobina de relé ou solenoide) fica no final, ligada ao 0 V.</li>
+        <li>O mesmo nome = o mesmo componente. Um contato <b>K1</b> muda quando a bobina <b>K1</b> é energizada.</li>
+        <li>Na tela ao lado, o diagrama está deitado, como no Ladder do CLP: +24 V à esquerda e 0 V à direita.</li>
+      </ul>
+      <div class="anim">
+        <div class="box"><h3>Diagrama pneumático + diagrama elétrico</h3>
+          <p>Todo circuito eletropneumático tem os <b>dois desenhos</b>. O pneumático mostra válvulas e cilindros; o elétrico mostra a lógica. A ligação entre eles é o <b>nome do solenoide</b> (Y1) e dos sensores (1S1, 1S2), que aparecem nos dois.</p></div>
+        <p class="callout" style="font-size:27px">Nas próximas telas: segure os botões com o mouse para simular. Contatos fechados e bobinas energizadas ficam em <b>laranja</b>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 4 · Comando direto e indireto">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Bancada virtual: comando direto e indireto</h2>
+    <div class="w anim" data-w="ladder" data-modes="direto,indireto"></div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 4 · Lógicas OU e E">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Bancada virtual: lógicas OU e E</h2>
+    <div class="w anim" data-w="ladder" data-modes="ou,e"></div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 4 · Auto-retenção">
+  <div class="content">
+    <h2 class="title anim">O problema do botão pulsador</h2>
+    <div class="two mid">
+      <div class="anim">
+        <p style="margin-top:0">Com válvula de <b>simples solenoide</b>, o cilindro só fica avançado enquanto alguém segura o botão. Na indústria, ninguém fica segurando botão.</p>
+        <p>A solução é a <b>auto-retenção</b> (ou selo): um contato do próprio relé K1, ligado em paralelo com o botão, mantém K1 energizado depois que o botão é solto.</p>
+      </div>
+      <div class="cards anim" style="--c:1">
+        <div class="card"><h3>Desligar dominante</h3><p>Se apertar liga e desliga juntos, <b>desliga</b>. É a forma mais segura e a mais usada.</p></div>
+        <div class="card hot"><h3>Ligar dominante</h3><p>Se apertar os dois juntos, <b>liga</b>. Usada quando parar é o risco, por exemplo, uma bomba de incêndio.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 4 · Auto-retenção">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Bancada virtual: auto-retenção e memória</h2>
+    <div class="w anim" data-w="ladder" data-modes="retdes,retlig,duplo"></div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 4 · Circuitos básicos">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Teste rápido: lógica de comando</h2>
+    <div class="quiz anim" data-q="d4a"></div>
+  </div>
+</section>
+<script>QZ.d4a={qs:[
+  {q:'Contatos ligados em série formam a lógica:',o:['OU','E','NÃO','Memória'],a:1,e:' Em série, todos precisam estar fechados: lógica E.'},
+  {q:'Para que serve o contato de K1 em paralelo com o botão S1?',o:['Proteger contra curto','Manter K1 ligado depois de soltar S1','Desligar o cilindro','Acender a lâmpada'],a:1,e:' É a auto-retenção, ou selo.'},
+  {q:'Em um circuito desligar dominante, S0 (NF) fica:',o:['Em série, antes do paralelo','Só no ramo do selo','Em paralelo com S1','Depois da bobina'],a:0,e:' Assim S0 corta tudo, inclusive o ramo de S1.'},
+  {q:'Com válvula de duplo solenoide, a auto-retenção é:',o:['Obrigatória','Desnecessária, a válvula memoriza','Proibida','Feita com mola'],a:1,e:' Um pulso basta; a válvula mantém a posição.'}
+],opts:{end:'Próximo tema: o cilindro voltando sozinho.'}};</script>
+
+<section class="slide" data-theme="Dia 4 · Retorno automático">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Retorno automático, ciclo contínuo e temporizador</h2>
+    <div class="w anim" data-w="ladder" data-modes="retauto,continuo,tempo"></div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 4 · Contador e pressostato">
+  <div class="content">
+    <h2 class="title anim">Contador e pressostato no circuito</h2>
+    <div class="two">
+      <div class="card anim"><h3>Contador predeterminado</h3>
+        <ul><li>A entrada de contagem recebe um pulso a cada ciclo, por exemplo, do sensor 1S2.</li>
+        <li>Ao atingir o valor (ex.: 5 ciclos), o contato do contador abre a linha do ciclo contínuo.</li>
+        <li>Um botão de <b>reset</b> zera a contagem para um novo lote.</li></ul>
+        <p class="small" style="margin-top:10px">Aplicação: encher uma caixa com 5 peças e parar.</p></div>
+      <div class="card hot anim"><h3>Pressostato</h3>
+        <ul><li>Fica ligado à câmara do cilindro.</li><li>Só muda o contato quando a pressão chega ao valor ajustado (ex.: 4 bar).</li>
+        <li>No lugar de 1S2, garante que a peça foi realmente <b>prensada</b>, e não só que o cilindro chegou.</li></ul>
+        <p class="small" style="margin-top:10px">Aplicação: prensagem, rebitagem, colagem.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 4 · FluidSIM elétrico">
+  <div class="content">
+    <h2 class="title sm anim">Tutorial: circuito eletropneumático no FluidSIM</h2>
+    <div class="two">
+      <ol class="howto sm anim">
+        <li>Monte a parte pneumática: fonte, lubrefil, <b>5/2 com solenoide e mola</b> e cilindro de dupla ação.</li>
+        <li>Dê dois cliques no solenoide da válvula e escreva o rótulo <b>Y1</b>.</li>
+        <li>Na biblioteca <b>Elétrica</b>, arraste <b>+24 V</b>, <b>0 V</b>, botão NA, bobina de relé e uma <b>bobina de válvula</b>.</li>
+        <li>Dê o rótulo <b>Y1</b> à bobina de válvula: é assim que o FluidSIM liga o desenho elétrico ao pneumático.</li>
+        <li>Rótulo <b>K1</b> na bobina do relé e nos contatos de K1.</li>
+      </ol>
+      <ol class="howto sm anim" style="counter-reset:h 5">
+        <li>Para fim de curso: coloque uma <b>régua de distância</b> sobre o cilindro, dê dois cliques e marque <b>1S1</b> no início e <b>1S2</b> no fim.</li>
+        <li>Use o contato de <b>chave fim de curso</b> com o mesmo rótulo (1S2).</li>
+        <li>Inicie com <kbd>F9</kbd>. Linhas elétricas energizadas ficam em <b>vermelho</b>.</li>
+        <li>Teste todas as situações: ligar, desligar, apertar os dois botões.</li>
+        <li>Salve o arquivo com seu nome.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 4 · Trajeto-passo">
+  <div class="content">
+    <h2 class="title anim">Diagrama trajeto-passo e representação algébrica</h2>
+    <div class="two">
+      <div class="anim">
+        <p style="margin-top:0">Quando há <b>mais de um cilindro</b>, é preciso descrever a ordem dos movimentos.</p>
+        <ul class="list sm">
+          <li>Cilindros recebem letras: <b>A</b>, <b>B</b>, <b>C</b>…</li>
+          <li><b>+</b> = avançar · <b>−</b> = recuar.</li>
+          <li><b>A+ B+ A− B−</b>: A avança, B avança, A recua, B recua.</li>
+          <li>O <b>diagrama trajeto-passo</b> desenha isso: cada linha é um cilindro, cada coluna é um passo.</li>
+        </ul>
+      </div>
+      <div class="box anim"><h3>Exemplo: furadeira automática</h3>
+        <p><b>A</b> prende a peça e <b>B</b> desce a broca.</p>
+        <p style="font-size:34px;font-weight:700;color:var(--orange-d);margin:14px 0">A+ B+ B− A−</p>
+        <p>Prende → fura → sobe a broca → solta. A broca precisa subir <b>antes</b> de soltar a peça.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 4 · Trajeto-passo">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Monte o diagrama passo a passo: A+ B+ A− B−</h2>
+    <div class="w anim" data-w="steps" data-seq="A+ B+ A- B-"></div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 4 · Trajeto-passo">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Agora a furadeira: A+ B+ B− A−</h2>
+    <div class="w anim" data-w="steps" data-seq="A+ B+ B- A-"></div>
+    <p class="note anim">Observe: o sensor de A avançado (que mandou B avançar) continua ativo no passo 3, quando B precisa recuar. Com válvulas de duplo solenoide, os dois sinais brigam: é a <b>sobreposição de sinais</b>, resolvida na próxima aula com relés de memória.</p>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 4 · Desafios FluidSIM">
+  <div class="content">
+    <h2 class="title sm anim">Desafios no FluidSIM</h2>
+    <table class="tbl anim">
+      <thead><tr><th>Desafio</th><th>Montar</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Comando indireto com relé K1 de um cilindro de simples ação</td></tr>
+        <tr><td>2</td><td>Comando de dois locais (OU) e comando bimanual (E) com botões</td></tr>
+        <tr><td>3</td><td>Auto-retenção desligar dominante com lâmpada H1 de "cilindro avançado"</td></tr>
+        <tr><td>4</td><td>Retorno automático com fim de curso 1S2 e ciclo contínuo com seletor</td></tr>
+        <tr><td>5</td><td>Parada de 3 s no fim do curso com relé temporizador</td></tr>
+        <tr><td>6</td><td>Sequência A+ B+ A− B− com dois cilindros e quatro sensores</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 4 · Circuitos">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Teste rápido: circuitos e sequências</h2>
+    <div class="quiz anim" data-q="d4b"></div>
+  </div>
+</section>
+<script>QZ.d4b={qs:[
+  {q:'No retorno automático, que contato desliga K1 quando o cilindro chega ao fim?',o:['NA de S1','NF de 1S2','NA de K1','NF de S0'],a:1,e:' O contato NF do fim de curso 1S2 abre e corta a auto-retenção.'},
+  {q:'Na sequência A+ B+ A− B−, qual é o terceiro movimento?',o:['A avança','B avança','A recua','B recua'],a:2,e:' Passo 3: A−.'},
+  {q:'Para fazer o cilindro parar 3 s no fim do curso, usamos:',o:['Contador','Relé temporizador','Pressostato','Válvula OU'],a:1,e:' Temporizador com retardo na energização.'},
+  {q:'O pressostato substitui o fim de curso quando é preciso garantir:',o:['A velocidade','A força de prensagem','A cor da peça','A temperatura'],a:1,e:' Ele confirma que a pressão (e portanto a força) chegou ao valor ajustado.'}
+],opts:{end:'Próxima aula: tudo isso montado de verdade no painel Festo.'}};</script>
+
+<section class="slide closing" data-theme="Dia 4 · Encerramento">
+  <div class="content">
+    <ul class="sum">
+      <li class="anim"><b>Série = E · paralelo = OU.</b></li>
+      <li class="anim"><b>Auto-retenção</b> mantém o relé ligado com um botão pulsador.</li>
+      <li class="anim"><b>Fim de curso + temporizador</b> automatizam o retorno.</li>
+      <li class="anim"><b>Trajeto-passo</b> mostra a ordem dos movimentos.</li>
+    </ul>
+    <h1 class="engrave" aria-label="Próxima aula: prática"><span class="ln t1" style="--l:.6"><span class="txt">Próxima: prática!</span><span class="beam"></span></span></h1>
+    <p class="after anim">06/11: Formulário assíncrono II. 11/11: montagem no painel Festo. Venha de calçado fechado.</p>
+  </div>
+</section>

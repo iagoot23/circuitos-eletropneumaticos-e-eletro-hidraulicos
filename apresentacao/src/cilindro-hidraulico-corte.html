@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cilindro hidráulico em corte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;750&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EFEEEB; --surface:#FFFFFF; --ink:#1E2226; --muted:#5E656C; --line:#D2D0CB;
+  --steel:#7A858E; --steelDark:#4E5961; --tube:#A9B3BA; --rod:#E4E8EB; --rodStroke:#6F7B84;
+  --oilP:#D35A1C; --oilT:#F1D59C; --air:#E3ECF3; --flowT:#8A6A2E;
+  --sel:#1F7AE0; --bronze:#B08D57; --seal:#2B3238; --ptfe:#EDE6D3; --spring:#3C4A55; --chip:#E6E4DF;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#151514; --surface:#1F1F1D; --ink:#ECEAE6; --muted:#A39F98; --line:#34332F;
+    --steel:#5B6670; --steelDark:#424C54; --tube:#6F7A82; --rod:#B7C0C6; --rodStroke:#56626B;
+    --oilP:#E97A3E; --oilT:#4D3D22; --air:#223241; --flowT:#C9A46A;
+    --sel:#5AA2F2; --bronze:#B99862; --seal:#0C0F11; --ptfe:#CFC7B2; --spring:#C8D0D6; --chip:#2A2926;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#151514; --surface:#1F1F1D; --ink:#ECEAE6; --muted:#A39F98; --line:#34332F;
+  --steel:#5B6670; --steelDark:#424C54; --tube:#6F7A82; --rod:#B7C0C6; --rodStroke:#56626B;
+  --oilP:#E97A3E; --oilT:#4D3D22; --air:#223241; --flowT:#C9A46A;
+  --sel:#5AA2F2; --bronze:#B99862; --seal:#0C0F11; --ptfe:#CFC7B2; --spring:#C8D0D6; --chip:#2A2926;
+  color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Archivo",system-ui,"Segoe UI",Roboto,Arial,sans-serif;font-size:17px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 48px}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 32px;margin-bottom:18px}
+h1{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:750;letter-spacing:-0.02em;line-height:1.1;margin:0}
+.sub{margin:6px 0 0;color:var(--muted);max-width:60ch}
+.tabs{display:inline-flex;background:var(--chip);border-radius:999px;padding:4px}
+.tabs button{font:inherit;font-weight:600;border:0;background:transparent;color:var(--muted);padding:9px 20px;border-radius:999px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.14)}
+button:focus-visible{outline:3px solid var(--sel);outline-offset:2px}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 10px 0;overflow-x:auto}
+.stage svg{display:block;width:100%;min-width:720px;height:auto}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:14px 8px 16px;border-top:1px solid var(--line);margin-top:4px}
+.btn{font:inherit;font-weight:600;border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:9px 16px;border-radius:8px;cursor:pointer}
+.btn:hover:not(:disabled){border-color:var(--muted)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.primary{background:var(--oilP);border-color:var(--oilP);color:#fff}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+.chip{background:var(--chip);border-radius:6px;padding:5px 10px;font-size:.88rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.chip b{font-weight:600}
+.dot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px;outline:1px solid var(--line)}
+.status{width:100%;margin:0;color:var(--muted);min-height:3em}
+.grid{display:grid;grid-template-columns:minmax(260px,1fr) minmax(300px,1.35fr);gap:20px;margin-top:20px}
+@media (max-width:820px){.grid{grid-template-columns:1fr}}
+.legend{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px;align-content:start}
+@media (max-width:480px){.legend{grid-template-columns:1fr}}
+.legend button{width:100%;text-align:left;font:inherit;font-size:.95rem;display:flex;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:7px 10px;cursor:pointer}
+.legend button .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--surface);display:grid;place-items:center;font-weight:600;font-size:.85rem}
+.legend button[aria-pressed="true"]{border-color:var(--sel);box-shadow:inset 0 0 0 1px var(--sel)}
+.legend button[aria-pressed="true"] .n{background:var(--sel);color:#fff}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;align-self:start}
+.detail h2{margin:0;font-size:1.45rem;letter-spacing:-0.01em;line-height:1.2}
+.detail .aka{margin:4px 0 12px;color:var(--muted);font-size:.92rem}
+.detail p{margin:0 0 12px;max-width:68ch}
+.detail h3{font-size:.95rem;font-weight:600;margin:16px 0 4px;color:var(--muted)}
+.detail .warn{border-left:3px solid var(--oilP);padding-left:12px}
+.notes{margin-top:20px;display:grid;grid-template-columns:auto 1fr;gap:18px 24px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 22px}
+@media (max-width:620px){.notes{grid-template-columns:1fr}}
+.notes svg{width:220px;height:auto}
+.notes p{margin:0 0 8px;max-width:72ch}
+.notes p:last-child{margin:0}
+.notes .cap{font-size:.85rem;color:var(--muted);margin-top:4px;text-align:center}
+
+/* SVG */
+.p-tube{fill:var(--tube);stroke:var(--steelDark);stroke-width:1.2}
+.p-steel{fill:var(--steel);stroke:var(--steelDark);stroke-width:1.2}
+.p-rod{fill:var(--rod);stroke:var(--rodStroke);stroke-width:1.2}
+.p-seal{fill:var(--seal)}
+.p-ptfe{fill:var(--ptfe);stroke:var(--steelDark);stroke-width:.8}
+.p-bronze{fill:var(--bronze)}
+.p-guide{fill:#E9DDB3;stroke:var(--steelDark);stroke-width:.8}
+.p-tie{fill:var(--steelDark)}
+.p-spring{fill:none;stroke:var(--spring);stroke-width:3.4;stroke-linejoin:round}
+.hidden-line{stroke:var(--steelDark);stroke-width:1.2;stroke-dasharray:4 3;fill:none}
+.hatch{stroke:var(--rodStroke);stroke-width:1.2}
+.hose{stroke:var(--steelDark);stroke-width:11;stroke-linecap:round;fill:none}
+.filter{fill:var(--surface);stroke:var(--steelDark);stroke-width:1.2;stroke-dasharray:2 2}
+.fl{transition:fill .25s}
+.fl.p{fill:var(--oilP);fill-opacity:.78}
+.fl.t{fill:var(--oilT)}
+.fl.air{fill:var(--air)}
+.flow{fill:none;stroke:#fff;stroke-width:3;stroke-dasharray:7 9;opacity:0}
+.flow.ret{stroke:var(--flowT)}
+.flow.airf{stroke:var(--muted)}
+.flow.on{opacity:1;animation:dash .7s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-16}}
+.leader{stroke:var(--muted);stroke-width:1;fill:none}
+.mk{cursor:pointer}
+.mk circle{fill:var(--ink);stroke:var(--surface);stroke-width:2}
+.mk text{fill:var(--surface);font:600 13px "Archivo",system-ui,sans-serif;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.mk.sel circle{fill:var(--sel)}
+.mk.sel text{fill:#fff}
+.mk:focus{outline:none}
+.mk:focus-visible circle{stroke:var(--sel);stroke-width:4}
+[data-part].hl{stroke:var(--sel)!important;stroke-width:3.5!important}
+.p-spring.hl{stroke-width:4.6!important}
+.lbl{fill:var(--muted);font:500 12px "Archivo",system-ui,sans-serif}
+.port{fill:var(--ink);font:600 15px "Archivo",system-ui,sans-serif}
+@media (prefers-reduced-motion: reduce){.flow.on{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Cilindro hidráulico em corte</h1>
+      <p class="sub">Toque num número no desenho ou na lista para ver o nome e a função da peça. Use os botões para avançar e recuar a haste.</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Tipo de cilindro">
+      <button role="tab" id="tab-sa" aria-selected="true" data-mode="sa">Simples ação</button>
+      <button role="tab" id="tab-da" aria-selected="false" data-mode="da">Dupla ação</button>
+    </div>
+  </header>
+
+  <section class="stage" aria-label="Desenho do cilindro em corte">
+    <div id="svgHost"></div>
+    <div class="controls">
+      <button class="btn primary" id="bAv">Avançar</button>
+      <button class="btn" id="bRe">Recuar</button>
+      <button class="btn" id="bCy" aria-pressed="false">Ciclo contínuo</button>
+      <div class="chips">
+        <span class="chip"><span class="dot" style="background:var(--oilP)"></span>Óleo sob pressão (100 bar)</span>
+        <span class="chip"><span class="dot" style="background:var(--oilT)"></span>Óleo do lado do tanque (≈ 0 bar)</span>
+        <span class="chip" id="chipAir"><span class="dot" style="background:var(--air)"></span>Ar (respiro)</span>
+        <span class="chip" id="pT">Câmara traseira: <b>0 bar</b></span>
+        <span class="chip" id="pD">Câmara dianteira: <b>0 bar</b></span>
+      </div>
+      <p class="status" id="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <div class="grid">
+    <ol class="legend" id="legend" aria-label="Peças"></ol>
+    <article class="detail" id="detail" aria-live="polite"></article>
+  </div>
+
+  <section class="notes" id="notes"></section>
+</div>
+
+<script>
+(function(){
+const STROKE = 320;
+const DUR = 2100;
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- Conteúdo ---------- */
+const PARTS = {
+  cabT:{nome:"Cabeçote traseiro",aka:"também chamado de tampa traseira ou cabeçote de fundo",
+    funcao:{sa:"Fecha o fundo do cilindro e recebe o pórtico de óleo. Em cilindros de oficina e macacos, também é a base que apoia o cilindro.",
+            da:"Fecha o fundo da camisa, recebe o pórtico A e abriga o amortecimento traseiro. Precisa aguentar a força total do cilindro, por isso é bem mais robusto que o de um cilindro pneumático."},
+    aula:"Aqui a força chega a toneladas. Fixação traseira mal dimensionada (pino, olhal, munhão) é causa clássica de quebra em cilindro hidráulico."},
+  portA:{nome:"Pórtico A",aka:"conexão de óleo da câmara traseira, o lado do êmbolo",
+    funcao:{sa:"É o único pórtico. A bomba envia óleo por ele para avançar; no retorno, a mola expulsa o óleo pelo mesmo caminho, de volta ao tanque. Em cilindros de oficina costuma ter engate rápido.",
+            da:"Liga a câmara traseira à válvula direcional. No avanço recebe óleo da bomba (linha P); no retorno, devolve o óleo dessa câmara ao tanque (linha T)."},
+    eletro:"É um circuito fechado, como na eletrônica: o óleo sai da bomba (a fonte) e precisa de um caminho de volta ao tanque (o 0 V). Sem esse retorno, nada se move.",
+    aula:"Diferença marcante para a pneumática: o óleo nunca vai para a atmosfera. Todo óleo que sai do cilindro volta ao reservatório pela linha T."},
+  sangria:{nome:"Parafuso de sangria",aka:"purgador de ar, no ponto mais alto de cada câmara",
+    funcao:{da:"Na partida do sistema ou depois de uma manutenção, é aberto com o circuito em baixa pressão para expulsar o ar que ficou preso, até sair só óleo sem bolhas."},
+    aula:"Ar dentro do óleo é compressível: o cilindro fica “esponjoso”, trepida, faz ruído e o óleo aquece e oxida. Na pneumática não existe essa peça, porque o fluido já é o próprio ar.",
+    alerta:"Nunca abra a sangria com o sistema em alta pressão: o jato de óleo pode perfurar a pele (injeção de óleo)."},
+  amort:{nome:"Amortecimento de fim de curso",aka:"luva de amortecimento, agulha reguladora e válvula de retenção",
+    funcao:{da:"Perto do fim do curso, a luva presa ao êmbolo entra na cavidade do cabeçote. O óleo que sobrou na câmara só consegue sair pela agulha reguladora, e a haste desacelera. Na partida no sentido contrário, uma pequena retenção deixa o óleo entrar livre, para o êmbolo não ficar “colado” no fim."},
+    eletro:"Na pneumática, o ar preso funcionava como um capacitor (uma mola de ar). O óleo quase não comprime, então aqui a agulha age como um resistor: dissipa em calor a energia do movimento.",
+    aula:"Massa grande em alta velocidade sem amortecimento gera um pico de pressão (golpe de aríete) que estoura vedações e solta fixações."},
+  camisa:{nome:"Camisa",aka:"tubo de aço sem costura, brunido por dentro",
+    funcao:{sa:"Tubo de aço de parede grossa onde o êmbolo desliza. Precisa resistir a pressões muito altas sem “estufar”: cilindros de oficina chegam a 700 bar.",
+            da:"Tubo de aço de parede grossa que forma, com os cabeçotes, as duas câmaras de óleo. Em cilindros industriais, são comuns pressões de 100 a 250 bar, enquanto o pneumático trabalha perto de 6 bar."},
+    aula:"Compare com o cilindro pneumático: lá a camisa é de alumínio fino; aqui é de aço grosso. A pressão manda no projeto. Risco interno na camisa vira vazamento interno, por isso o óleo precisa ser bem filtrado."},
+  vedEst:{nome:"Vedação estática",aka:"anel O-ring, muitas vezes com anel antiextrusão",
+    funcao:{sa:"Veda a junta entre a camisa e os cabeçotes, onde as peças não se movem.",
+            da:"Veda a junta entre a camisa e os cabeçotes, onde as peças não se movem. O anel antiextrusão impede que a alta pressão empurre o O-ring para dentro da folga."},
+    aula:"Ensine a separar vedação estática (peças paradas, quase sempre O-ring) de vedação dinâmica (peças que deslizam: êmbolo e haste). Falha na estática aparece como óleo escorrendo pela junta."},
+  tirantes:{nome:"Tirantes",aka:"barras roscadas com porcas",
+    funcao:{da:"Unem os dois cabeçotes à camisa e mantêm o conjunto comprimido contra a pressão interna. É a construção típica de cilindros industriais normalizados (série ISO 6020)."},
+    aula:"Aperto desigual nos tirantes deforma a camisa e causa vazamento. Aperte em cruz, com o torque do fabricante, como numa roda de carro."},
+  vedEmb:{nome:"Vedação do êmbolo",aka:"no dupla ação, um anel de PTFE pressionado por um O-ring",
+    funcao:{sa:"Vedação de um só sentido, com o lábio voltado para a câmara pressurizada. Impede que o óleo passe para a câmara da mola.",
+            da:"Vedação de dupla ação: um anel de PTFE com um O-ring por baixo, que o empurra contra a camisa. Isola as duas câmaras nos dois sentidos."},
+    eletro:"É o isolamento entre dois nós de alta tensão: qualquer falha vira fuga de um lado para o outro. Só que aqui a “tensão” é de 100 bar ou mais.",
+    aula:"Vazamento interno não aparece por fora: o cilindro “cede” (desce sozinho com carga), perde força e o óleo esquenta. É um defeito que se diagnostica pelo comportamento, não pelo olho."},
+  guia:{nome:"Anéis-guia do êmbolo",aka:"anéis de desgaste",
+    funcao:{sa:"Mantêm o êmbolo centrado na camisa e evitam contato de metal com metal. Não vedam; só guiam.",
+            da:"Ficam um de cada lado da vedação. Mantêm o êmbolo centrado, suportam carga lateral e evitam contato de metal com metal. Não vedam; só guiam."},
+    aula:"Se o anel-guia gasta, o êmbolo encosta na camisa e risca o tubo. Aí o reparo deixa de ser só troca de vedação e vira troca de camisa."},
+  embolo:{nome:"Êmbolo",aka:"também chamado de pistão, normalmente de aço ou ferro fundido",
+    funcao:{sa:"Recebe a pressão do óleo e a transforma em força: F = p × A. No avanço, uma pequena parte dessa força vai para comprimir a mola.",
+            da:"Recebe a pressão do óleo dos dois lados e a transforma em força: F = p × A. É preso à haste por uma porca travada. Porca solta é um defeito clássico."},
+    aula:"Conta para o quadro: o mesmo êmbolo de 50 mm que, a 6 bar, fazia cerca de 1 178 N no cilindro pneumático, a 100 bar (10 MPa) faz F ≈ 10 × 1 963 ≈ 19 600 N, perto de 2 toneladas-força. É por isso que a hidráulica domina prensas e máquinas pesadas."},
+  mola:{nome:"Mola de retorno",aka:"usada em cilindros de simples ação de oficina",
+    funcao:{sa:"Devolve o êmbolo quando a válvula libera o óleo para o tanque. Como a força da mola é pequena perto da força hidráulica, o retorno é lento, e fica ainda mais lento com óleo frio (mais viscoso)."},
+    eletro:"Faz o mesmo papel da mola de um botão pulsador ou da armadura de um relé: sem energia, volta sozinha à posição de repouso.",
+    aula:"Muitos cilindros hidráulicos de simples ação não têm mola: o retorno é feito pelo peso da carga, como em elevadores, basculantes de caminhão e macacos. Basta abrir a válvula para o tanque e a carga desce."},
+  respiro:{nome:"Respiro com filtro",aka:"ventilação da câmara da mola",
+    funcao:{sa:"A câmara da mola tem ar, não óleo. O respiro deixa esse ar entrar e sair enquanto a haste se move, e o filtro barra a sujeira."},
+    aula:"Óleo saindo pelo respiro é sinal de que a vedação do êmbolo está vazando para a câmara da mola."},
+  portB:{nome:"Pórtico B",aka:"conexão de óleo da câmara dianteira, o lado da haste (câmara anular)",
+    funcao:{da:"Alimenta a câmara dianteira para o retorno. No avanço, é por ele que o óleo dessa câmara volta ao tanque."},
+    aula:"No retorno, F = p × (A − a), em que a é a área da haste. Com a mesma vazão da bomba, o retorno é mais rápido, porque a câmara anular tem menos volume.",
+    alerta:"Se o pórtico B ficar bloqueado durante o avanço, a pressão na câmara da haste se multiplica pela relação de áreas (intensificação de pressão) e pode passar muito da pressão do sistema."},
+  cabD:{nome:"Cabeçote dianteiro",aka:"cabeçote guia",
+    funcao:{sa:"Fecha a frente do cilindro e aloja a bucha-guia e o raspador. A haste atravessa por ele.",
+            da:"Fecha a frente do cilindro e aloja a bucha-guia, o conjunto de vedação da haste, o raspador e o amortecimento dianteiro. A haste atravessa por ele."},
+    aula:"Em muitos cilindros o cabeçote dianteiro sai sem desmontar o resto, para trocar as vedações da haste, que é a manutenção mais frequente."},
+  vedHaste:{nome:"Vedação da haste",aka:"vedação primária, às vezes com um anel “buffer” à frente",
+    funcao:{da:"Impede que o óleo da câmara dianteira, a 100 bar ou mais no retorno, escape pela folga da haste."},
+    aula:"No simples ação desta página ela não aparece, porque a câmara da frente tem só ar à pressão atmosférica. É a mesma lógica do cilindro pneumático. Vazamento externo pela haste é o defeito mais comum e mais visível: suja, faz escorregar e é risco de incêndio."},
+  bucha:{nome:"Bucha-guia da haste",aka:"de bronze ou aço com revestimento",
+    funcao:{sa:"Sustenta e alinha a haste no cabeçote, absorvendo esforços laterais.",
+            da:"Sustenta e alinha a haste no cabeçote, absorvendo esforços laterais."},
+    aula:"Carga lateral desgasta a bucha de forma oval e, logo depois, a vedação da haste. Por isso se usam rótulas e guias externas na máquina."},
+  raspador:{nome:"Anel raspador",aka:"limpador da haste",
+    funcao:{sa:"Raspa poeira, cavaco e água da haste quando ela recua, para a sujeira não entrar no cilindro.",
+            da:"Raspa poeira, cavaco e água da haste quando ela recua. Sem ele, essa sujeira entra no óleo e contamina o sistema inteiro: bomba, válvulas e outros cilindros."},
+    aula:"Na hidráulica, contaminação é o inimigo número um. Um raspador de alguns reais protege componentes de milhares de reais."},
+  haste:{nome:"Haste",aka:"aço com cromo duro, retificada e polida",
+    funcao:{sa:"Transmite a força do êmbolo para a carga. Na ponta tem rosca ou sela de apoio.",
+            da:"Transmite a força do êmbolo para a máquina, empurrando no avanço e puxando no retorno. Em cursos longos com carga alta, o diâmetro é escolhido pela resistência à flambagem, não só pela força."},
+    aula:"Haste riscada ou com ponto de corrosão rasga a vedação a cada ciclo. Nunca use a haste como apoio nem bata nela."}
+};
+
+const MODES = {
+  sa:{ order:["cabT","portA","camisa","vedEst","vedEmb","embolo","guia","mola","respiro","cabD","bucha","raspador","haste"],
+       mk:{ vedEmb:{mx:150,my:352,ax:157,ay:268,m:1}, embolo:{mx:182,my:352,ax:182,ay:240,m:1}, guia:{mx:214,my:352,ax:203,ay:268,m:1} },
+       notes:`<div><svg viewBox="0 0 220 110" aria-label="Símbolo do cilindro de simples ação com retorno por mola">${symSA()}</svg><div class="cap">Símbolo (ISO 1219)</div></div>
+       <div><p><b>Simples ação hidráulico:</b> o óleo faz o avanço; o retorno vem da mola ou do próprio peso da carga.</p>
+       <p>Exemplos: cilindros de oficina, macacos, elevadores e basculantes. Na válvula de comando, a via de retorno sempre vai para o tanque (T), nunca para a atmosfera.</p>
+       <p>O símbolo do cilindro é o mesmo da pneumática. O que denuncia que o circuito é hidráulico é o triângulo cheio (preto) nas setas de energia e a presença de bomba e tanque.</p></div>` },
+  da:{ order:["cabT","portA","sangria","amort","camisa","vedEst","tirantes","guia","vedEmb","embolo","portB","cabD","vedHaste","bucha","raspador","haste"],
+       mk:{ guia:{mx:150,my:352,ax:161,ay:268,m:1}, vedEmb:{mx:182,my:352,ax:183,ay:268,m:1}, embolo:{mx:214,my:352,ax:205,ay:240,m:1} },
+       notes:`<div><svg viewBox="0 0 220 110" aria-label="Símbolo do cilindro de dupla ação com amortecimento regulável">${symDA()}</svg><div class="cap">Símbolo (ISO 1219)</div></div>
+       <div><p><b>Dupla ação hidráulico:</b> as duas câmaras ficam sempre cheias de óleo. Uma recebe pressão da bomba; a outra devolve óleo ao tanque.</p>
+       <p>Força de avanço = p × A. Força de retorno = p × (A − a). Com a mesma vazão, o retorno é mais rápido.</p>
+       <p>Comandado por válvulas 4/2 ou 4/3 com vias P, T, A e B. A posição central da 4/3 define se o cilindro fica travado, flutuando ou com a bomba aliviada.</p></div>` }
+};
+
+const MK = {
+  cabT:{mx:40,my:352,ax:70,ay:300},
+  portA:{mx:140,my:40,ax:104,ay:80},
+  sangria:{mx:40,my:40,ax:66,ay:84},
+  amort:{mx:192,my:40,ax:118,ay:86},
+  tirantes:{mx:272,my:40,ax:300,ay:99},
+  camisa:{mx:350,my:40,ax:350,ay:118},
+  vedEst:{mx:428,my:40,ax:555,ay:118},
+  mola:{mx:500,my:40,ax:549,ay:140},
+  vedHaste:{mx:510,my:40,ax:593,ay:177},
+  respiro:{mx:660,my:40,ax:620,ay:84},
+  portB:{mx:660,my:40,ax:620,ay:80},
+  bucha:{mx:708,my:40,ax:624,ay:175},
+  raspador:{mx:756,my:40,ax:646,ay:178},
+  cabD:{mx:608,my:352,ax:612,ay:306},
+  haste:{mx:724,my:352,ax:724,ay:217,m:1}
+};
+
+const TXT = {
+  sa:{ rest:"Em repouso: a válvula liga o pórtico ao tanque e a mola mantém a haste recuada. A câmara traseira continua cheia de óleo, mas sem pressão.",
+       adv:"Avanço: a bomba envia óleo pelo pórtico A e empurra o êmbolo. A mola é comprimida e o ar da câmara da mola sai pelo respiro.",
+       ext:"Avançado: enquanto a válvula mantiver o pórtico A ligado à bomba, a haste sustenta a carga.",
+       ret:"Retorno: a válvula liga o pórtico A ao tanque. A mola empurra o êmbolo, o óleo volta ao reservatório e entra ar pelo respiro." },
+  da:{ rest:"Recuado: a câmara dianteira recebe pressão pelo pórtico B e segura a haste recuada. A câmara traseira está cheia de óleo, ligada ao tanque.",
+       adv:"Avanço: o óleo da bomba entra pelo pórtico A. O óleo da câmara dianteira volta ao tanque pelo pórtico B. Perto do fim, o amortecimento freia o êmbolo.",
+       ext:"Avançado: a câmara traseira continua pressurizada e sustenta a carga.",
+       ret:"Retorno: o óleo entra pelo pórtico B e atua na área anular. O óleo da câmara traseira volta ao tanque pelo pórtico A." }
+};
+
+/* ---------- Símbolos ISO ---------- */
+function symSA(){
+  let z="";for(let i=0;i<8;i++){z+=`${120+i*10},${i%2?32:68} `;}
+  return `<g fill="none" stroke="currentColor" stroke-width="2.2" style="color:var(--ink)">
+  <rect x="20" y="25" width="180" height="50"/><line x1="60" y1="25" x2="60" y2="75" stroke-width="4"/>
+  <line x1="60" y1="50" x2="215" y2="50" stroke-width="4"/>
+  <polyline points="62,50 ${z} 198,50" stroke-width="1.8"/>
+  <line x1="30" y1="75" x2="30" y2="100"/><circle cx="30" cy="100" r="3" fill="currentColor"/></g>`;
+}
+function symDA(){
+  return `<g fill="none" stroke="currentColor" stroke-width="2.2" style="color:var(--ink)">
+  <rect x="20" y="25" width="180" height="50"/><line x1="80" y1="25" x2="80" y2="75" stroke-width="4"/>
+  <line x1="80" y1="50" x2="215" y2="50" stroke-width="4"/>
+  <rect x="20" y="40" width="14" height="20"/><rect x="186" y="40" width="14" height="20"/>
+  <line x1="27" y1="66" x2="40" y2="34" stroke-width="1.6"/><line x1="193" y1="66" x2="180" y2="34" stroke-width="1.6"/>
+  <line x1="45" y1="75" x2="45" y2="100"/><line x1="175" y1="75" x2="175" y2="100"/>
+  <circle cx="45" cy="100" r="3" fill="currentColor"/><circle cx="175" cy="100" r="3" fill="currentColor"/>
+  <text x="38" y="108" font-size="12" fill="currentColor" stroke="none" font-family="Archivo, sans-serif">A</text>
+  <text x="180" y="108" font-size="12" fill="currentColor" stroke="none" font-family="Archivo, sans-serif">B</text></g>`;
+}
+
+/* ---------- Desenho ---------- */
+function buildSVG(mode){
+  const da = mode==="da";
+  const nums = {}; MODES[mode].order.forEach((k,i)=>nums[k]=i+1);
+  let s = `<svg viewBox="0 0 1100 390" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cilindro hidráulico de ${da?"dupla":"simples"} ação em corte">`;
+  // câmaras
+  s += `<rect id="chT" class="fl t" x="140" y="130" width="10" height="140"/>`;
+  s += `<rect id="chD" class="fl ${da?"t":"air"}" x="214" y="130" width="346" height="140"/>`;
+  // tirantes (dupla ação)
+  if(da){
+    s += `<rect data-part="tirantes" class="p-tie" x="140" y="96" width="420" height="6"/><rect data-part="tirantes" class="p-tie" x="140" y="298" width="420" height="6"/>`;
+    s += `<path class="hidden-line" d="M56,99 H140 M560,99 H650 M56,301 H140 M560,301 H650"/>`;
+    s += `<rect data-part="tirantes" class="p-tie" x="42" y="92" width="14" height="14" rx="2"/><rect data-part="tirantes" class="p-tie" x="650" y="92" width="14" height="14" rx="2"/>`;
+    s += `<rect data-part="tirantes" class="p-tie" x="42" y="294" width="14" height="14" rx="2"/><rect data-part="tirantes" class="p-tie" x="650" y="294" width="14" height="14" rx="2"/>`;
+  }
+  // camisa (parede grossa)
+  s += `<rect data-part="camisa" class="p-tube" x="140" y="106" width="420" height="24"/>`;
+  s += `<rect data-part="camisa" class="p-tube" x="140" y="270" width="420" height="24"/>`;
+  // cabeçote traseiro
+  s += `<rect data-part="cabT" class="p-steel" x="56" y="92" width="84" height="216" rx="4"/>`;
+  s += `<path id="cnT" class="fl t" d="M88,92 H96 V142 H140 V150 H88 Z"/>`;
+  if(da){
+    s += `<rect id="cvT" class="fl t" x="120" y="184" width="20" height="32"/>`;
+    s += `<rect data-part="amort" class="p-seal" x="116" y="182" width="4" height="36"/>`;
+    s += `<rect data-part="amort" class="p-steel" x="112" y="82" width="12" height="10"/><line class="hidden-line" x1="118" y1="92" x2="118" y2="182"/>`;
+    s += `<rect data-part="sangria" class="p-steel" x="61" y="82" width="11" height="10"/><line class="hidden-line" x1="66" y1="92" x2="66" y2="124"/>`;
+  }
+  // cabeçote dianteiro
+  s += `<path data-part="cabD" class="p-steel" d="M560,92 H646 Q650,92 650,96 V182 H560 Z"/>`;
+  s += `<path data-part="cabD" class="p-steel" d="M560,218 H650 V304 Q650,308 646,308 H560 Z"/>`;
+  s += `<path id="cnD" class="fl ${da?"t":"air"}" d="M604,92 H612 V150 H560 V142 H604 Z"/>`;
+  if(da){
+    s += `<rect id="cvD" class="fl t" x="560" y="174" width="26" height="52"/>`;
+    s += `<rect data-part="amort" class="p-seal" x="584" y="174" width="3" height="52"/>`;
+    s += `<rect data-part="amort" class="p-steel" x="568" y="82" width="12" height="10"/><line class="hidden-line" x1="574" y1="92" x2="574" y2="174"/>`;
+    s += `<rect data-part="sangria" class="p-steel" x="634" y="82" width="11" height="10"/><line class="hidden-line" x1="639" y1="92" x2="639" y2="124"/>`;
+    s += `<rect data-part="vedHaste" class="p-seal" x="589" y="174" width="9" height="8"/><rect data-part="vedHaste" class="p-seal" x="589" y="218" width="9" height="8"/>`;
+  }
+  s += `<rect data-part="bucha" class="p-bronze" x="600" y="171" width="36" height="11"/><rect data-part="bucha" class="p-bronze" x="600" y="218" width="36" height="11"/>`;
+  s += `<path data-part="raspador" class="p-seal" d="M638,174 H650 V182 H642 Z"/><path data-part="raspador" class="p-seal" d="M638,226 H650 V218 H642 Z"/>`;
+  // vedações estáticas (O-rings nas juntas camisa/cabeçote)
+  [[143,118],[143,282],[557,118],[557,282]].forEach(([x,y])=>{ s += `<circle data-part="vedEst" class="p-seal" cx="${x}" cy="${y}" r="4"/>`; });
+  // conexões
+  s += `<path class="hose" d="M92,66 V16"/>`;
+  s += `<rect data-part="portA" class="p-steel" x="80" y="64" width="24" height="28" rx="3"/>`;
+  s += `<text class="port" x="72" y="34" text-anchor="end">A</text>`;
+  if(da){
+    s += `<path class="hose" d="M608,66 V16"/>`;
+    s += `<rect data-part="portB" class="p-steel" x="596" y="64" width="24" height="28" rx="3"/>`;
+    s += `<text class="port" x="590" y="34" text-anchor="end">B</text>`;
+  } else {
+    s += `<rect data-part="respiro" class="p-steel" x="596" y="72" width="24" height="20" rx="3"/>`;
+    s += `<rect data-part="respiro" class="filter" x="598" y="50" width="20" height="22" rx="3"/>`;
+  }
+  if(!da) s += `<polyline id="spring" data-part="mola" class="p-spring" points=""/>`;
+  // conjunto móvel
+  s += `<g id="mov">`;
+  if(da){
+    s += `<rect data-part="amort" class="p-tube" x="128" y="188" width="22" height="24" rx="2"/>`;
+    s += `<rect data-part="amort" class="p-tube" x="214" y="176" width="30" height="48" rx="2"/>`;
+  }
+  s += `<rect data-part="haste" class="p-rod" x="214" y="182" width="540" height="36" rx="3"/>`;
+  for(let x=726;x<=750;x+=6) s += `<line class="hatch" x1="${x}" y1="182" x2="${x-6}" y2="218"/>`;
+  s += `<rect data-part="embolo" class="p-steel" x="150" y="132" width="64" height="136" rx="3"/>`;
+  if(da){
+    s += `<rect data-part="guia" class="p-guide" x="156" y="130" width="10" height="5"/><rect data-part="guia" class="p-guide" x="156" y="265" width="10" height="5"/>`;
+    s += `<rect data-part="guia" class="p-guide" x="198" y="130" width="10" height="5"/><rect data-part="guia" class="p-guide" x="198" y="265" width="10" height="5"/>`;
+    s += `<rect data-part="vedEmb" class="p-ptfe" x="176" y="130" width="14" height="6"/><circle data-part="vedEmb" class="p-seal" cx="183" cy="140" r="3.5"/>`;
+    s += `<rect data-part="vedEmb" class="p-ptfe" x="176" y="264" width="14" height="6"/><circle data-part="vedEmb" class="p-seal" cx="183" cy="260" r="3.5"/>`;
+  } else {
+    s += `<path data-part="vedEmb" class="p-seal" d="M151,130 H161 L161,139 L156,136 Z"/><path data-part="vedEmb" class="p-seal" d="M151,270 H161 L161,261 L156,264 Z"/>`;
+    s += `<rect data-part="guia" class="p-guide" x="196" y="130" width="12" height="5"/><rect data-part="guia" class="p-guide" x="196" y="265" width="12" height="5"/>`;
+  }
+  s += `</g>`;
+  // fluxo
+  s += `<path id="fTin" class="flow" d="M92,14 V146 H146"/><path id="fTout" class="flow ret" d="M146,146 H92 V14"/>`;
+  if(da) s += `<path id="fDin" class="flow" d="M608,14 V146 H556"/><path id="fDout" class="flow ret" d="M556,146 H608 V14"/>`;
+  else s += `<path id="fDin" class="flow airf" d="M608,34 V146 H556"/><path id="fDout" class="flow airf" d="M556,146 H608 V34"/>`;
+  s += `<text class="lbl" x="350" y="382" text-anchor="middle">${da?"câmara traseira (lado do êmbolo) ← êmbolo → câmara dianteira (lado da haste, anular)":"câmara de óleo ← êmbolo → câmara da mola (ar)"}</text>`;
+  // marcadores
+  let fixed="", mov="";
+  MODES[mode].order.forEach(k=>{
+    const m = (MODES[mode].mk && MODES[mode].mk[k]) || MK[k];
+    const g = `<line class="leader" x1="${m.ax}" y1="${m.ay}" x2="${m.mx}" y2="${m.my}"/>
+      <g class="mk" data-mk="${k}" tabindex="0" role="button" aria-label="${nums[k]}: ${PARTS[k].nome}"><circle cx="${m.mx}" cy="${m.my}" r="13"/><text x="${m.mx}" y="${m.my}">${nums[k]}</text></g>`;
+    if(m.m) mov+=g; else fixed+=g;
+  });
+  s += fixed + `<g id="movMk">${mov}</g></svg>`;
+  return s;
+}
+
+/* ---------- Estado ---------- */
+let mode="sa", pos=0, valve="ret", phase="rest", anim=null, cycle=false, selected=null;
+const $ = id=>document.getElementById(id);
+function setOil(el, p){ if(!el) return; el.classList.toggle("p",p); el.classList.toggle("t",!p); }
+function flow(id,on){ const e=$(id); if(e) e.classList.toggle("on",on); }
+
+function render(){
+  const dx = STROKE*pos;
+  $("mov").setAttribute("transform",`translate(${dx},0)`);
+  $("movMk").setAttribute("transform",`translate(${dx},0)`);
+  $("chT").setAttribute("width", 10+dx);
+  const fx = 214+dx; $("chD").setAttribute("x",fx); $("chD").setAttribute("width",560-fx);
+  if(mode==="sa"){
+    const x0=fx, x1=560, n=9; let pts=`${x0},200 `;
+    for(let i=1;i<2*n;i++){ pts+=`${x0+(x1-x0)*i/(2*n)},${i%2?136:264} `; }
+    pts+=`${x1},200`; $("spring").setAttribute("points",pts);
+  }
+  const moving = phase==="adv"||phase==="ret";
+  const tP = valve==="av";
+  const dP = mode==="da" && valve==="ret";
+  ["chT","cnT","cvT"].forEach(i=>setOil($(i),tP));
+  if(mode==="da") ["chD","cnD","cvD"].forEach(i=>setOil($(i),dP));
+  flow("fTin", moving && valve==="av");
+  flow("fTout", moving && valve==="ret");
+  flow("fDin", moving && valve==="ret");
+  flow("fDout", moving && valve==="av");
+  $("pT").innerHTML = `Câmara traseira: <b>${tP?"100 bar":"≈ 0 bar (tanque)"}</b>`;
+  $("pD").innerHTML = mode==="sa" ? `Câmara da mola: <b>ar, 0 bar</b>` : `Câmara dianteira: <b>${dP?"100 bar":"≈ 0 bar (tanque)"}</b>`;
+  $("chipAir").style.display = mode==="sa" ? "" : "none";
+  $("status").textContent = TXT[mode][phase];
+  $("bAv").disabled = moving || pos>=1 || cycle;
+  $("bRe").disabled = moving || pos<=0 || cycle;
+}
+
+function ease(t){ return t<.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2; }
+function easeMode(t){ return mode==="da" ? 1-Math.pow(1-t,3) : ease(t); }
+function move(to, done){
+  valve = to===1 ? "av" : "ret";
+  phase = to===1 ? "adv" : "ret";
+  const from = pos, t0 = performance.now();
+  // simples ação: retorno por mola é mais lento
+  const d = reduce ? 0 : (mode==="sa" && to===0 ? DUR*1.5 : DUR);
+  cancelAnimationFrame(anim);
+  const step = now=>{
+    const t = d ? Math.min(1,(now-t0)/d) : 1;
+    pos = from + (to-from)*easeMode(t);
+    render();
+    if(t<1){ anim=requestAnimationFrame(step); }
+    else { pos=to; phase = to===1 ? "ext" : "rest"; render(); if(done) done(); }
+  };
+  anim=requestAnimationFrame(step);
+}
+function runCycle(){
+  if(!cycle) return;
+  move(pos>=1 ? 0 : 1, ()=>setTimeout(runCycle, reduce?1200:700));
+}
+
+/* ---------- Seleção ---------- */
+function select(k){
+  selected = k;
+  document.querySelectorAll("[data-part]").forEach(e=>e.classList.toggle("hl", e.getAttribute("data-part")===k));
+  document.querySelectorAll(".mk").forEach(e=>e.classList.toggle("sel", e.dataset.mk===k));
+  document.querySelectorAll(".legend button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.k===k ? "true":"false"));
+  const p = PARTS[k], n = MODES[mode].order.indexOf(k)+1;
+  let h = `<h2>${n}. ${p.nome}</h2><p class="aka">${p.aka}</p><p>${p.funcao[mode]}</p>`;
+  if(p.eletro) h += `<h3>Paralelo com a eletrônica</h3><p>${p.eletro}</p>`;
+  if(p.aula) h += `<h3>Para comentar em aula</h3><p>${p.aula}</p>`;
+  if(p.alerta) h += `<h3>Segurança</h3><p class="warn">${p.alerta}</p>`;
+  $("detail").innerHTML = h;
+}
+
+function setMode(m){
+  mode=m; cycle=false; $("bCy").setAttribute("aria-pressed","false");
+  cancelAnimationFrame(anim);
+  pos=0; valve="ret"; phase="rest";
+  document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected", b.dataset.mode===m?"true":"false"));
+  $("svgHost").innerHTML = buildSVG(m);
+  $("legend").innerHTML = MODES[m].order.map((k,i)=>`<li><button data-k="${k}" aria-pressed="false"><span class="n">${i+1}</span>${PARTS[k].nome}</button></li>`).join("");
+  $("notes").innerHTML = MODES[m].notes;
+  document.querySelectorAll(".mk").forEach(g=>{
+    g.addEventListener("click",()=>select(g.dataset.mk));
+    g.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); select(g.dataset.mk);} });
+  });
+  document.querySelectorAll(".legend button").forEach(b=>b.addEventListener("click",()=>select(b.dataset.k)));
+  render();
+  select(MODES[m].order.includes(selected) ? selected : "embolo");
+}
+
+document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>setMode(b.dataset.mode)));
+$("bAv").addEventListener("click",()=>move(1));
+$("bRe").addEventListener("click",()=>move(0));
+$("bCy").addEventListener("click",()=>{
+  cycle=!cycle; $("bCy").setAttribute("aria-pressed", cycle?"true":"false");
+  if(cycle && phase!=="adv" && phase!=="ret") runCycle(); else render();
+});
+setMode("sa");
+})();
+</script>
+</body>
+</html>

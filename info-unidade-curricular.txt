@@ -1,0 +1,75 @@
+CIRCUITOS ELETROPNEUMÁTICOS E ELETRO-HIDRÁULICOS APLICADOS À MANUFATURA
+
+
+-> Formato da Unidade Curricular
+- 5x aulas de 45min
+- Intervalo de 15min
+- 13:30 às 17:30
+- Frequência mínima de 75% (contabilizada por aula e não dia)
+- Total de 100 pontos
+- Menor que 40 pontos: reprovado
+- Igual ou maior a 40 pontos e menor que 60 pontos: recuperação
+- Igual ou maior a 60 pontos: aprovado
+
+
+-> Distribuição de notas/pontuação
+- Formulário Aula Assíncrona I: 10 pontos | 30/10
+- Atividade em Sala: 20 pontos | 04/11
+- Formulário Aula Assíncrona II: 10 pontos | 06/11
+- Avaliação Teórica: 20 pontos |12/11
+- Avaliação Prática: 20 pontos | 26/11
+- Simulado SAEP: 20 pontos | 14/12
+
+
+-> Calendário de aulas presenciais (10 aulas):
+- 28/10
+- 29/10
+- 04/11
+- 05/11
+- 11/11
+- 12/11
+- 18/11
+- 19/11
+- 25/11
+- 26/11
+
+-> Calendário de Aula Assíncrona (2 aulas):
+- 30/10
+- 06/11
+
+
+-> Conhecimentos
+- Sistemas Eletropneumáticos
+	• Ar comprimido: Sistema de produção, distribuição e tratamento; Características físicas
+	• Componentes pneumáticos: Unidade de preparação; Atuadores pneumáticos; Mangueiras e conexões;
+	• Eletroválvulas
+	• Circuitos eletropneumáticos: Diagramas elétrico e pneumático; Simbologias; Diagrama trajeto-passo; Representação algébrica; Software de simulação
+	• Montagem de circuitos eletropneumáticos: Desenho de esquemas eletropneumáticos; Planejamento da instalação; Sequência de montagem; Instalação de componentes; Instalação de válvulas com comunicação em rede industrial; Testes de funcionamento
+	
+- Sistemas Eletrohidráulicos
+ 	• Fluídos hidráulicos: Tipos; características; aplicações
+ 	• Componentes Hidráulicos: Unidade Hidráulica; Válvulas Reguladora pressão; Atuadores hidráulicos; Tubulações e conexões
+ 	• Eletroválvulas: Direcionais; Proporcionais
+ 	• Circuitos eletro-hidráulicos: Diagramas elétrico e hidráulico; Simbologia; Diagrama trajeto-passo; Representação algébrica; Software de simulação
+ 	• Montagem de Circuitos Hidráulicos: Desesnho de esquemas eletro-hidráulicos; Planejamento da instalação; Sequência de montagem; Instalação de componentes; Instalação de válvulas com comunicação em rede industrial; Testes de funcionamento.
+
+-> Capacidades técnicas
+- Identificar selecionar e utilizar as ferramentas, equipamentos e instrumentos, visando a instalação de componentes em sistemas eletrohidráulicos e eletropneumáticos
+- Identificar os componentes, circuitos e conexões, de acordo com o projeto e manual do fabricante, tendo em vista a instalação de dispositivos de sistemas eletrohidráulicos e eletropneumáticos
+- Aplicar técnicas de simulação de sistemas eletrohidráulicos e eletropneumáticos, por meio da utilização de softwares específicos, em conformidade com o projeto e instruções do fabricante
+- Aplicar técnicas de montagem e instalação de dispositivos de sistemas eletrohidráulicos e eletropneumáticos, de acordo com o projeto e manual do fabricante
+- Aplicar técnicas de testes de funcionamento dos dispositivos de sistemas eletrohidráulicos e eletropneumáticos, por meio da utilização de instrumentos de verificação, em conformidade com o manual do fabricante
+- Identificar as especificações técnicas dos insumos, dispositivos, máquinas, equipamentos e ferramentas nos manuais e catálogos do fabricante, para a instalação dos dispositivos de sistemas eletrohidráulicos e eletropneumáticos
+
+
+-> Simuladores
+- https://phet.colorado.edu/sims/html/density/latest/density_all.html
+Os alunos movem um medidor por dentro de um tanque e observam como a pressão varia em função da profundidade, da densidade do fluido e da gravidade. O aparelho também possui um modo de “fluido misterioso”, no qual eles calculam uma densidade desconhecida.
+
+- https://phet.colorado.edu/sims/html/under-pressure/latest/under-pressure_all.html
+Propriedades dos fluidos em geral: óleo x água, contaminação, bolhas de ar.
+
+- https://cdn-assets.stauff.com/$web/plant-tour/index.htm
+Esta é uma fábrica real do setor hidráulico. Você percorre vários prédios e setores nas instalações da empresa na Alemanha, que fabricam tubulações e componentes hidráulicos para a engenharia de máquinas e instalações. A experiência funciona em um PC, tablet, celular ou óculos de realidade virtual. As paradas incluem a produção de conectores para tubos, acoplamentos para testes de diagnóstico e mangueiras, além de elementos filtrantes.
+
+- Fluidsim

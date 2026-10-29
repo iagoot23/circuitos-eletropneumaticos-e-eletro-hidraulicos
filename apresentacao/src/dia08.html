@@ -1,0 +1,230 @@
+<!-- ===================== DIA 8 · 19/11 · PRÁTICA 2 ===================== -->
+<section class="slide daycover" data-theme="Dia 8 · Prática 2" data-day="8" data-date="qui, 19/11" data-title="Prática 2: eletropneumática comandada por CLP" data-kind="pr" data-badge="Prática com WEG Clic02">
+  <div class="content">
+    <div class="dc-head anim"><span class="dc-num">Dia 8</span><span class="dc-date">quinta-feira, 19/11</span><span class="dc-tag pr">Prática 2</span></div>
+    <h1 class="engrave" aria-label="Prática: eletropneumática com CLP">
+      <span class="ln t1" style="--l:0"><span class="txt">Prática 2</span><span class="beam"></span></span>
+      <span class="ln t2" style="--l:.6"><span class="txt">eletropneumática com CLP</span><span class="beam"></span></span>
+    </h1>
+    <p class="lead anim">Os mesmos cilindros, agora comandados por um programa no WEG Clic02.</p>
+    <ol class="agenda anim">
+      <li class="pr"><b>13:30 · Aula 1</b>Ligação do CLP e teste de entradas e saídas</li>
+      <li class="pr"><b>14:15 · Aula 2</b>Programa 1: liga/desliga com SET e RESET</li>
+      <li class="pr"><b>15:00 · Aula 3</b>Programa 2: sensores, ciclo contínuo e T01</li>
+      <li class="pr"><b>16:00 · Aula 4</b>Programa 3: sequência A+ B+ B− A−</li>
+      <li class="pr"><b>16:45 · Aula 5</b>Testes, diagnóstico e relé x CLP</li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 8 · Segurança">
+  <div class="content">
+    <h2 class="title anim">Regras da prática com CLP</h2>
+    <div class="two">
+      <ul class="list anim">
+        <li>CLP e fonte <b>desligados</b> durante a fiação.</li>
+        <li>Confira a tensão do modelo: entradas e alimentação em <b>24 V cc</b>.</li>
+        <li>Simule o programa no <b>Clic02 Edit</b> antes de gravar no CLP.</li>
+        <li>Coloque o CLP em <b>STOP</b> para gravar; em <b>RUN</b> para testar.</li>
+      </ul>
+      <ul class="list anim">
+        <li>Primeiro teste <b>sem ar</b>: observe os LEDs das saídas e dos solenoides.</li>
+        <li>O botão de <b>emergência</b> deve cortar a alimentação das saídas, não só avisar o programa.</li>
+        <li>Salve cada programa com o nome do grupo e o número.</li>
+        <li>Ao final: CLP em STOP, fonte desligada, ar fechado.</li>
+      </ul>
+    </div>
+    <p class="callout anim">Programa nenhum substitui a emergência física. Ela precisa funcionar mesmo se o CLP travar.</p>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 8 · Ligação do CLP">
+  <div class="content">
+    <h2 class="title sm anim">Mapa de entradas e saídas (E/S)</h2>
+    <div class="two">
+      <table class="tbl anim">
+        <thead><tr><th>Entrada</th><th>Dispositivo</th></tr></thead>
+        <tbody>
+          <tr><td>I01</td><td>S1 · partida (NA)</td></tr>
+          <tr><td>I02</td><td>S0 · parada (NA)</td></tr>
+          <tr><td>I03</td><td>1S1 · cilindro A recuado</td></tr>
+          <tr><td>I04</td><td>1S2 · cilindro A avançado</td></tr>
+          <tr><td>I05</td><td>2S1 · cilindro B recuado</td></tr>
+          <tr><td>I06</td><td>2S2 · cilindro B avançado</td></tr>
+          <tr><td>I07</td><td>S3 · ciclo contínuo (com trava)</td></tr>
+        </tbody>
+      </table>
+      <div class="anim">
+        <table class="tbl">
+          <thead><tr><th>Saída</th><th>Dispositivo</th></tr></thead>
+          <tbody>
+            <tr><td>Q01</td><td>1Y1 · A avança</td></tr>
+            <tr><td>Q02</td><td>2Y1 · B avança</td></tr>
+            <tr><td>Q03</td><td>2Y2 · B recua</td></tr>
+            <tr><td>Q04</td><td>1Y2 · A recua</td></tr>
+            <tr><td>Q05</td><td>H1 · lâmpada "em ciclo"</td></tr>
+          </tbody>
+        </table>
+        <p class="callout blue" style="font-size:26px">Preencher esta tabela <b>antes</b> de ligar qualquer fio evita metade dos erros da prática.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 8 · Ligação do CLP">
+  <div class="content">
+    <h2 class="title sm anim">Como ligar o CLP no painel</h2>
+    <div class="two wl mid">
+      <div class="anim">
+        <svg viewBox="0 0 920 480" role="img" aria-label="Esquema de ligação: botões e sensores nas entradas, solenoides nas saídas">
+          <g font-family="Libre Baskerville, Georgia, serif" font-size="22" font-weight="700" fill="#1A2366" text-anchor="middle">
+          <line x1="40" y1="40" x2="880" y2="40" stroke="#C8102E" stroke-width="7"/><text x="60" y="28" text-anchor="start" fill="#C8102E">+24 V</text>
+          <line x1="40" y1="450" x2="880" y2="450" stroke="#27348B" stroke-width="7"/><text x="60" y="478" text-anchor="start" fill="#27348B">0 V</text>
+          <rect x="300" y="170" width="320" height="140" rx="12" fill="#E6E9F5" stroke="#27348B" stroke-width="5"/><text x="460" y="250">WEG Clic02</text>
+          <g stroke="#525B70" stroke-width="5" fill="none">
+            <path d="M120 40 V90"/><path d="M120 90 L140 125"/><path d="M120 130 V150 H330 V170"/>
+            <path d="M220 40 V90"/><rect x="200" y="90" width="40" height="40"/><path d="M220 130 V145 H400 V170"/>
+            <path d="M340 310 V450"/><path d="M360 170 V40" stroke-dasharray="6 6"/>
+            <path d="M500 310 V340 H700 V360"/><rect x="680" y="360" width="40" height="50"/><path d="M680 410 L720 360"/><path d="M700 410 V450"/>
+            <path d="M560 310 V325 H800 V360"/><rect x="780" y="360" width="40" height="50"/><path d="M780 410 L820 360"/><path d="M800 410 V450"/>
+          </g>
+          <g font-size="19" font-weight="400" fill="#525B70">
+            <text x="120" y="75">S1</text><text x="220" y="80">sensor</text><text x="330" y="200">I01</text><text x="400" y="200">I03</text>
+            <text x="330" y="300">0 V</text><text x="380" y="70">alimentação</text>
+            <text x="500" y="300">Q01</text><text x="560" y="300">Q02</text><text x="745" y="390">1Y1</text><text x="850" y="390">2Y1</text>
+          </g>
+          </g>
+        </svg>
+        <p class="note">Esquema simplificado. Siga o diagrama de ligação do CLP instalado no laboratório.</p>
+      </div>
+      <ul class="list sm anim">
+        <li><b>Entradas:</b> o botão ou o sensor leva +24 V até o borne I do CLP.</li>
+        <li>Sensores de 3 fios: marrom +24 V, azul 0 V, preto na entrada.</li>
+        <li><b>Saídas:</b> do borne Q até a bobina do solenoide; o outro lado da bobina vai ao 0 V.</li>
+        <li>Nos modelos com <b>saída a relé</b>, o comum das saídas recebe +24 V.</li>
+        <li>O LED de cada entrada mostra se o sinal chegou ao CLP.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 8 · Teste de E/S">
+  <div class="content">
+    <h2 class="title anim">Teste de entradas e saídas, antes do programa</h2>
+    <div class="two">
+      <ol class="howto anim">
+        <li>CLP em RUN com um programa vazio.</li>
+        <li>Aperte cada botão: o <b>LED da entrada</b> correspondente acende?</li>
+        <li>Mova cada cilindro com o <b>acionamento manual</b> da válvula: os sensores acendem a entrada certa?</li>
+        <li>Anote na tabela de E/S o que funcionou.</li>
+      </ol>
+      <ol class="howto anim" style="counter-reset:h 4">
+        <li>Grave um programa de teste: <b>I01 → Q01</b>, <b>I02 → Q02</b>…</li>
+        <li>Sem ar: o LED do solenoide acende junto com a saída?</li>
+        <li>Com ar a 4 bar: o cilindro certo se move?</li>
+        <li>Só depois disso passe para os programas da aula.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 8 · Programa 1">
+  <div class="content">
+    <h2 class="title sm anim">Programa 1: liga e desliga com SET e RESET</h2>
+    <div class="w anim" data-w="ladder" data-modes="c_setreset"></div>
+    <p class="note anim"><b>Na bancada:</b> cilindro A com válvula 5/2 de simples solenoide em Q01. <b>Desafio:</b> acrescente a lâmpada Q05 acesa enquanto Q01 estiver ligada.</p>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 8 · Programa 2">
+  <div class="content">
+    <h2 class="title sm anim">Programa 2: retorno automático com T01</h2>
+    <div class="w anim" data-w="ladder" data-modes="c_retauto"></div>
+    <p class="note anim"><b>T01:</b> modo 1, base 0,1 s, valor 20 (= 2 s). <b>Desafio:</b> com I07 (S3) ligado, o ciclo deve se repetir sozinho; use o contador C01 para parar após 5 ciclos.</p>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 8 · Programa 3">
+  <div class="content">
+    <h2 class="title sm anim">Programa 3: sequência A+ B+ B− A− com marcadores</h2>
+    <div class="two wl mid">
+      <table class="tbl sm anim">
+        <thead><tr><th>Linha</th><th>Contatos</th><th>Bobina</th><th>Significado</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>I01 · I03 · I05</td><td>↑ M01</td><td>partida com A e B recuados</td></tr>
+          <tr><td>2</td><td>M01 · I04</td><td>↑ M02</td><td>A chegou: passo 2</td></tr>
+          <tr><td>3</td><td>M02 · I06</td><td>↑ M03</td><td>B chegou: passo 3</td></tr>
+          <tr><td>4</td><td>M03 · I05</td><td>↑ M04</td><td>B voltou: passo 4</td></tr>
+          <tr><td>5–8</td><td>M04 · I03</td><td>↓ M01…M04</td><td>A voltou: zera tudo</td></tr>
+          <tr><td>9</td><td>M01 · m02</td><td>–[ Q01</td><td>A+</td></tr>
+          <tr><td>10</td><td>M02 · m03</td><td>–[ Q02</td><td>B+</td></tr>
+          <tr><td>11</td><td>M03 · m04</td><td>–[ Q03</td><td>B−</td></tr>
+          <tr><td>12</td><td>M04</td><td>–[ Q04</td><td>A−</td></tr>
+        </tbody>
+      </table>
+      <div class="anim">
+        <div class="box"><h3>Como ler</h3>
+          <p><b>↑</b> = SET (liga e mantém) · <b>↓</b> = RESET (desliga).</p>
+          <p>Linhas 1 a 4: cada passo só liga se o anterior estiver ligado <b>e</b> o sensor confirmar o movimento.</p>
+          <p>Linhas 9 a 12: cada passo aciona apenas o seu solenoide.</p></div>
+        <p class="callout blue" style="font-size:26px">Use o diagrama trajeto-passo do Dia 5 (Montagem 4) para acompanhar a sequência.</p>
+      </div>
+    </div>
+    <p class="note anim">É o método passo a passo dos relés, agora com marcadores M. Minúscula = contato NF (m02 desliga Q01 quando o passo 2 começa). Cada RESET ocupa uma linha.</p>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 8 · Diagnóstico">
+  <div class="content">
+    <h2 class="title sm anim">Diagnóstico com CLP</h2>
+    <table class="tbl anim">
+      <thead><tr><th>Sintoma</th><th>Onde olhar</th></tr></thead>
+      <tbody>
+        <tr><td>LED da entrada não acende</td><td>Fiação do botão ou sensor; +24 V chegando? sensor alinhado?</td></tr>
+        <tr><td>LED da entrada acende, saída não liga</td><td>Programa: use o modo <b>Monitor</b> do Clic02 Edit e veja qual contato está aberto</td></tr>
+        <tr><td>Saída liga, solenoide não</td><td>Fio da saída até a bobina; comum das saídas alimentado?</td></tr>
+        <tr><td>Sequência trava no meio</td><td>Qual marcador M está ligado? Qual sensor o próximo passo espera?</td></tr>
+        <tr><td>Funciona no simulador e não no CLP</td><td>Endereços do programa batem com a tabela de E/S? CLP em RUN?</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 8 · Relé x CLP">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Discussão: relés ou CLP?</h2>
+    <div class="vs">
+      <div class="anim"><h3>Comando a relés</h3><ul><li>Simples para lógicas pequenas.</li><li>Não depende de software.</li><li>Mudar a lógica = refazer fios.</li><li>Diagnóstico com multímetro.</li></ul></div>
+      <div class="anim h"><h3>CLP</h3><ul><li>Lógicas grandes com poucos fios.</li><li>Temporizadores e contadores à vontade.</li><li>Mudar a lógica = mudar o programa.</li><li>Monitoração e rede industrial.</li></ul></div>
+    </div>
+    <p class="conclusion anim">Pergunta para a turma: na Prática 1 e na Prática 2, qual montagem levou mais tempo? Qual foi mais fácil de corrigir?</p>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 8 · Prática 2">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Revisão da prática com CLP</h2>
+    <div class="quiz anim" data-q="d8a"></div>
+  </div>
+</section>
+<script>QZ.d8a={qs:[
+  {q:'O LED da entrada I04 acende, mas o passo 2 não começa. Onde olhar primeiro?',o:['Na mangueira do cilindro B','No programa, pelo modo Monitor','No compressor','No sensor I04'],a:1,e:' O sinal chegou ao CLP; o problema está na lógica.'},
+  {q:'Para gravar o programa no Clic02, o CLP deve estar em:',o:['RUN','STOP','Emergência','Tanto faz'],a:1,e:' Grave em STOP; teste em RUN.'},
+  {q:'Por que a emergência não deve depender só do programa?',o:['Porque é mais barato','Porque o CLP pode travar e a máquina precisa parar mesmo assim','Porque o software não aceita','Não há motivo'],a:1,e:' A segurança precisa funcionar mesmo com falha do CLP.'},
+  {q:'Na sequência com marcadores, M04 · I03 faz o quê?',o:['Liga A+','Zera todos os passos','Liga B+','Conta ciclos'],a:1,e:' Com A recuado no passo 4, o ciclo termina e os marcadores são resetados.'}
+],opts:{end:'Próxima aula: prática de eletro-hidráulica.'}};</script>
+
+<section class="slide closing" data-theme="Dia 8 · Encerramento">
+  <div class="content">
+    <ul class="sum">
+      <li class="anim"><b>Tabela de E/S</b> antes da fiação.</li>
+      <li class="anim"><b>Teste de E/S</b> antes do programa.</li>
+      <li class="anim"><b>Simulador</b> antes do CLP.</li>
+      <li class="anim"><b>Monitor</b> mostra onde a lógica parou.</li>
+    </ul>
+    <h1 class="engrave" aria-label="Próxima: hidráulica"><span class="ln t1" style="--l:.6"><span class="txt">Próxima: hidráulica!</span><span class="beam"></span></span></h1>
+    <p class="after anim">25/11 · Prática 3: eletro-hidráulica. Traga o circuito do FluidSIM-H salvo no dia 7.</p>
+  </div>
+</section>

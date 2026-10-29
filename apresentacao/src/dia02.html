@@ -1,0 +1,395 @@
+<!-- ===================== DIA 2 · 29/10 ===================== -->
+<section class="slide daycover" data-theme="Dia 2 · Abertura" data-day="2" data-date="qui, 29/10" data-title="Componentes pneumáticos, simbologia e FluidSIM">
+  <div class="content">
+    <div class="dc-head anim"><span class="dc-num">Dia 2</span><span class="dc-date">quinta-feira, 29/10</span><span class="dc-tag pr">Teoria + simulação</span></div>
+    <h1 class="engrave" aria-label="Componentes pneumáticos">
+      <span class="ln t1" style="--l:0"><span class="txt">Componentes</span><span class="beam"></span></span>
+      <span class="ln t2" style="--l:.8"><span class="txt">pneumáticos</span><span class="beam"></span></span>
+    </h1>
+    <p class="lead anim">Conhecer as peças, ler os símbolos e montar o primeiro circuito no computador.</p>
+    <ol class="agenda anim">
+      <li><b>13:30 · Aula 1</b>Lubrefil, mangueiras e conexões</li>
+      <li><b>14:15 · Aula 2</b>Válvulas direcionais e simbologia</li>
+      <li><b>15:00 · Aula 3</b>Válvulas auxiliares</li>
+      <li><b>16:00 · Aula 4</b>Atuadores e cálculo de força</li>
+      <li class="pr"><b>16:45 · Aula 5</b>Primeiros circuitos no FluidSIM</li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 2 · Unidade de preparação">
+  <div class="content">
+    <h2 class="title sm anim">Lubrefil: a última parada antes da máquina</h2>
+    <div class="two wr mid">
+      <div class="anim">
+        <svg viewBox="0 0 780 430" role="img" aria-label="Unidade de conservação: filtro, regulador e lubrificador">
+          <g font-family="Libre Baskerville, Georgia, serif" text-anchor="middle">
+          <path d="M10 120 H770" stroke="#8A92A6" stroke-width="10"/><path d="M10 120 H770" stroke="#E8490F" stroke-width="10" class="flowdash"/>
+          <g fill="#fff" stroke="#27348B" stroke-width="6">
+            <rect x="60" y="70" width="140" height="100" rx="10"/><rect x="320" y="70" width="140" height="100" rx="10"/><rect x="580" y="70" width="140" height="100" rx="10"/>
+            <path d="M90 170 h80 l-10 120 h-60Z" fill="#E6E9F5"/><path d="M610 170 h80 l-10 120 h-60Z" fill="#E6E9F5"/>
+          </g>
+          <path d="M100 255 h40 l-4 30 h-32Z" fill="#4A57AE"/><path d="M620 240 h60 l-5 45 h-50Z" fill="#E8C35A"/>
+          <circle cx="390" cy="40" r="30" fill="#fff" stroke="#27348B" stroke-width="5"/><line x1="390" y1="40" x2="406" y2="22" stroke="#E8490F" stroke-width="5"/>
+          <rect x="370" y="170" width="40" height="40" rx="6" fill="#525B70"/>
+          <g font-size="30" font-weight="700" fill="#1A2366"><text x="130" y="340">Filtro</text><text x="390" y="340">Regulador</text><text x="650" y="340">Lubrificador</text></g>
+          <g font-size="21" fill="#525B70"><text x="130" y="372">retém água e pó</text><text x="390" y="372">estabiliza a pressão</text><text x="650" y="372">névoa de óleo</text>
+          <text x="130" y="400">(dreno embaixo)</text><text x="390" y="400">(manômetro)</text><text x="650" y="400">(se o fabricante pedir)</text></g>
+          </g>
+        </svg>
+      </div>
+      <ul class="list sm anim">
+        <li>Também chamada de <b>unidade de conservação</b> ou FRL.</li>
+        <li>O <b>filtro</b> tem um copo com dreno: esvazie a água acumulada.</li>
+        <li>O <b>regulador</b> mantém a pressão de trabalho constante, mesmo que a rede oscile. No laboratório: <b>4 a 6 bar</b>.</li>
+        <li>Muitos componentes modernos são <b>non-lube</b> (sem lubrificação). Lubrificar um componente desses lava a graxa original.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 2 · Mangueiras e conexões">
+  <div class="content">
+    <h2 class="title anim">Mangueiras e conexões</h2>
+    <div class="cards" style="--c:3">
+      <div class="card anim"><h3>Tubos flexíveis</h3><p>Poliuretano (PU) ou nylon. Medidos pelo <b>diâmetro externo</b>: 4, 6, 8 mm… No painel usamos tubos de 4 mm.</p></div>
+      <div class="card anim"><h3>Conexão instantânea</h3><p><b>Para conectar:</b> empurre o tubo até o fim. <b>Para soltar:</b> pressione o anel e puxe o tubo. Sempre sem pressão!</p></div>
+      <div class="card anim"><h3>Corte reto</h3><p>Use o cortador de tubos. Corte torto ou amassado causa vazamento.</p></div>
+      <div class="card anim"><h3>Engate rápido</h3><p>Conecta e desconecta ferramentas e linhas com uma mão.</p></div>
+      <div class="card anim"><h3>Silenciador</h3><p>Instalado nos escapes (3 e 5) para reduzir o ruído da descarga de ar.</p></div>
+      <div class="card hot anim"><h3>Organização</h3><p>Mangueiras sem dobras, sem cruzar o painel e no comprimento certo. Facilita encontrar defeitos.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 2 · Válvulas direcionais">
+  <div class="content">
+    <h2 class="title anim">Como ler o símbolo de uma válvula</h2>
+    <div class="two wl mid">
+      <div class="anim" data-vsym="52"></div>
+      <ul class="list sm anim">
+        <li>Cada <b>quadrado</b> é uma <b>posição</b>.</li>
+        <li><b>Setas</b> mostram por onde o ar passa. O <b>⊥</b> indica via bloqueada.</li>
+        <li>As linhas de fora são as <b>vias</b> (conexões): só aparecem no quadrado em uso.</li>
+        <li>Nome: <b>vias / posições</b>. Este símbolo é uma <b>5/2</b>.</li>
+        <li>Nos lados: o <b>acionamento</b> (aqui, solenoide) e o <b>retorno</b> (mola).</li>
+      </ul>
+    </div>
+    <table class="tbl sm anim" style="margin-top:14px">
+      <thead><tr><th>Via</th><th>1</th><th>2 e 4</th><th>3 e 5</th><th>12 e 14</th></tr></thead>
+      <tbody><tr><td>Função</td><td>Entrada de pressão</td><td>Saídas para o cilindro</td><td>Escapes</td><td>Pilotagem (14 liga 1→4; 12 liga 1→2)</td></tr></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 2 · Válvulas direcionais">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Acione a válvula e veja o ar mudar de caminho</h2>
+    <div class="w wpanel anim" data-w="valve" data-types="32nf,32na,52,52d,53cf"></div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 2 · Acionamentos">
+  <div class="content">
+    <h2 class="title anim">Tipos de acionamento</h2>
+    <div class="cards" style="--c:4">
+      <div class="card anim"><h3>Muscular</h3><p>Botão, alavanca e pedal: alguém aperta.</p></div>
+      <div class="card anim"><h3>Mecânico</h3><p>Rolete, pino e mola: a própria máquina aciona, por exemplo, a haste do cilindro batendo no rolete.</p></div>
+      <div class="card anim"><h3>Pneumático (piloto)</h3><p>Um sinal de ar muda a posição da válvula. Permite comando a distância.</p></div>
+      <div class="card hot anim"><h3>Elétrico (solenoide)</h3><p>Uma bobina elétrica muda a posição. É o que liga a pneumática à eletricidade e ao CLP.</p></div>
+    </div>
+    <div class="define anim" style="margin-top:36px;grid-template-columns:1fr">
+      <p><b>Retorno:</b> por <b>mola</b> (volta sozinha quando o sinal acaba) ou por um <b>segundo sinal</b> (duplo piloto ou duplo solenoide). Sem mola, a válvula <b>memoriza</b> a última posição.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 2 · Válvulas auxiliares">
+  <div class="content">
+    <h2 class="title sm anim">Válvulas auxiliares: bloqueio e lógica</h2>
+    <div class="cards aux" style="--c:3">
+      <div class="card anim">
+        <svg class="sym" viewBox="0 0 400 220" role="img" aria-label="Símbolo da válvula de retenção: passa em um sentido e bloqueia no outro">
+          <line class="ln" x1="30" y1="100" x2="370" y2="100"/>
+          <path class="fl" d="M30 100 H370"><animate attributeName="opacity" values="1;0" keyTimes="0;.5" calcMode="discrete" dur="6s" repeatCount="indefinite"/></path>
+          <path class="fl" d="M370 100 H238" opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;.5" calcMode="discrete" dur="6s" repeatCount="indefinite"/></path>
+          <path class="ln" d="M215 66 L175 100 L215 134"/>
+          <g><animateTransform attributeName="transform" type="translate" values="0 0;22 0;22 0;0 0;0 0" keyTimes="0;.06;.46;.52;1" dur="6s" repeatCount="indefinite"/>
+            <circle class="ball" cx="212" cy="100" r="24"/></g>
+          <text class="st" x="200" y="196">Sentido livre: passa →<animate attributeName="opacity" values="1;0" keyTimes="0;.5" calcMode="discrete" dur="6s" repeatCount="indefinite"/></text>
+          <text class="st" x="200" y="196" opacity="0">← Sentido contrário: bloqueia<animate attributeName="opacity" values="0;1" keyTimes="0;.5" calcMode="discrete" dur="6s" repeatCount="indefinite"/></text>
+        </svg>
+        <h3>Retenção</h3><p>Deixa o ar passar em um sentido e bloqueia o outro. A esfera é empurrada contra a sede pelo próprio ar.</p></div>
+      <div class="card anim">
+        <svg class="sym" viewBox="0 0 400 220" role="img" aria-label="Símbolo do elemento OU: qualquer uma das entradas chega à saída">
+          <path class="ln" d="M30 100 H100 M300 100 H370 M200 70 V20"/>
+          <rect class="ln" x="100" y="70" width="200" height="60"/>
+          <path class="ln" d="M132 76 L112 100 L132 124 M268 76 L288 100 L268 124"/>
+          <path class="fl" d="M30 100 H200 V20"><animate attributeName="opacity" values="1;0" keyTimes="0;.5" calcMode="discrete" dur="8s" repeatCount="indefinite"/></path>
+          <path class="fl" d="M370 100 H200 V20" opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;.5" calcMode="discrete" dur="8s" repeatCount="indefinite"/></path>
+          <g><animateTransform attributeName="transform" type="translate" values="57 0;57 0;-57 0;-57 0;57 0" keyTimes="0;.47;.53;.97;1" dur="8s" repeatCount="indefinite"/>
+            <circle class="ball" cx="200" cy="100" r="22"/></g>
+          <text class="pt" x="38" y="86">1</text><text class="pt" x="350" y="86">1</text><text class="pt" x="212" y="34">2</text>
+          <text class="st" x="200" y="196">Entrada esquerda → saída 2<animate attributeName="opacity" values="1;0" keyTimes="0;.5" calcMode="discrete" dur="8s" repeatCount="indefinite"/></text>
+          <text class="st" x="200" y="196" opacity="0">Entrada direita → saída 2<animate attributeName="opacity" values="0;1" keyTimes="0;.5" calcMode="discrete" dur="8s" repeatCount="indefinite"/></text>
+        </svg>
+        <h3>Elemento OU</h3><p>Duas entradas e uma saída: qualquer sinal passa, e a esfera fecha a entrada sem pressão. Comando de dois locais.</p></div>
+      <div class="card anim">
+        <svg class="sym" viewBox="0 0 400 220" role="img" aria-label="Símbolo do elemento E: a saída só recebe ar com as duas entradas pressurizadas">
+          <path class="ln" d="M30 100 H100 M300 100 H370 M200 70 V20"/>
+          <rect class="ln" x="100" y="70" width="200" height="60"/>
+          <path class="ln" d="M150 70 V90 M150 110 V130 M250 70 V90 M250 110 V130"/>
+          <path class="fl" d="M30 100 H136"><animate attributeName="opacity" values="1;0" keyTimes="0;.333" calcMode="discrete" dur="12s" repeatCount="indefinite"/></path>
+          <path class="fl" d="M30 100 H200 V20" opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;.666" calcMode="discrete" dur="12s" repeatCount="indefinite"/></path>
+          <path class="fl" d="M370 100 H264" opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;.333;.666" calcMode="discrete" dur="12s" repeatCount="indefinite"/></path>
+          <path class="fl" d="M370 100 H200 V20" opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;.666" calcMode="discrete" dur="12s" repeatCount="indefinite"/></path>
+          <g><animateTransform attributeName="transform" type="translate" values="15 0;15 0;-15 0;-15 0;0 0;0 0;15 0" keyTimes="0;.30;.36;.63;.69;.97;1" dur="12s" repeatCount="indefinite"/>
+            <path class="ln thin" d="M128 100 H272"/><rect class="disc" x="124" y="82" width="8" height="36"/><rect class="disc" x="268" y="82" width="8" height="36"/></g>
+          <text class="pt" x="38" y="86">1</text><text class="pt" x="350" y="86">1</text><text class="pt" x="212" y="34">2</text>
+          <text class="st" x="200" y="196">Só a esquerda: saída fechada<animate attributeName="opacity" values="1;0" keyTimes="0;.333" calcMode="discrete" dur="12s" repeatCount="indefinite"/></text>
+          <text class="st" x="200" y="196" opacity="0">Só a direita: saída fechada<animate attributeName="opacity" values="0;1;0" keyTimes="0;.333;.666" calcMode="discrete" dur="12s" repeatCount="indefinite"/></text>
+          <text class="st" x="200" y="196" opacity="0">As duas: saída 2 liberada<animate attributeName="opacity" values="0;1" keyTimes="0;.666" calcMode="discrete" dur="12s" repeatCount="indefinite"/></text>
+        </svg>
+        <h3>Elemento E</h3><p>Só libera a saída com as <b>duas</b> entradas ao mesmo tempo: cada sinal sozinho fecha a própria passagem; com os dois, o carretel fica no centro e o ar chega à saída. Usado no comando bimanual.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 2 · Válvulas auxiliares">
+  <div class="content">
+    <h2 class="title sm anim">Válvulas auxiliares: vazão e tempo</h2>
+    <div class="cards aux" style="--c:3">
+      <div class="card anim">
+        <svg class="sym" viewBox="0 0 400 220" role="img" aria-label="Símbolo da válvula de escape rápido: alimenta o cilindro e depois descarrega direto para a atmosfera">
+          <path class="ln" d="M30 100 H100 M300 100 H340 M200 70 V20"/>
+          <polygon class="ln" points="340,84 340,116 366,100"/>
+          <rect class="ln" x="100" y="70" width="200" height="60"/>
+          <path class="ln" d="M132 76 L112 100 L132 124 M268 76 L288 100 L268 124"/>
+          <path class="fl" d="M30 100 H200 V20"><animate attributeName="opacity" values="1;0" keyTimes="0;.5" calcMode="discrete" dur="8s" repeatCount="indefinite"/></path>
+          <path class="fl fast" d="M200 20 V100 H352" opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;.5" calcMode="discrete" dur="8s" repeatCount="indefinite"/></path>
+          <g><animateTransform attributeName="transform" type="translate" values="57 0;57 0;-57 0;-57 0;57 0" keyTimes="0;.47;.53;.97;1" dur="8s" repeatCount="indefinite"/>
+            <circle class="ball" cx="200" cy="100" r="22"/></g>
+          <text class="pt" x="38" y="86">1</text><text class="pt" x="336" y="74">3</text><text class="pt" x="212" y="34">2 (cilindro)</text>
+          <text class="st" x="200" y="196">Avanço: 1 → 2<animate attributeName="opacity" values="1;0" keyTimes="0;.5" calcMode="discrete" dur="8s" repeatCount="indefinite"/></text>
+          <text class="st" x="200" y="196" opacity="0">Retorno: 2 → 3, direto no escape<animate attributeName="opacity" values="0;1" keyTimes="0;.5" calcMode="discrete" dur="8s" repeatCount="indefinite"/></text>
+        </svg>
+        <h3>Escape rápido</h3><p>Montada perto do cilindro, descarrega o ar ali mesmo, sem voltar pela mangueira e pela válvula: o cilindro se move mais rápido.</p></div>
+      <div class="card anim">
+        <svg class="sym" viewBox="0 0 400 220" role="img" aria-label="Símbolo da válvula reguladora de fluxo unidirecional: restrição em um sentido e passagem livre no outro">
+          <path class="ln" d="M30 95 H110 V50 H290 V95 H370 M110 95 V140 H290 V95"/>
+          <path class="ln" d="M172 30 Q200 44 228 30 M172 70 Q200 56 228 70"/>
+          <path class="ln thin" d="M178 84 L216 26"/><polygon class="head" points="224,13 222,30.7 208.6,22.1"/>
+          <path class="ln" d="M196 116 L226 140 L196 164"/>
+          <path class="fl slow" d="M30 95 H110 V50 H290 V95 H370"><animate attributeName="opacity" values="1;0" keyTimes="0;.5" calcMode="discrete" dur="8s" repeatCount="indefinite"/></path>
+          <path class="fl slow" d="M110 95 V140 H177"><animate attributeName="opacity" values="1;0" keyTimes="0;.5" calcMode="discrete" dur="8s" repeatCount="indefinite"/></path>
+          <path class="fl fast" d="M370 95 H290 V140 H110 V95 H30" opacity="0"><animate attributeName="opacity" values="0;1" keyTimes="0;.5" calcMode="discrete" dur="8s" repeatCount="indefinite"/></path>
+          <g><animateTransform attributeName="transform" type="translate" values="0 0;0 0;-16 0;-16 0;0 0" keyTimes="0;.47;.53;.97;1" dur="8s" repeatCount="indefinite"/>
+            <circle class="ball" cx="197" cy="140" r="18"/></g>
+          <text class="st" x="200" y="200">→ Pela restrição: lento<animate attributeName="opacity" values="1;0" keyTimes="0;.5" calcMode="discrete" dur="8s" repeatCount="indefinite"/></text>
+          <text class="st" x="200" y="200" opacity="0">← Pela retenção: livre<animate attributeName="opacity" values="0;1" keyTimes="0;.5" calcMode="discrete" dur="8s" repeatCount="indefinite"/></text>
+        </svg>
+        <h3>Reguladora de fluxo</h3><p>Uma restrição ajustável com retenção em paralelo: controla a velocidade em um só sentido.</p></div>
+      <div class="card anim">
+        <svg class="sym" viewBox="0 0 400 220" role="img" aria-label="Temporizador pneumático: o reservatório enche pela restrição e, ao atingir a pressão, pilota uma válvula 3/2">
+          <path class="ln" d="M20 95 H124 M60 78 Q75 90 90 78 M60 112 Q75 100 90 112"/>
+          <rect class="res" x="124" y="69" width="52" height="0"><animate attributeName="y" values="121;68;68;121;121" keyTimes="0;.55;.85;.9;1" dur="8s" repeatCount="indefinite"/><animate attributeName="height" values="0;53;53;0;0" keyTimes="0;.55;.85;.9;1" dur="8s" repeatCount="indefinite"/></rect>
+          <rect class="ln" x="120" y="65" width="60" height="60" rx="12"/>
+          <line class="ln dash" x1="180" y1="95" x2="214" y2="95"><animate attributeName="x2" values="214;214;260;260;214;214" keyTimes="0;.55;.6;.85;.9;1" dur="8s" repeatCount="indefinite"/></line>
+          <path class="ln" d="M273 67 V25 M273 123 V165 M293 123 V150"/><polygon class="ln" points="285,150 301,150 293,164"/>
+          <path class="fl" d="M20 95 H120"><animate attributeName="opacity" values="1;0" keyTimes="0;.85" calcMode="discrete" dur="8s" repeatCount="indefinite"/></path>
+          <path class="fl" d="M273 165 V25" opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;.6;.85" calcMode="discrete" dur="8s" repeatCount="indefinite"/></path>
+          <g><animateTransform attributeName="transform" type="translate" values="0 0;0 0;46 0;46 0;0 0;0 0" keyTimes="0;.55;.6;.85;.9;1" dur="8s" repeatCount="indefinite"/>
+            <rect class="sq" x="214" y="67" width="46" height="56"/><rect class="sq" x="260" y="67" width="46" height="56"/>
+            <path class="ln thin" d="M227 120 V82 M247 123 V108 M239 108 H255"/><polygon class="head" points="227,70 221,84 233,84"/>
+            <path class="ln thin" d="M273 70 L288.5 108.9 M273 123 V108 M265 108 H281"/><polygon class="head" points="293,120 294.1,106.7 282.9,111.1"/>
+            <path class="ln thin" d="M306 95 L311 83 L317 107 L323 83 L329 107 L334 95"/></g>
+          <text class="pt" x="283" y="40">2</text><text class="pt" x="252" y="168">1</text><text class="pt" x="304" y="150">3</text>
+          <text class="st" x="200" y="200">Enchendo o reservatório…<animate attributeName="opacity" values="1;0;1" keyTimes="0;.55;.9" calcMode="discrete" dur="8s" repeatCount="indefinite"/></text>
+          <text class="st" x="200" y="200" opacity="0">Pressão atingida: 2 ligada<animate attributeName="opacity" values="0;1;0" keyTimes="0;.55;.9" calcMode="discrete" dur="8s" repeatCount="indefinite"/></text>
+        </svg>
+        <h3>Temporizador pneumático</h3><p>Reservatório que enche aos poucos por uma restrição e só depois pilota a válvula 3/2: atrasa um sinal.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 2 · Atuadores">
+  <div class="content">
+    <h2 class="title sm anim">Cilindros em corte: peças e funcionamento</h2>
+    <div class="embed-bar cil-bar anim">
+      <div class="seg"><button class="on" data-cil="pneu">Pneumático</button><button data-cil="hid">Hidráulico</button></div>
+      <button class="btn ghost" data-fs>Tela cheia</button>
+      <span>Toque nos números para ver cada peça; use Avançar e Recuar.</span>
+    </div>
+    <div class="embed cil anim" data-cil="pneu" data-srcdoc="{{DOC:cilindro-pneumatico-corte.html}}" data-title="Cilindro pneumático em corte"><div class="ph">Carregando…</div></div>
+    <div class="embed cil anim" data-cil="hid" data-srcdoc="{{DOC:cilindro-hidraulico-corte.html}}" data-title="Cilindro hidráulico em corte" hidden><div class="ph">Carregando…</div></div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 2 · Válvulas auxiliares">
+  <div class="content">
+    <h2 class="title anim">Controlar a velocidade: na entrada ou na saída?</h2>
+    <div class="vs">
+      <div class="anim"><h3>Na entrada (meter-in)</h3>
+        <ul><li>Restringe o ar que <b>entra</b> no cilindro.</li><li>O movimento fica irregular, aos trancos, com cargas variáveis.</li><li>Indicado para cilindros de <b>simples ação</b> e volumes pequenos.</li></ul></div>
+      <div class="anim h"><h3>Na saída (meter-out)</h3>
+        <ul><li>Restringe o ar que <b>sai</b> do cilindro.</li><li>O ar preso do outro lado funciona como "almofada": movimento suave.</li><li><b>Preferido para cilindros de dupla ação.</b></li></ul></div>
+    </div>
+    <p class="conclusion anim">Regra prática: em dupla ação, controle a velocidade restringindo o escape.</p>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 2 · Atuadores">
+  <div class="content">
+    <h2 class="title sm anim">Atuadores pneumáticos</h2>
+    <div class="two">
+      <div class="anim">
+        <svg viewBox="0 0 760 420" role="img" aria-label="Cilindros de simples e dupla ação em movimento">
+          <g font-family="Libre Baskerville, Georgia, serif" font-size="26" font-weight="700" fill="#1A2366">
+          <text x="20" y="34">Simples ação (retorno por mola)</text>
+          <rect x="20" y="60" width="420" height="90" rx="8" fill="#E6E9F5" stroke="#27348B" stroke-width="5"/>
+          <g><animateTransform attributeName="transform" type="translate" values="0 0;250 0;250 0;0 0;0 0" keyTimes="0;.3;.5;.8;1" dur="4s" repeatCount="indefinite"/>
+            <rect x="30" y="64" width="24" height="82" fill="#27348B"/><rect x="54" y="97" width="420" height="16" fill="#8A92A6"/></g>
+          <path d="M440 70 l-12 15 l24 10 l-24 10 l24 10 l-24 10 l24 10 l-12 15" fill="none" stroke="#525B70" stroke-width="4" opacity=".6"/>
+          <path d="M20 170 V200" stroke="#E8490F" stroke-width="8"/>
+          <text x="20" y="250">Dupla ação</text>
+          <rect x="20" y="276" width="420" height="90" rx="8" fill="#E6E9F5" stroke="#27348B" stroke-width="5"/>
+          <g><animateTransform attributeName="transform" type="translate" values="0 0;300 0;300 0;0 0;0 0" keyTimes="0;.3;.5;.8;1" dur="4s" repeatCount="indefinite"/>
+            <rect x="30" y="280" width="24" height="82" fill="#27348B"/><rect x="54" y="313" width="420" height="16" fill="#8A92A6"/></g>
+          <path d="M40 386 V410 M420 386 V410" stroke="#E8490F" stroke-width="8"/>
+          </g>
+        </svg>
+      </div>
+      <div class="anim">
+        <table class="tbl">
+          <thead><tr><th></th><th>Simples ação</th><th>Dupla ação</th></tr></thead>
+          <tbody>
+            <tr><td>Conexões</td><td>1</td><td>2</td></tr>
+            <tr><td>Retorno</td><td>Mola</td><td>Ar comprimido</td></tr>
+            <tr><td>Força</td><td>Só em um sentido</td><td>Nos dois sentidos</td></tr>
+            <tr><td>Válvula típica</td><td>3/2</td><td>5/2 ou 5/3</td></tr>
+          </tbody>
+        </table>
+        <p class="small">Outros: haste dupla, sem haste, rotativo, garra e cilindro com <b>ímã no êmbolo</b> para sensores.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 2 · Atuadores">
+  <div class="content">
+    <h2 class="title sm anim">Força de avanço e de retorno</h2>
+    <p class="lead sm anim">No retorno, a haste ocupa parte da área: a força é menor. Escolha o diâmetro e veja a diferença.</p>
+    <div class="w anim" data-w="force" data-rod="1"></div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 2 · Simbologia">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Que válvula é esta?</h2>
+    <div class="quiz anim" data-q="d2a"></div>
+  </div>
+</section>
+<script>QZ.d2a={qs:[
+  {q:'<span data-vsym="32nf" style="display:block;width:600px"></span>',o:['3/2 NF','3/2 NA','5/2','4/3'],a:0,e:' Três vias, duas posições. Em repouso, 1 está bloqueada: normal fechada.'},
+  {q:'<span data-vsym="52" style="display:block;width:600px"></span>',o:['3/2 NF','5/2 simples solenoide','5/3 centro fechado','2/2'],a:1,e:' Cinco vias, duas posições, solenoide de um lado e mola do outro.'},
+  {q:'<span data-vsym="53cf" style="display:block;width:600px"></span>',o:['5/2 duplo solenoide','3/2 NA','5/3 centro fechado','4/2'],a:2,e:' Três posições; no centro todas as vias ficam bloqueadas.'},
+  {q:'<span data-vsym="32na" style="display:block;width:600px"></span>',o:['3/2 NA','3/2 NF','5/2','Retenção'],a:0,e:' Em repouso, 1 já está ligada a 2: normal aberta.'}
+],opts:{label:'Símbolo',end:'Próximo passo: desenhar esses símbolos no FluidSIM.'}};</script>
+
+<section class="slide" data-theme="Dia 2 · FluidSIM">
+  <div class="content">
+    <h2 class="title sm anim">FluidSIM 4/5: conhecendo a tela</h2>
+    <div class="two wl mid">
+      <div class="anim">
+        <svg viewBox="0 0 960 600" role="img" aria-label="Esquema da tela do FluidSIM com as áreas principais">
+          <g font-family="Libre Baskerville, Georgia, serif">
+          <rect x="4" y="4" width="952" height="592" rx="12" fill="#fff" stroke="#8A92A6" stroke-width="4"/>
+          <rect x="4" y="4" width="952" height="44" rx="12" fill="#27348B"/><text x="24" y="34" font-size="22" fill="#fff">FluidSIM-P</text>
+          <rect x="4" y="48" width="952" height="40" fill="#ECEEF3"/>
+          <text x="20" y="75" font-size="19" fill="#1A2366">Arquivo   Editar   Executar   Biblioteca   Inserir   Didática   Projeto   Exibir   Opções   Janela   ?</text>
+          <rect x="4" y="88" width="952" height="46" fill="#F5F6F9"/>
+          <g fill="#525B70"><rect x="20" y="98" width="26" height="26" rx="3"/><rect x="56" y="98" width="26" height="26" rx="3"/><rect x="92" y="98" width="26" height="26" rx="3"/></g>
+          <g transform="translate(700 98)"><rect width="30" height="26" rx="4" fill="#E6E9F5"/><path d="M10 5 l14 8 l-14 8z" fill="#E8490F"/>
+            <rect x="40" width="30" height="26" rx="4" fill="#E6E9F5"/><rect x="49" y="6" width="12" height="14" fill="#1A2366"/>
+            <rect x="80" width="30" height="26" rx="4" fill="#E6E9F5"/><rect x="88" y="6" width="5" height="14" fill="#1A2366"/><rect x="97" y="6" width="5" height="14" fill="#1A2366"/></g>
+          <rect x="4" y="134" width="250" height="462" fill="#F5F6F9" stroke="#D3D8E3" stroke-width="2"/>
+          <g font-size="18" fill="#1A2366"><text x="20" y="166">▾ Pneumática</text><text x="40" y="196">▸ Alimentação</text><text x="40" y="226">▸ Atuadores</text><text x="40" y="256">▸ Válvulas</text><text x="20" y="296">▸ Elétrica</text><text x="20" y="326">▸ Digital</text></g>
+          <g transform="translate(330 220)" stroke="#1A2366" stroke-width="3" fill="#fff">
+            <rect x="120" y="0" width="240" height="60"/><rect x="134" y="4" width="16" height="52" fill="#1A2366"/><path d="M150 30 H390" />
+            <rect x="160" y="130" width="70" height="60"/><rect x="230" y="130" width="70" height="60"/><path d="M160 160 h-30 M300 160 l8 -10 l8 20 l8 -20 l8 10" fill="none"/>
+            <path d="M195 130 V60 M265 190 V250 M195 190 V250" fill="none"/><circle cx="195" cy="262" r="12"/><path d="M188 255 l14 14" />
+          </g>
+          <g font-size="20" font-weight="700" fill="#fff">
+            <circle cx="900" cy="68" r="22" fill="#E8490F"/><text x="900" y="75" text-anchor="middle">1</text>
+            <circle cx="680" cy="111" r="22" fill="#E8490F"/><text x="680" y="118" text-anchor="middle">2</text>
+            <circle cx="230" cy="380" r="22" fill="#E8490F"/><text x="230" y="387" text-anchor="middle">3</text>
+            <circle cx="880" cy="540" r="22" fill="#E8490F"/><text x="880" y="547" text-anchor="middle">4</text>
+          </g>
+          </g>
+        </svg>
+        <p class="note">Esquema ilustrativo. Os nomes dos menus podem variar um pouco entre as versões 4 e 5.</p>
+      </div>
+      <ol class="howto sm anim">
+        <li><b>Menus:</b> abrir, salvar e configurar.</li>
+        <li><b>Simulação:</b> <b>▶ Iniciar</b> (<kbd>F9</kbd>), <b>■ Parar</b> (<kbd>F5</kbd>), <b>❚❚ Pausa</b> (<kbd>F8</kbd>).</li>
+        <li><b>Biblioteca:</b> componentes pneumáticos, elétricos e digitais.</li>
+        <li><b>Área de desenho:</b> onde o circuito é montado e simulado.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 2 · FluidSIM">
+  <div class="content">
+    <h2 class="title sm anim">Tutorial: primeiro circuito no FluidSIM</h2>
+    <div class="two">
+      <ol class="howto sm anim">
+        <li>Abra o <b>FluidSIM-P</b> e crie um arquivo novo: <b>Arquivo › Novo</b>.</li>
+        <li>Na biblioteca, arraste para a área de desenho: <b>fonte de ar comprimido</b>, <b>unidade de conservação</b>, <b>válvula 3/2</b> e <b>cilindro de simples ação</b>.</li>
+        <li><b>Clique duas vezes na válvula</b> para escolher os acionamentos: botão de um lado e mola do outro. Marque a posição inicial.</li>
+        <li>Para ligar: clique sobre uma <b>conexão</b> (círculo pequeno) e arraste até a conexão do outro componente.</li>
+        <li>Coloque um <b>silenciador</b> ou deixe o escape 3 livre.</li>
+      </ol>
+      <ol class="howto sm anim" start="6" style="counter-reset:h 5">
+        <li>Inicie a simulação: <b>▶</b> ou <kbd>F9</kbd>. As linhas com pressão ficam em <b>azul escuro</b>.</li>
+        <li>Clique no botão da válvula. Mantendo <kbd>Shift</kbd> no clique, o botão fica travado.</li>
+        <li>Observe o cilindro avançar. Solte e veja o retorno.</li>
+        <li>Pare com <b>■</b> ou <kbd>F5</kbd> antes de editar.</li>
+        <li>Salve: <b>Arquivo › Salvar como</b>, com seu nome e o número do desafio.</li>
+      </ol>
+    </div>
+    <p class="callout blue anim">Dica: o comando <b>Executar › Verificar desenho</b> aponta conexões abertas antes de simular.</p>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 2 · FluidSIM">
+  <div class="content">
+    <h2 class="title sm anim">Desafios no FluidSIM</h2>
+    <table class="tbl anim">
+      <thead><tr><th>Desafio</th><th>O que montar</th><th>O que observar</th></tr></thead>
+      <tbody>
+        <tr><td>1 · Comando direto</td><td>Válvula 3/2 por botão comandando um cilindro de simples ação</td><td>O cilindro só fica avançado enquanto o botão está pressionado</td></tr>
+        <tr><td>2 · Comando indireto</td><td>Botão 3/2 pilota uma 3/2 maior que alimenta o cilindro</td><td>Um botão pequeno comanda uma válvula de grande vazão</td></tr>
+        <tr><td>3 · Dupla ação</td><td>Válvula 5/2 por alavanca com mola e cilindro de dupla ação</td><td>Avanço e retorno com ar comprimido</td></tr>
+        <tr><td>4 · Piloto</td><td>5/2 pilotada por um botão 3/2</td><td>Comando a distância por sinal de ar</td></tr>
+        <tr><td>5 · Memória</td><td>5/2 duplo piloto com dois botões (avança e recua)</td><td>Soltando os botões, a válvula mantém a posição</td></tr>
+        <tr><td>6 · Velocidade</td><td>Inclua reguladoras de fluxo no desafio 3 (meter-out)</td><td>Ajuste avanço lento e retorno rápido</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="slide closing" data-theme="Dia 2 · Encerramento">
+  <div class="content">
+    <ul class="sum">
+      <li class="anim"><b>Lubrefil:</b> filtra, regula e, se preciso, lubrifica o ar.</li>
+      <li class="anim"><b>Símbolos:</b> quadrados são posições; vias / posições dão o nome.</li>
+      <li class="anim"><b>Velocidade:</b> em dupla ação, restrinja a saída do ar.</li>
+      <li class="anim"><b>FluidSIM:</b> monte e teste antes de ir para a bancada.</li>
+    </ul>
+    <h1 class="engrave" aria-label="Para casa"><span class="ln t1" style="--l:.6"><span class="txt">Para casa</span><span class="beam"></span></span></h1>
+    <p class="after anim"><b>30/10 · Formulário assíncrono I (10 pontos):</b> ar comprimido, lubrefil, válvulas, atuadores e simbologia. Revise os slides dos dias 1 e 2.</p>
+  </div>
+</section>

@@ -1,0 +1,249 @@
+<!-- ===================== DIA 3 · 04/11 ===================== -->
+<section class="slide daycover" data-theme="Dia 3 · Abertura" data-day="3" data-date="qua, 04/11" data-title="Atividade em sala + eletroválvulas e comando elétrico" data-kind="av" data-badge="Atividade em sala · 20 pts">
+  <div class="content">
+    <div class="dc-head anim"><span class="dc-num">Dia 3</span><span class="dc-date">quarta-feira, 04/11</span><span class="dc-tag">Atividade avaliativa</span></div>
+    <h1 class="engrave" aria-label="Eletroválvulas e comando elétrico">
+      <span class="ln t1" style="--l:0"><span class="txt">Eletroválvulas e</span><span class="beam"></span></span>
+      <span class="ln t2" style="--l:.8"><span class="txt">comando elétrico</span><span class="beam"></span></span>
+    </h1>
+    <p class="lead anim">Primeiro, a atividade no FluidSIM. Depois do intervalo, a eletricidade entra na pneumática.</p>
+    <ol class="agenda anim">
+      <li class="av"><b>13:30 · Aula 1</b>Atividade em sala (FluidSIM)</li>
+      <li class="av"><b>14:15 · Aula 2</b>Atividade em sala</li>
+      <li class="av"><b>15:00 · Aula 3</b>Atividade em sala e entrega</li>
+      <li><b>16:00 · Aula 4</b>Eletroválvulas</li>
+      <li><b>16:45 · Aula 5</b>Botões, relés, sensores e temporizadores</li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 3 · Atividade em sala">
+  <div class="content">
+    <h2 class="title anim">Atividade em sala · 20 pontos</h2>
+    <div class="two">
+      <div class="anim">
+        <ul class="list sm">
+          <li>Individual, no FluidSIM, das <b>13:30 às 15:45</b>.</li>
+          <li>Consulta permitida aos slides.</li>
+          <li>Cada circuito deve ser <b>salvo</b> com seu nome e o número da questão.</li>
+          <li>Responda às perguntas no <b>modelo de atividade</b> entregue.</li>
+          <li>Chame o instrutor para validar cada circuito funcionando.</li>
+        </ul>
+      </div>
+      <div class="box anim">
+        <h3>O que será avaliado</h3>
+        <ul class="list sm">
+          <li>Circuito correto e simulando</li>
+          <li>Uso dos símbolos e componentes certos</li>
+          <li>Identificação das vias e dos acionamentos</li>
+          <li>Respostas às perguntas</li>
+          <li>Organização do desenho</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 3 · Atividade em sala">
+  <div class="content">
+    <h2 class="title sm anim">Circuitos da atividade</h2>
+    <table class="tbl anim">
+      <thead><tr><th>Questão</th><th>Situação</th><th>Conteúdo</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Um cilindro de simples ação deve avançar com um botão e voltar ao soltar.</td><td>Comando direto e indireto</td></tr>
+        <tr><td>2</td><td>Uma porta deve abrir a partir de dois pontos diferentes.</td><td>Elemento OU</td></tr>
+        <tr><td>3</td><td>Uma prensa só pode descer com as duas mãos do operador nos botões.</td><td>Elemento E (bimanual)</td></tr>
+        <tr><td>4</td><td>Um cilindro de dupla ação deve avançar devagar e voltar rápido.</td><td>5/2 e controle de velocidade</td></tr>
+        <tr><td>5</td><td>Ao chegar ao fim do curso, o cilindro deve voltar sozinho.</td><td>Válvula rolete e retorno automático</td></tr>
+      </tbody>
+    </table>
+    <p class="note anim">O enunciado completo está no modelo de atividade.</p>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 3 · Eletropneumática">
+  <div class="content">
+    <h2 class="title anim">Por que trocar o ar pela eletricidade no comando?</h2>
+    <div class="anim">
+      <svg viewBox="0 0 1660 230" role="img" aria-label="Sinal elétrico, solenoide, válvula e cilindro">
+        <g font-family="Libre Baskerville, Georgia, serif" text-anchor="middle" font-size="28" font-weight="700">
+          <rect x="10" y="50" width="300" height="120" rx="16" fill="#27348B"/><text x="160" y="105" fill="#fff">Comando</text><text x="160" y="140" fill="#fff" font-size="22" font-weight="400">botão, sensor, CLP</text>
+          <rect x="460" y="50" width="300" height="120" rx="16" fill="#fff" stroke="#27348B" stroke-width="5"/><text x="610" y="105" fill="#1A2366">Solenoide</text><text x="610" y="140" fill="#525B70" font-size="22" font-weight="400">24 V cc</text>
+          <rect x="910" y="50" width="300" height="120" rx="16" fill="#fff" stroke="#27348B" stroke-width="5"/><text x="1060" y="105" fill="#1A2366">Válvula</text><text x="1060" y="140" fill="#525B70" font-size="22" font-weight="400">muda de posição</text>
+          <rect x="1360" y="50" width="290" height="120" rx="16" fill="#E8490F"/><text x="1505" y="105" fill="#fff">Cilindro</text><text x="1505" y="140" fill="#fff" font-size="22" font-weight="400">movimento</text>
+          <g stroke="#8A92A6" stroke-width="6"><line x1="310" y1="110" x2="460" y2="110"/><line x1="760" y1="110" x2="910" y2="110"/><line x1="1210" y1="110" x2="1360" y2="110"/></g>
+          <g fill="#E8490F"><circle r="10"><animateMotion dur="3s" repeatCount="indefinite" path="M160 30 H1505"/></circle></g>
+          <text x="385" y="210" font-size="22" font-weight="400" fill="#525B70">sinal elétrico</text><text x="1285" y="210" font-size="22" font-weight="400" fill="#525B70">ar comprimido</text>
+        </g>
+      </svg>
+    </div>
+    <div class="cards" style="--c:4;margin-top:20px">
+      <div class="card anim"><h3>Velocidade</h3><p>O sinal elétrico chega na hora, mesmo a metros de distância.</p></div>
+      <div class="card anim"><h3>Lógica</h3><p>Relés, temporizadores e contadores fazem sequências complexas.</p></div>
+      <div class="card anim"><h3>Sensores</h3><p>Detectam peças sem contato e informam a posição do cilindro.</p></div>
+      <div class="card hot anim"><h3>CLP e rede</h3><p>Abre caminho para a automação com programa e Indústria 4.0.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 3 · Eletroválvulas">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Como o solenoide abre a válvula</h2>
+    <div class="w anim" data-w="solenoid"></div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 3 · Eletroválvulas">
+  <div class="content">
+    <h2 class="title anim">Tipos de eletroválvula</h2>
+    <div class="cards" style="--c:2">
+      <div class="card anim"><h3>Acionamento direto</h3><p>O próprio núcleo do solenoide abre a passagem. Usado em válvulas pequenas.</p></div>
+      <div class="card anim"><h3>Servocomandada (indireta)</h3><p>O solenoide abre um pequeno piloto de ar e esse ar move o carretel. Bobina pequena comanda válvula grande. É o tipo do painel Festo.</p></div>
+      <div class="card anim"><h3>Simples solenoide</h3><p>Uma bobina e retorno por mola. Desligou a energia, a válvula volta. Precisa de <b>auto-retenção</b> no circuito elétrico.</p></div>
+      <div class="card hot anim"><h3>Duplo solenoide</h3><p>Uma bobina para cada lado. Um pulso basta: a válvula <b>memoriza</b> a posição. Nunca energize as duas ao mesmo tempo.</p></div>
+    </div>
+    <p class="note anim">Toda eletroválvula tem um <b>acionamento manual auxiliar</b> (botãozinho no corpo) para testes sem energia elétrica.</p>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 3 · Eletroválvulas">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Simples ou duplo solenoide?</h2>
+    <div class="w wpanel anim" data-w="valve" data-types="52,52d"></div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 3 · Comando elétrico">
+  <div class="content">
+    <h2 class="title sm anim">Fonte e botões</h2>
+    <div class="two">
+      <div class="anim">
+        <div class="card" style="margin-bottom:22px"><h3>Fonte 24 V cc</h3><p><b>Vermelho = +24 V</b> e <b>azul = 0 V</b>. Tensão baixa e segura para o comando, mas um curto-circuito ainda queima componentes.</p></div>
+        <svg viewBox="0 0 760 240" role="img" aria-label="Símbolos de contato normalmente aberto e normalmente fechado">
+          <g font-family="Libre Baskerville, Georgia, serif" font-size="24" font-weight="700" fill="#1A2366" text-anchor="middle">
+          <g stroke="#1A2366" stroke-width="5" fill="none">
+            <path d="M120 30 V90 M120 150 V210 M120 90 L150 150"/><path d="M80 120 H118" stroke-dasharray="8 6"/><path d="M70 105 V135 H80"/>
+            <path d="M480 30 V90 M480 150 V210 M480 90 L450 150 M480 90 H460"/><path d="M420 120 H462" stroke-dasharray="8 6"/><path d="M410 105 V135 H420"/>
+          </g>
+          <text x="230" y="110">NA</text><text x="230" y="140" font-size="20" font-weight="400" fill="#525B70">13 – 14</text>
+          <text x="590" y="110">NF</text><text x="590" y="140" font-size="20" font-weight="400" fill="#525B70">11 – 12</text>
+          </g>
+        </svg>
+      </div>
+      <div class="anim">
+        <ul class="list sm">
+          <li><b>NA (normalmente aberto):</b> fecha quando é pressionado. Usado para <b>ligar</b>.</li>
+          <li><b>NF (normalmente fechado):</b> abre quando é pressionado. Usado para <b>desligar</b>.</li>
+          <li><b>Pulsador:</b> volta sozinho ao soltar.</li>
+          <li><b>Com trava (retenção):</b> fica na posição até ser acionado de novo.</li>
+          <li><b>Emergência:</b> cogumelo vermelho, sempre <b>NF</b> e com trava.</li>
+          <li>Numeração: o último dígito <b>1-2</b> indica NF e <b>3-4</b> indica NA.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 3 · Comando elétrico">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Relé: um interruptor comandado por eletroímã</h2>
+    <div class="w anim" data-w="relay"></div>
+    <p class="note anim">O <b>contator</b> funciona do mesmo jeito, mas tem contatos maiores, para motores e cargas de potência. No comando do painel usamos relés.</p>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 3 · Sensores">
+  <div class="content">
+    <h2 class="title anim">Fim de curso e sensores</h2>
+    <div class="cards" style="--c:3">
+      <div class="card anim"><h3>Fim de curso</h3><p>Chave mecânica: a peça ou a haste encosta e aciona o contato.</p></div>
+      <div class="card anim"><h3>Indutivo</h3><p>Detecta <b>metal</b> sem contato, a poucos milímetros.</p></div>
+      <div class="card anim"><h3>Capacitivo</h3><p>Detecta <b>qualquer material</b>: plástico, madeira, líquido.</p></div>
+      <div class="card anim"><h3>Óptico</h3><p>Detecta objetos que <b>interrompem ou refletem</b> um feixe de luz. Alcance maior.</p></div>
+      <div class="card hot anim"><h3>Magnético (reed)</h3><p>Preso no corpo do cilindro, detecta o <b>ímã do êmbolo</b>. Informa se o cilindro está recuado ou avançado.</p></div>
+      <div class="card anim"><h3>Ligação de 3 fios</h3><p><b>Marrom</b> +24 V · <b>Azul</b> 0 V · <b>Preto</b> sinal. No painel, sensores <b>PNP</b> entregam +24 V no sinal.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 3 · Sensores">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Qual sensor você escolheria?</h2>
+    <div class="quiz machine-game anim" data-q="d3a"></div>
+  </div>
+</section>
+<script>QZ.d3a={qs:[
+  {q:'Detectar se uma garrafa PET chegou à posição de envase.',a:1,e:' Plástico não é metal: o capacitivo detecta qualquer material.'},
+  {q:'Saber se o cilindro chegou ao fim do curso, sem nada externo encostando.',a:3,e:' O sensor magnético fica no corpo do cilindro e detecta o ímã do êmbolo.'},
+  {q:'Contar parafusos de aço passando na esteira.',a:0,e:' Aço é metal: o indutivo é o mais simples e robusto.'},
+  {q:'Detectar caixas de papelão a 2 metros de distância.',a:2,e:' Só o óptico tem alcance desse tamanho.'},
+  {q:'Detectar o nível de água dentro de um tanque plástico, por fora.',a:1,e:' O capacitivo "enxerga" o líquido através da parede plástica.'}
+],opts:{label:'Situação',next:'Próxima situação',options:['Indutivo','Capacitivo','Óptico','Magnético'],end:'Cada sensor tem seu lugar: material, distância e ambiente decidem.'}};</script>
+
+<section class="slide" data-theme="Dia 3 · Temporizadores">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Temporizadores: atrasar um sinal</h2>
+    <div class="two wl">
+      <div class="w anim" data-w="timer" data-p="3"></div>
+      <ul class="list sm anim">
+        <li><b>Retardo na energização:</b> o contato muda <b>depois</b> do tempo, contado a partir do sinal. Se o sinal cair antes, nada acontece.</li>
+        <li><b>Retardo na desenergização:</b> o contato muda <b>na hora</b> e só volta um tempo depois que o sinal some.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 3 · Comando elétrico">
+  <div class="content">
+    <h2 class="title anim">Outros componentes e as letras do diagrama</h2>
+    <div class="two">
+      <div class="anim">
+        <div class="card" style="margin-bottom:20px"><h3>Contador</h3><p>Conta pulsos de um sensor e muda seus contatos ao chegar no valor programado. Tem entrada de <b>reset</b>.</p></div>
+        <div class="card"><h3>Pressostato</h3><p>Interruptor que muda os contatos quando a pressão chega a um valor ajustado. Garante que a peça foi prensada de verdade.</p></div>
+      </div>
+      <table class="tbl anim">
+        <thead><tr><th>Letra</th><th>Componente</th></tr></thead>
+        <tbody>
+          <tr><td><b>S</b></td><td>Botão ou chave (S1, S2)</td></tr>
+          <tr><td><b>K</b></td><td>Relé ou contator (K1)</td></tr>
+          <tr><td><b>KT</b></td><td>Relé temporizador (KT1)</td></tr>
+          <tr><td><b>B</b> ou <b>1S1</b></td><td>Sensor ou fim de curso</td></tr>
+          <tr><td><b>Y</b></td><td>Solenoide da válvula (1Y1)</td></tr>
+          <tr><td><b>H</b></td><td>Lâmpada de sinalização</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 3 · Comando elétrico">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Teste rápido: comando elétrico</h2>
+    <div class="quiz anim" data-q="d3b"></div>
+  </div>
+</section>
+<script>QZ.d3b={qs:[
+  {q:'O botão de emergência deve usar qual tipo de contato?',o:['NA','NF','Tanto faz','Nenhum'],a:1,e:' NF: se um fio romper, o circuito também desliga. É mais seguro.'},
+  {q:'Qual a vantagem principal da válvula de duplo solenoide?',o:['É mais barata','Memoriza a posição com um pulso','Não precisa de ar','Funciona sem energia'],a:1,e:' Basta um pulso em Y1 ou Y2; sem sinal, ela mantém a posição.'},
+  {q:'Em um relé, o contato 13-14 é:',o:['NF','NA','A bobina','O comum'],a:1,e:' Final 3-4 indica contato NA; final 1-2 indica NF.'},
+  {q:'O fio preto de um sensor de 3 fios é:',o:['+24 V','0 V','O sinal','O terra'],a:2,e:' Marrom +24 V, azul 0 V, preto sinal.'}
+],opts:{end:'Próxima aula: montar circuitos eletropneumáticos completos.'}};</script>
+
+<section class="slide closing" data-theme="Dia 3 · Encerramento">
+  <div class="content">
+    <ul class="sum">
+      <li class="anim"><b>Solenoide:</b> transforma o sinal elétrico em movimento da válvula.</li>
+      <li class="anim"><b>Simples x duplo solenoide:</b> mola que volta ou memória.</li>
+      <li class="anim"><b>Relé:</b> uma bobina comanda vários contatos NA e NF.</li>
+      <li class="anim"><b>Sensores:</b> cada material e distância pede um tipo.</li>
+    </ul>
+    <h1 class="engrave" aria-label="Para casa"><span class="ln t1" style="--l:.6"><span class="txt">Para casa</span><span class="beam"></span></span></h1>
+    <p class="after anim"><b>06/11 · Formulário assíncrono II (10 pontos):</b> eletroválvulas, componentes elétricos e circuitos eletropneumáticos (dias 3 e 4).</p>
+  </div>
+</section>

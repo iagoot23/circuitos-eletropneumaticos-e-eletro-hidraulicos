@@ -1,0 +1,166 @@
+<!-- ===================== DIA 9 · 25/11 · PRÁTICA 3 ===================== -->
+<section class="slide daycover" data-theme="Dia 9 · Prática 3" data-day="9" data-date="qua, 25/11" data-title="Prática 3: eletro-hidráulica" data-kind="pr" data-badge="Prática na bancada hidráulica">
+  <div class="content">
+    <div class="dc-head anim"><span class="dc-num">Dia 9</span><span class="dc-date">quarta-feira, 25/11</span><span class="dc-tag pr">Prática 3</span></div>
+    <h1 class="engrave" aria-label="Prática: eletro-hidráulica">
+      <span class="ln t1" style="--l:0"><span class="txt">Prática 3</span><span class="beam"></span></span>
+      <span class="ln t2" style="--l:.6"><span class="txt">eletro-hidráulica</span><span class="beam"></span></span>
+    </h1>
+    <p class="lead anim">Óleo sob pressão pede ainda mais atenção. Planejar, montar, medir e diagnosticar.</p>
+    <ol class="agenda anim">
+      <li class="pr"><b>13:30 · Aula 1</b>Segurança e reconhecimento da bancada</li>
+      <li class="pr"><b>14:15 · Aula 2</b>Esquema, simulação e planejamento</li>
+      <li class="pr"><b>15:00 · Aula 3</b>Montagem 1: 4/3 duplo solenoide</li>
+      <li class="pr"><b>16:00 · Aula 4</b>Montagem 2: velocidade, retorno automático e medições</li>
+      <li class="pr"><b>16:45 · Aula 5</b>Diagnóstico, desmontagem e orientações</li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 9 · Segurança">
+  <div class="content">
+    <h2 class="title anim">Segurança em hidráulica</h2>
+    <div class="two">
+      <ul class="list anim">
+        <li>Óculos sempre. Luvas para manusear mangueiras com óleo.</li>
+        <li><b>Nunca</b> conecte, desconecte ou aperte conexões com a bomba ligada.</li>
+        <li>Depois de desligar, <b>alivie a pressão</b>: acione a válvula nos dois sentidos.</li>
+        <li>Não procure vazamento com a mão: use um papelão.</li>
+      </ul>
+      <div class="anim">
+        <div class="warn"><h3><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#B8380A" stroke-width="2.4" stroke-linejoin="round"><path d="M12 3 L22 20 H2 Z"/><path d="M12 10 v4" stroke-linecap="round"/><circle cx="12" cy="17" r=".6" fill="#B8380A"/></svg>Injeção de óleo</h3>
+          <p>Um jato fino de óleo a alta pressão atravessa a pele. Parece um furinho, mas é uma <b>emergência médica</b>.</p>
+          <p style="margin:0">Óleo no chão causa queda: limpe na hora.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 9 · Bancada">
+  <div class="content">
+    <h2 class="title anim">Antes de ligar a bomba</h2>
+    <div class="two">
+      <ol class="howto anim">
+        <li><b>Nível do óleo</b> no visor está correto?</li>
+        <li>Filtro sem indicação de saturação?</li>
+        <li>Válvula limitadora com ajuste <b>baixo</b> (alivie o parafuso).</li>
+        <li>Mangueiras conferidas: P, T, A e B nos lugares certos.</li>
+        <li>Engates rápidos <b>completamente</b> encaixados.</li>
+      </ol>
+      <ol class="howto anim" style="counter-reset:h 5">
+        <li>Instrutor confere a montagem.</li>
+        <li>Ligue a bomba e observe o manômetro.</li>
+        <li>Suba a pressão aos poucos até o valor do roteiro.</li>
+        <li>Teste os comandos com a mão longe do cilindro.</li>
+        <li>Se algo estranho acontecer: <b>desligue a bomba</b> primeiro.</li>
+      </ol>
+    </div>
+    <p class="note anim">Se a bancada hidráulica não estiver disponível, a prática é feita integralmente no FluidSIM-H, com as mesmas etapas e medições.</p>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 9 · Planejamento">
+  <div class="content">
+    <h2 class="title anim">Planejar antes de montar</h2>
+    <div class="cards" style="--c:4">
+      <div class="card anim"><h3>1 · Esquema</h3><p>Desenho hidráulico e elétrico, com nomes de todos os componentes.</p></div>
+      <div class="card anim"><h3>2 · Simulação</h3><p>Rode no FluidSIM-H (circuito salvo no dia 7). Corrija antes de tocar na bancada.</p></div>
+      <div class="card anim"><h3>3 · Lista de material</h3><p>Separe válvulas, cilindro, mangueiras e cabos. Confira as pressões máximas.</p></div>
+      <div class="card hot anim"><h3>4 · Sequência</h3><p>Fixe os componentes, ligue o hidráulico, ligue o elétrico, confira, teste.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 9 · Montagem 1">
+  <div class="content">
+    <h2 class="title sm anim">Montagem 1: cilindro com 4/3 duplo solenoide</h2>
+    <div class="two wl">
+      <div class="anim">
+        <div class="w wpanel" data-w="valve" data-types="43tan"></div>
+      </div>
+      <div class="anim">
+        <ul class="list sm">
+          <li>Válvula 4/3 centro <b>tandem</b>, centrada por molas.</li>
+          <li><b>S1</b> (pulsador) → <b>Y1</b>: avança enquanto pressionado.</li>
+          <li><b>S2</b> (pulsador) → <b>Y2</b>: recua enquanto pressionado.</li>
+          <li>Soltou os botões: o cilindro <b>para</b> onde está.</li>
+          <li><b>Intertravamento:</b> contato NF de S2 na linha de Y1 e NF de S1 na linha de Y2. As duas bobinas nunca ligam juntas.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 9 · Montagem 2">
+  <div class="content">
+    <h2 class="title sm anim">Montagem 2: velocidade e retorno automático</h2>
+    <div class="anim">
+      <div class="two" style="margin-bottom:22px">
+        <div class="card"><h3>Parte A · Velocidade</h3><p>Instale uma <b>reguladora de fluxo com retenção</b> na linha de saída do avanço. Ajuste: avanço lento, retorno rápido. Cronometre o curso.</p></div>
+        <div class="card hot"><h3>Parte B · Retorno automático</h3><p>S1 dá a partida (relé K1 com auto-retenção → Y1). No fim do curso, o <b>fim de curso</b> ou o <b>pressostato</b> desliga K1 e liga Y2 até o cilindro voltar.</p></div>
+      </div>
+    </div>
+    <div class="w anim" data-w="flow"></div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 9 · Medições">
+  <div class="content">
+    <h2 class="title sm anim">Medições: preencha a tabela</h2>
+    <table class="tbl anim">
+      <thead><tr><th>Situação</th><th>Pressão no manômetro (bar)</th><th>Tempo do curso (s)</th><th>Observação</th></tr></thead>
+      <tbody>
+        <tr><td>Válvula no centro (repouso)</td><td></td><td>—</td><td></td></tr>
+        <tr><td>Cilindro avançando</td><td></td><td></td><td></td></tr>
+        <tr><td>Cilindro parado no fim do avanço</td><td></td><td>—</td><td></td></tr>
+        <tr><td>Cilindro recuando</td><td></td><td></td><td></td></tr>
+        <tr><td>Reguladora mais fechada</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+    <p class="callout blue anim" style="font-size:27px"><b>Para discutir:</b> por que a pressão sobe tanto quando o cilindro chega ao fim do curso? Para onde vai o óleo nesse momento?</p>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 9 · Diagnóstico">
+  <div class="content">
+    <h2 class="title sm anim">Diagnóstico em eletro-hidráulica</h2>
+    <table class="tbl anim">
+      <thead><tr><th>Sintoma</th><th>Causas prováveis</th></tr></thead>
+      <tbody>
+        <tr><td>Manômetro marca zero com a bomba ligada</td><td>Limitadora totalmente aberta; centro tandem/aberto (normal no repouso); bomba sem óleo</td></tr>
+        <tr><td>Bomba com ruído de "cascalho"</td><td>Cavitação: nível baixo, filtro de sucção sujo, óleo frio</td></tr>
+        <tr><td>Cilindro lento e fraco</td><td>Pressão ajustada baixa; reguladora fechada; vazamento interno</td></tr>
+        <tr><td>Cilindro desce sozinho com carga</td><td>Vazamento na vedação ou na válvula; falta retenção pilotada</td></tr>
+        <tr><td>Bobina com LED aceso e nada acontece</td><td>Engate rápido mal encaixado; carretel travado por sujeira</td></tr>
+        <tr><td>Óleo aquecendo muito</td><td>Limitadora abrindo o tempo todo; centro fechado em repouso longo</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 9 · Prática 3">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Revisão da prática de hidráulica</h2>
+    <div class="quiz anim" data-q="d9a"></div>
+  </div>
+</section>
+<script>QZ.d9a={qs:[
+  {q:'Antes de soltar uma mangueira hidráulica, é preciso:',o:['Aumentar a pressão','Desligar a bomba e aliviar a pressão','Apenas desligar o CLP','Esperar o óleo esfriar'],a:1,e:' Bomba desligada e pressão aliviada acionando a válvula nos dois sentidos.'},
+  {q:'Para que serve o intertravamento entre Y1 e Y2?',o:['Economizar energia','Impedir que as duas bobinas liguem juntas','Aumentar a velocidade','Medir a pressão'],a:1,e:' As duas bobinas juntas forçam o carretel e podem queimar.'},
+  {q:'A pressão máxima aparece quando:',o:['O cilindro está no meio do curso','O cilindro chega ao fim do curso','A bomba está desligada','A válvula está no centro tandem'],a:1,e:' Sem para onde ir, o óleo pressuriza até a limitadora abrir.'},
+  {q:'Ruído de "cascalho" na bomba indica:',o:['Cavitação','Óleo novo','Pressão baixa normal','Bom funcionamento'],a:0,e:' A bomba está puxando ar ou óleo com dificuldade.'}
+],opts:{end:'Amanhã: avaliação prática.'}};</script>
+
+<section class="slide closing" data-theme="Dia 9 · Encerramento">
+  <div class="content">
+    <ul class="sum">
+      <li class="anim"><b>Hidráulica:</b> alivie a pressão antes de mexer.</li>
+      <li class="anim"><b>4/3:</b> o centro decide o que acontece no repouso.</li>
+      <li class="anim"><b>Medir</b> pressão e tempo ajuda a entender e diagnosticar.</li>
+      <li class="anim"><b>Desmontagem:</b> limpar o óleo, tampar os engates, guardar.</li>
+    </ul>
+    <h1 class="engrave" aria-label="Amanhã: avaliação prática"><span class="ln t1" style="--l:.6"><span class="txt">Amanhã: avaliação</span><span class="beam"></span></span></h1>
+    <p class="after anim">26/11 · Avaliação prática (20 pontos): interpretação, montagem e testes de um circuito eletropneumático ou eletro-hidráulico.</p>
+  </div>
+</section>

@@ -1,0 +1,160 @@
+<!-- ===================== DIA 5 · 11/11 · PRÁTICA 1 ===================== -->
+<section class="slide daycover" data-theme="Dia 5 · Prática 1" data-day="5" data-date="qua, 11/11" data-title="Prática 1: eletropneumática com relés, sensores e temporizadores" data-kind="pr" data-badge="Prática no painel Festo">
+  <div class="content">
+    <div class="dc-head anim"><span class="dc-num">Dia 5</span><span class="dc-date">quarta-feira, 11/11</span><span class="dc-tag pr">Prática 1</span></div>
+    <h1 class="engrave" aria-label="Prática: comandos eletromecânicos">
+      <span class="ln t1" style="--l:0"><span class="txt">Prática 1</span><span class="beam"></span></span>
+      <span class="ln t2" style="--l:.6"><span class="txt">comandos eletromecânicos</span><span class="beam"></span></span>
+    </h1>
+    <p class="lead anim">Relés, botões, sensores, temporizador e contador no painel Festo.</p>
+    <ol class="agenda anim">
+      <li><b>13:30 · Aula 1</b>Sequências com relés e orientações de segurança</li>
+      <li class="pr"><b>14:15 · Aula 2</b>Montagem 1: auto-retenção</li>
+      <li class="pr"><b>15:00 · Aula 3</b>Montagem 2: sensores e ciclo contínuo</li>
+      <li class="pr"><b>16:00 · Aula 4</b>Montagem 3: temporizador e contador</li>
+      <li class="pr"><b>16:45 · Aula 5</b>Montagem 4: dois cilindros, testes e organização</li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 5 · Sequências com relés">
+  <div class="content">
+    <h2 class="title sm anim">Resolvendo a sobreposição: método passo a passo</h2>
+    <div class="two wr">
+      <div class="anim">
+        <p class="small" style="margin-top:0">Cada <b>passo</b> da sequência ganha um <b>relé de memória</b> com auto-retenção.</p>
+        <ul class="list sm">
+          <li>Um passo só liga se o <b>anterior estiver ligado</b> e o <b>sensor confirmar</b> o movimento.</li>
+          <li>Cada relé liga apenas o solenoide do seu passo.</li>
+          <li>O último passo <b>desliga todos</b> e a sequência recomeça.</li>
+          <li>Como um sinal de sensor só vale dentro do seu passo, eles não brigam mais.</li>
+        </ul>
+      </div>
+      <table class="tbl sm anim">
+        <thead><tr><th>Passo</th><th>Liga quando</th><th>Relé</th><th>Aciona</th></tr></thead>
+        <tbody>
+          <tr><td>1 · A+</td><td>Partida S1 + B recuado (2S1)</td><td>K1</td><td>1Y1</td></tr>
+          <tr><td>2 · B+</td><td>K1 + A avançado (1S2)</td><td>K2</td><td>2Y1</td></tr>
+          <tr><td>3 · B−</td><td>K2 + B avançado (2S2)</td><td>K3</td><td>2Y2</td></tr>
+          <tr><td>4 · A−</td><td>K3 + B recuado (2S1)</td><td>K4</td><td>1Y2 e desliga K1–K3</td></tr>
+          <tr><td>Fim</td><td>A recuado (1S1)</td><td colspan="2">desliga K4: pronto para novo ciclo</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note anim">Sequência A+ B+ B− A− com duas válvulas 5/2 de duplo solenoide. Válida para o painel e para o FluidSIM.</p>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 5 · Segurança">
+  <div class="content">
+    <h2 class="title anim">Antes de tocar no painel</h2>
+    <div class="two">
+      <ol class="howto anim">
+        <li>Ar <b>fechado</b> e fonte <b>desligada</b>.</li>
+        <li>Monte a <b>parte pneumática</b> e confira as mangueiras.</li>
+        <li>Monte a <b>parte elétrica</b>: vermelho no +24 V, azul no 0 V.</li>
+        <li>Confira o circuito com o diagrama, linha por linha.</li>
+        <li><b>Chame o instrutor</b> para validar.</li>
+      </ol>
+      <ol class="howto anim" style="counter-reset:h 5">
+        <li>Ligue a fonte e teste os comandos <b>sem ar</b>: observe os LEDs dos relés e solenoides.</li>
+        <li>Abra o ar com pressão baixa (<b>4 bar</b>).</li>
+        <li>Mãos fora da área de movimento dos cilindros.</li>
+        <li>Para alterar: desligue a fonte e feche o ar.</li>
+        <li>Ao final: desmonte, guarde cada peça no gaveteiro.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 5 · Painel Festo">
+  <div class="content">
+    <h2 class="title anim">O que tem no painel Festo</h2>
+    <div class="cards" style="--c:3">
+      <div class="card anim"><h3>Parte pneumática</h3><p>Lubrefil, bloco distribuidor, válvulas 5/2 de simples e duplo solenoide, cilindros de simples e dupla ação, reguladoras de fluxo.</p></div>
+      <div class="card anim"><h3>Fonte de alimentação</h3><p>24 V cc estabilizada, com bornes vermelho (+) e azul (0 V).</p></div>
+      <div class="card anim"><h3>Botoeiras</h3><p>Pulsadores, com trava e botão de emergência, com LEDs de indicação.</p></div>
+      <div class="card anim"><h3>Placa de relés</h3><p>Relés com vários contatos NA e NF, todos identificados e com LED.</p></div>
+      <div class="card anim"><h3>Temporizador e contador</h3><p>Relé temporizador eletrônico e contador predeterminado com reset.</p></div>
+      <div class="card hot anim"><h3>Sensores</h3><p>Fim de curso, indutivo, capacitivo, óptico e magnético para os cilindros.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 5 · Montagem 1">
+  <div class="content">
+    <h2 class="title sm anim">Montagem 1: auto-retenção desligar dominante</h2>
+    <div class="w anim" data-w="ladder" data-modes="retdes"></div>
+    <p class="note anim"><b>Material:</b> cilindro de dupla ação, válvula 5/2 simples solenoide (1Y1), botoeira S1 (NA) e S0 (NF), relé K1. <b>Teste:</b> ligar, desligar e apertar os dois juntos.</p>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 5 · Montagem 2">
+  <div class="content">
+    <h2 class="title sm anim">Montagem 2: retorno automático e ciclo contínuo</h2>
+    <div class="w anim" data-w="ladder" data-modes="continuo"></div>
+    <p class="note anim"><b>Material:</b> montagem 1 + sensores 1S1 (recuado) e 1S2 (avançado) + seletor com trava S3. <b>Desafio:</b> troque o fim de curso por um sensor <b>magnético</b> e depois por um <b>indutivo</b>.</p>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 5 · Montagem 3">
+  <div class="content">
+    <h2 class="title sm anim">Montagem 3: temporizador e contador</h2>
+    <div class="w anim" data-w="ladder" data-modes="tempo"></div>
+    <p class="note anim"><b>Parte A:</b> ajuste o temporizador para 3 s e confira com um cronômetro. <b>Parte B:</b> acrescente um contador ligado a 1S2 que para o ciclo contínuo após 5 ciclos; o reset volta a contagem a zero.</p>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 5 · Montagem 4">
+  <div class="content">
+    <h2 class="title sm anim">Montagem 4: dois cilindros</h2>
+    <div class="two anim" style="margin-bottom:22px">
+      <div class="box"><h3>Nível 1 · A+ B+ A− B−</h3><p>Sem sobreposição de sinais: válvulas de duplo solenoide ligadas direto aos sensores.</p></div>
+      <div class="box" style="border-color:var(--orange)"><h3 style="color:var(--orange-d)">Nível 2 · A+ B+ B− A−</h3><p>Com sobreposição: método passo a passo com os relés K1 a K4.</p></div>
+    </div>
+    <div class="w anim" data-w="steps" data-seq="A+ B+ B- A-"></div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 5 · Diagnóstico">
+  <div class="content">
+    <h2 class="title sm anim">Não funcionou? Diagnóstico com método</h2>
+    <table class="tbl anim">
+      <thead><tr><th>Sintoma</th><th>O que verificar</th></tr></thead>
+      <tbody>
+        <tr><td>Nenhum LED acende</td><td>Fonte ligada? Bornes +24 V e 0 V ligados ao bastidor? Fusível?</td></tr>
+        <tr><td>LED do relé acende, solenoide não</td><td>Contato de K1 usado é NA? Fio do contato até a bobina Y1? Retorno ao 0 V?</td></tr>
+        <tr><td>LED do solenoide acende, cilindro parado</td><td>Ar aberto? Pressão no manômetro? Mangueiras nas vias 2 e 4? Reguladora fechada?</td></tr>
+        <tr><td>Cilindro avança e não volta</td><td>Sensor 1S2 alinhado com o ímã? Contato usado é NF? Válvula é de duplo solenoide?</td></tr>
+        <tr><td>Relé não "segura"</td><td>Contato de selo de K1 em paralelo com S1? S0 é NF?</td></tr>
+      </tbody>
+    </table>
+    <p class="callout blue anim" style="font-size:27px">Com a fonte ligada, meça com o <b>multímetro</b> (escala de tensão contínua): 24 V entre o ponto e o 0 V indica que o sinal chegou até ali.</p>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 5 · Prática 1">
+  <div class="content">
+    {{CHIP}}
+    <h2 class="title sm anim">Revisão da prática</h2>
+    <div class="quiz anim" data-q="d5a"></div>
+  </div>
+</section>
+<script>QZ.d5a={qs:[
+  {q:'O relé acende o LED, mas o cilindro não se move e o LED do solenoide está apagado. O defeito mais provável está:',o:['Na mangueira','Entre o contato de K1 e a bobina Y1','No compressor','No cilindro'],a:1,e:' O comando chegou ao relé, mas não à bobina do solenoide.'},
+  {q:'No método passo a passo, o que desliga todos os relés de memória?',o:['O botão S1','O último passo','O temporizador','O contador'],a:1,e:' O relé do último passo reseta os anteriores.'},
+  {q:'Antes de abrir o ar pela primeira vez, a pressão recomendada é:',o:['10 bar','4 bar','0,5 bar','A máxima da rede'],a:1,e:' Pressão baixa reduz o risco se algo estiver errado.'},
+  {q:'Para alterar a montagem, primeiro:',o:['Puxe a mangueira','Desligue a fonte e feche o ar','Aumente a pressão','Chame um colega'],a:1,e:' Nunca altere com energia ou ar ligados.'}
+],opts:{end:'Amanhã: avaliação teórica. Revise os dias 1 a 5.'}};</script>
+
+<section class="slide closing" data-theme="Dia 5 · Encerramento">
+  <div class="content">
+    <ul class="sum">
+      <li class="anim"><b>Monte</b> com tudo desligado, <b>confira</b> e só então <b>energize</b>.</li>
+      <li class="anim"><b>LEDs e multímetro</b> mostram onde o sinal parou.</li>
+      <li class="anim"><b>Relés de memória</b> resolvem a sobreposição de sinais.</li>
+    </ul>
+    <h1 class="engrave" aria-label="Amanhã: avaliação teórica"><span class="ln t1" style="--l:.6"><span class="txt">Amanhã: avaliação</span><span class="beam"></span></span></h1>
+    <p class="after anim">12/11 · Avaliação teórica (20 pontos): conteúdos dos dias 1 a 5.</p>
+  </div>
+</section>
