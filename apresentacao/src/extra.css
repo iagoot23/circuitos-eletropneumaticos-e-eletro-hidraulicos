@@ -192,3 +192,11 @@ svg.sym{display:block;width:100%;height:auto;background:#fff;border-radius:12px;
 .cil-bar .seg{margin:0}
 .embed.cil{height:680px}
 .embed.cil[hidden]{display:none}
+
+/* unidade hidráulica e dreno (dia 7) */
+.cards.uh{gap:22px}
+.cards.uh .card{padding:18px 24px}
+.cards.uh .card h3{font-size:30px;margin-bottom:6px}
+.cards.uh .card p{font-size:25px;line-height:1.36}
+.list.dr li{font-size:24px;padding:7px 0 7px 40px}
+.list.dr li::before{top:16px}

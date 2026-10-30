@@ -54,6 +54,65 @@
   </div>
 </section>
 
+<section class="slide" data-theme="Dia 7 · Unidade hidráulica">
+  <div class="content">
+    <h2 class="title sm anim">Unidade hidráulica: o caminho do óleo</h2>
+    <div class="cards uh" style="--c:4">
+      <div class="card anim"><h3>1 · Reservatório</h3><p>Guarda o óleo, troca calor pelas paredes e dá tempo para o ar e a sujeira se separarem.</p></div>
+      <div class="card anim"><h3>2 · Filtro de sucção</h3><p>Tela na entrada da bomba. Se entope, a bomba "puxa" com dificuldade e cavita.</p></div>
+      <div class="card anim"><h3>3 · Motor e bomba</h3><p>Unidos por acoplamento elástico. A bomba gera <b>vazão</b>; a pressão vem da resistência da carga.</p></div>
+      <div class="card anim"><h3>4 · Retenção na saída</h3><p>Impede que o óleo do sistema volte pela bomba quando o motor desliga.</p></div>
+      <div class="card hot anim"><h3>5 · Limitadora de pressão</h3><p>Define a pressão máxima. Acima do ajuste, abre e manda o excesso de volta ao tanque.</p></div>
+      <div class="card anim"><h3>6 · Manômetro</h3><p>Mostra a pressão de trabalho. Tem registro para isolá-lo e enchimento de glicerina contra vibração.</p></div>
+      <div class="card anim"><h3>7 · Válvulas e atuadores</h3><p>A linha <b>P</b> alimenta as válvulas direcionais, que comandam cilindros e motores hidráulicos.</p></div>
+      <div class="card anim"><h3>8 · Retorno</h3><p>A linha <b>T</b> passa pelo filtro de retorno e pelo resfriador antes de chegar ao tanque.</p></div>
+    </div>
+    <div class="define anim" style="margin-top:26px;grid-template-columns:1fr">
+      <p><b>Na eletro-hidráulica,</b> a unidade também envia sinais ao CLP: <b>pressostato</b> (pressão atingida), <b>termostato</b> (óleo quente) e <b>chave de nível</b> (óleo baixo desliga o motor).</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-theme="Dia 7 · Unidade hidráulica">
+  <div class="content">
+    <h2 class="title sm anim">Dreno: o terceiro caminho de volta ao tanque</h2>
+    <div class="two wl mid">
+      <div class="anim">
+        <svg viewBox="0 0 900 525" role="img" aria-label="Unidade hidráulica com as linhas de pressão, retorno e dreno ligadas ao reservatório">
+          <g font-family="Libre Baskerville, Georgia, serif" font-size="22" font-weight="700" fill="#1A2366" text-anchor="middle">
+          <rect x="40" y="320" width="820" height="170" rx="10" fill="#fff" stroke="#27348B" stroke-width="6"/>
+          <rect x="46" y="372" width="808" height="112" fill="#E8C35A" opacity=".8"/>
+          <path d="M46 372 q25 -7 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0" fill="none" stroke="#B8902A" stroke-width="3"/>
+          <rect x="70" y="190" width="120" height="80" rx="12" fill="#27348B"/><text x="130" y="238" fill="#fff">motor</text>
+          <line x1="190" y1="230" x2="214" y2="230" stroke="#525B70" stroke-width="10"/>
+          <circle cx="260" cy="230" r="44" fill="#fff" stroke="#27348B" stroke-width="6"/><path d="M260 194 l15 26 h-30z" fill="#27348B"/>
+          <path d="M260 274 V430" stroke="#525B70" stroke-width="10"/><rect x="246" y="420" width="28" height="40" fill="#8A92A6"/>
+          <text x="180" y="455" font-size="19" font-weight="400">sucção</text>
+          <path d="M260 186 V90 H780" stroke="#E8490F" stroke-width="10" fill="none" class="flowdash"/>
+          <text x="820" y="96">P</text><text x="560" y="72" font-size="20" font-weight="400">pressão → válvulas</text>
+          <path d="M780 160 H650 V440" stroke="#525B70" stroke-width="10" fill="none"/>
+          <rect x="630" y="200" width="40" height="40" fill="#fff" stroke="#1A2366" stroke-width="4"/><path d="M630 240 L670 200" stroke="#1A2366" stroke-width="3" stroke-dasharray="6 4"/>
+          <text x="820" y="166">T</text><text x="745" y="214" font-size="20" font-weight="400">retorno</text><text x="745" y="238" font-size="20" font-weight="400">(com filtro)</text>
+          <path d="M292 262 Q330 290 330 330 V440" stroke="#4A57AE" stroke-width="6" stroke-dasharray="14 10" fill="none"/>
+          <g fill="#4A57AE"><circle r="6"><animateMotion dur="3.5s" repeatCount="indefinite" path="M292 262 Q330 290 330 330 V440"/></circle><circle r="6"><animateMotion dur="3.5s" begin="1.75s" repeatCount="indefinite" path="M292 262 Q330 290 330 330 V440"/></circle></g>
+          <text x="352" y="250" text-anchor="start" fill="#4A57AE">L: dreno</text><text x="352" y="276" text-anchor="start" font-size="19" font-weight="400" fill="#4A57AE">sem pressão, abaixo do nível</text>
+          <rect x="112" y="490" width="26" height="14" fill="#8A92A6"/><polygon points="114,504 136,504 140,512 110,512" fill="#525B70"/>
+          <text x="150" y="511" text-anchor="start" font-size="19" font-weight="400">bujão de dreno</text>
+          </g>
+        </svg>
+      </div>
+      <ul class="list sm anim dr">
+        <li>Bombas, motores hidráulicos e algumas válvulas têm <b>folgas internas</b>: parte do óleo vaza por dentro e lubrifica as peças. Esse óleo volta ao tanque pela <b>linha de dreno</b> (<b>L</b> ou <b>Y</b>), tracejada no símbolo.</li>
+        <li>O dreno vai <b>direto ao tanque, sozinho</b>: sem ligar na linha T e sem filtro que restrinja. <b>Pressão no dreno</b> rompe o retentor do eixo da bomba ou altera o ajuste da válvula.</li>
+        <li>A ponta do tubo fica <b>abaixo do nível do óleo</b> e longe da sucção, para não formar espuma.</li>
+        <li>Bomba de pistões: encher a carcaça com óleo pelo dreno <b>antes da primeira partida</b>.</li>
+        <li>Vazão de dreno alta e óleo quente indicam <b>bomba desgastada</b>.</li>
+      </ul>
+    </div>
+    <div class="define anim" style="margin-top:18px;grid-template-columns:1fr"><p><b>Não confundir:</b> o <b>bujão de dreno</b>, no ponto mais baixo do reservatório, retira a água e a borra que decantam e esvazia o tanque na troca de óleo.</p></div>
+  </div>
+</section>
+
 <section class="slide" data-theme="Dia 7 · Bombas">
   <div class="content">
     <h2 class="title anim">Tipos de bomba hidráulica</h2>
@@ -222,6 +281,7 @@
   {q:'Qual válvula é obrigatória em toda unidade hidráulica para proteger o sistema?',o:['Retenção','Limitadora de pressão','Reguladora de fluxo','Válvula OU'],a:1,e:' Ela abre para o tanque quando a pressão passa do ajuste.'},
   {q:'Com a 4/3 centro tandem em repouso, a bomba:',o:['Trabalha na pressão máxima','Manda o óleo direto ao tanque, sem pressão','Para de girar','Puxa ar'],a:1,e:' P liga a T: o óleo circula sem pressão e o sistema aquece menos.'},
   {q:'Para segurar uma carga suspensa sem deixar descer, usamos:',o:['Retenção pilotada','Escape rápido','Silenciador','Válvula 3/2'],a:0,e:' Ela trava o óleo no cilindro até receber um sinal de pilotagem.'},
+  {q:'A linha de dreno (L) de uma bomba hidráulica deve ser ligada:',o:['Na linha de pressão P','Na linha T, junto com o retorno','Direto ao tanque, sozinha e abaixo do nível do óleo','Na sucção da bomba'],a:2,e:' Sem pressão e sem contrapressão: pressão no dreno pode romper o retentor do eixo da bomba.'},
   {q:'Na válvula proporcional, a abertura depende:',o:['Do tamanho da mangueira','Do sinal elétrico de comando','Da cor do óleo','Da mola apenas'],a:1,e:' A abertura acompanha o sinal: 0–10 V ou 4–20 mA.'}
 ],opts:{end:'Agora: do relé para o controlador programável.'}};</script>
 
