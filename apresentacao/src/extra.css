@@ -200,3 +200,8 @@ svg.sym{display:block;width:100%;height:auto;background:#fff;border-radius:12px;
 .cards.uh .card p{font-size:25px;line-height:1.36}
 .list.dr li{font-size:24px;padding:7px 0 7px 40px}
 .list.dr li::before{top:16px}
+
+/* bomba e motor de engrenagens em corte (dia 7) */
+.two.gm{gap:48px}
+.two.gm .gcap{font-size:25px;line-height:1.45;margin:10px 0 0;color:var(--gray-4)}
+.two.gm .gcap b{color:var(--blue-d,#1A2366)}
