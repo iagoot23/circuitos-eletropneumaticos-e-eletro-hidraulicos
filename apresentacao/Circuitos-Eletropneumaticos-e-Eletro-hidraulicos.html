@@ -574,7 +574,7 @@ svg.sym{display:block;width:100%;height:auto;background:#fff;border-radius:12px;
       <div class="card anim"><h3>WEG Clic02 Edit</h3><p>Programar o CLP WEG Clic02 em Ladder e testar no simulador do próprio software.</p></div>
       <div class="card anim"><h3>PhET – Under Pressure</h3><p>Simulador da Universidade do Colorado: pressão em líquidos, gravidade e atmosfera.</p></div>
       <div class="card anim"><h3>PhET – Density</h3><p>Massa, volume e densidade: por que o óleo flutua na água.</p></div>
-      <div class="card hot anim"><h3>Tour virtual STAUFF</h3><p>Visita 360° a fábricas reais de componentes hidráulicos na Alemanha.</p></div>
+      <div class="card anim"><h3>Tour virtual STAUFF</h3><p>Visita 360° a fábricas reais de componentes hidráulicos na Alemanha.</p></div>
     </div>
   </div>
 </section>
@@ -1053,7 +1053,7 @@ svg.sym{display:block;width:100%;height:auto;background:#fff;border-radius:12px;
       <div class="card anim"><h3>Corte reto</h3><p>Use o cortador de tubos. Corte torto ou amassado causa vazamento.</p></div>
       <div class="card anim"><h3>Engate rápido</h3><p>Conecta e desconecta ferramentas e linhas com uma mão.</p></div>
       <div class="card anim"><h3>Silenciador</h3><p>Instalado nos escapes (3 e 5) para reduzir o ruído da descarga de ar.</p></div>
-      <div class="card hot anim"><h3>Organização</h3><p>Mangueiras sem dobras, sem cruzar o painel e no comprimento certo. Facilita encontrar defeitos.</p></div>
+      <div class="card anim"><h3>Organização</h3><p>Mangueiras sem dobras, sem cruzar o painel e no comprimento certo. Facilita encontrar defeitos.</p></div>
     </div>
   </div>
 </section>
@@ -2427,7 +2427,7 @@ setMode(&quot;sa&quot;);
       <div class="card anim"><h3>Velocidade</h3><p>O sinal elétrico chega na hora, mesmo a metros de distância.</p></div>
       <div class="card anim"><h3>Lógica</h3><p>Relés, temporizadores e contadores fazem sequências complexas.</p></div>
       <div class="card anim"><h3>Sensores</h3><p>Detectam peças sem contato e informam a posição do cilindro.</p></div>
-      <div class="card hot anim"><h3>CLP e rede</h3><p>Abre caminho para a automação com programa e Indústria 4.0.</p></div>
+      <div class="card anim"><h3>CLP e rede</h3><p>Abre caminho para a automação com programa e Indústria 4.0.</p></div>
     </div>
   </div>
 </section>
@@ -2447,7 +2447,7 @@ setMode(&quot;sa&quot;);
       <div class="card anim"><h3>Acionamento direto</h3><p>O próprio núcleo do solenoide abre a passagem. Usado em válvulas pequenas.</p></div>
       <div class="card anim"><h3>Servocomandada (indireta)</h3><p>O solenoide abre um pequeno piloto de ar e esse ar move o carretel. Bobina pequena comanda válvula grande. É o tipo do painel Festo.</p></div>
       <div class="card anim"><h3>Simples solenoide</h3><p>Uma bobina e retorno por mola. Desligou a energia, a válvula volta. Precisa de <b>auto-retenção</b> no circuito elétrico.</p></div>
-      <div class="card hot anim"><h3>Duplo solenoide</h3><p>Uma bobina para cada lado. Um pulso basta: a válvula <b>memoriza</b> a posição. Nunca energize as duas ao mesmo tempo.</p></div>
+      <div class="card anim"><h3>Duplo solenoide</h3><p>Uma bobina para cada lado. Um pulso basta: a válvula <b>memoriza</b> a posição. <span class="hl">Nunca energize as duas ao mesmo tempo.</span></p></div>
     </div>
     <p class="note anim">Toda eletroválvula tem um <b>acionamento manual auxiliar</b> (botãozinho no corpo) para testes sem energia elétrica.</p>
   </div>
@@ -2509,7 +2509,7 @@ setMode(&quot;sa&quot;);
       <div class="card anim"><h3>Indutivo</h3><p>Detecta <b>metal</b> sem contato, a poucos milímetros.</p></div>
       <div class="card anim"><h3>Capacitivo</h3><p>Detecta <b>qualquer material</b>: plástico, madeira, líquido.</p></div>
       <div class="card anim"><h3>Óptico</h3><p>Detecta objetos que <b>interrompem ou refletem</b> um feixe de luz. Alcance maior.</p></div>
-      <div class="card hot anim"><h3>Magnético (reed)</h3><p>Preso no corpo do cilindro, detecta o <b>ímã do êmbolo</b>. Informa se o cilindro está recuado ou avançado.</p></div>
+      <div class="card anim"><h3>Magnético (reed)</h3><p>Preso no corpo do cilindro, detecta o <b>ímã do êmbolo</b>. Informa se o cilindro está recuado ou avançado.</p></div>
       <div class="card anim"><h3>Ligação de 3 fios</h3><p><b>Marrom</b> +24 V · <b>Azul</b> 0 V · <b>Preto</b> sinal. No painel, sensores <b>PNP</b> entregam +24 V no sinal.</p></div>
     </div>
   </div>
@@ -2659,8 +2659,8 @@ setMode(&quot;sa&quot;);
         <p>A solução é a <b>auto-retenção</b> (ou selo): um contato do próprio relé K1, ligado em paralelo com o botão, mantém K1 energizado depois que o botão é solto.</p>
       </div>
       <div class="cards anim" style="--c:1">
-        <div class="card"><h3>Desligar dominante</h3><p>Se apertar liga e desliga juntos, <b>desliga</b>. É a forma mais segura e a mais usada.</p></div>
-        <div class="card hot"><h3>Ligar dominante</h3><p>Se apertar os dois juntos, <b>liga</b>. Usada quando parar é o risco, por exemplo, uma bomba de incêndio.</p></div>
+        <div class="card hot"><h3>Desligar dominante</h3><p>Se apertar liga e desliga juntos, <b>desliga</b>. É a forma mais segura e a mais usada.</p></div>
+        <div class="card"><h3>Ligar dominante</h3><p>Se apertar os dois juntos, <b>liga</b>. Usada quando parar é o risco, por exemplo, uma bomba de incêndio.</p></div>
       </div>
     </div>
   </div>
@@ -2705,7 +2705,7 @@ setMode(&quot;sa&quot;);
         <li>Ao atingir o valor (ex.: 5 ciclos), o contato do contador abre a linha do ciclo contínuo.</li>
         <li>Um botão de <b>reset</b> zera a contagem para um novo lote.</li></ul>
         <p class="small" style="margin-top:10px">Aplicação: encher uma caixa com 5 peças e parar.</p></div>
-      <div class="card hot anim"><h3>Pressostato</h3>
+      <div class="card anim"><h3>Pressostato</h3>
         <ul><li>Fica ligado à câmara do cilindro.</li><li>Só muda o contato quando a pressão chega ao valor ajustado (ex.: 4 bar).</li>
         <li>No lugar de 1S2, garante que a peça foi realmente <b>prensada</b>, e não só que o cilindro chegou.</li></ul>
         <p class="small" style="margin-top:10px">Aplicação: prensagem, rebitagem, colagem.</p></div>
@@ -2895,7 +2895,7 @@ setMode(&quot;sa&quot;);
       <div class="card anim"><h3>Botoeiras</h3><p>Pulsadores, com trava e botão de emergência, com LEDs de indicação.</p></div>
       <div class="card anim"><h3>Placa de relés</h3><p>Relés com vários contatos NA e NF, todos identificados e com LED.</p></div>
       <div class="card anim"><h3>Temporizador e contador</h3><p>Relé temporizador eletrônico e contador predeterminado com reset.</p></div>
-      <div class="card hot anim"><h3>Sensores</h3><p>Fim de curso, indutivo, capacitivo, óptico e magnético para os cilindros.</p></div>
+      <div class="card anim"><h3>Sensores</h3><p>Fim de curso, indutivo, capacitivo, óptico e magnético para os cilindros.</p></div>
     </div>
   </div>
 </section>
@@ -3078,7 +3078,7 @@ setMode(&quot;sa&quot;);
   <div class="content">
     <h2 class="title anim">O óleo faz muito mais do que empurrar</h2>
     <div class="cards" style="--c:4">
-      <div class="card hot anim"><h3>Transmite energia</h3><p>Quase não se comprime: a força chega inteira e o cilindro para onde precisa.</p></div>
+      <div class="card anim"><h3>Transmite energia</h3><p>Quase não se comprime: a força chega inteira e o cilindro para onde precisa.</p></div>
       <div class="card anim"><h3>Lubrifica</h3><p>Protege bombas, válvulas e cilindros do desgaste.</p></div>
       <div class="card anim"><h3>Veda</h3><p>Preenche as folgas mínimas entre peças móveis.</p></div>
       <div class="card anim"><h3>Resfria</h3><p>Leva o calor gerado no sistema de volta ao reservatório.</p></div>
@@ -3324,7 +3324,7 @@ setMode(&quot;sa&quot;);
     <div class="cards" style="--c:3">
       <div class="card anim"><h3>Engrenagens</h3><p>Duas engrenagens levam o óleo pelos "dentes". Simples, barata e robusta. Pressões até cerca de 250 bar.</p></div>
       <div class="card anim"><h3>Palhetas</h3><p>Rotor com palhetas que deslizam. Silenciosa e com vazão uniforme. Muito usada em máquinas industriais.</p></div>
-      <div class="card hot anim"><h3>Pistões</h3><p>Vários pistões em um bloco. Altas pressões e alta eficiência; pode ter <b>vazão variável</b>.</p></div>
+      <div class="card anim"><h3>Pistões</h3><p>Vários pistões em um bloco. Altas pressões e alta eficiência; pode ter <b>vazão variável</b>.</p></div>
     </div>
     <div class="define anim" style="margin-top:36px;grid-template-columns:1fr">
       <p><b>Cavitação:</b> quando a bomba "puxa" óleo com dificuldade (filtro de sucção sujo, óleo frio e grosso), formam-se bolhas que estouram dentro dela. Faz um ruído de "cascalho" e destrói a bomba.</p>
@@ -3419,7 +3419,7 @@ setMode(&quot;sa&quot;);
       <div class="card anim"><h3>Conexões</h3><p>Com anel de corte ou vedação plana. Nunca aperte uma conexão com o sistema pressurizado.</p></div>
       <div class="card anim"><h3>Engate rápido</h3><p>Liga e desliga mangueiras na bancada sem perder óleo.</p></div>
       <div class="card anim"><h3>Engate de teste</h3><p>Permite ligar um manômetro em qualquer ponto para diagnóstico.</p></div>
-      <div class="card hot anim"><h3>Instalação</h3><p>Mangueira sem torção, sem dobra apertada e longe de bordas cortantes.</p></div>
+      <div class="card anim"><h3>Instalação</h3><p>Mangueira sem torção, sem dobra apertada e longe de bordas cortantes.</p></div>
     </div>
   </div>
 </section>
@@ -3985,7 +3985,7 @@ setMode(&quot;sa&quot;);
       <div class="card anim"><h3>1 · Esquema</h3><p>Desenho hidráulico e elétrico, com nomes de todos os componentes.</p></div>
       <div class="card anim"><h3>2 · Simulação</h3><p>Rode no FluidSIM-H (circuito salvo no dia 7). Corrija antes de tocar na bancada.</p></div>
       <div class="card anim"><h3>3 · Lista de material</h3><p>Separe válvulas, cilindro, mangueiras e cabos. Confira as pressões máximas.</p></div>
-      <div class="card hot anim"><h3>4 · Sequência</h3><p>Fixe os componentes, ligue o hidráulico, ligue o elétrico, confira, teste.</p></div>
+      <div class="card anim"><h3>4 · Sequência</h3><p>Fixe os componentes, ligue o hidráulico, ligue o elétrico, confira, teste.</p></div>
     </div>
   </div>
 </section>
@@ -4016,7 +4016,7 @@ setMode(&quot;sa&quot;);
     <div class="anim">
       <div class="two" style="margin-bottom:22px">
         <div class="card"><h3>Parte A · Velocidade</h3><p>Instale uma <b>reguladora de fluxo com retenção</b> na linha de saída do avanço. Ajuste: avanço lento, retorno rápido. Cronometre o curso.</p></div>
-        <div class="card hot"><h3>Parte B · Retorno automático</h3><p>S1 dá a partida (relé K1 com auto-retenção → Y1). No fim do curso, o <b>fim de curso</b> ou o <b>pressostato</b> desliga K1 e liga Y2 até o cilindro voltar.</p></div>
+        <div class="card"><h3>Parte B · Retorno automático</h3><p>S1 dá a partida (relé K1 com auto-retenção → Y1). No fim do curso, o <b>fim de curso</b> ou o <b>pressostato</b> desliga K1 e liga Y2 até o cilindro voltar.</p></div>
       </div>
     </div>
     <div class="w anim" data-w="flow"></div>
@@ -4136,7 +4136,7 @@ setMode(&quot;sa&quot;);
     <div class="cards" style="--c:3">
       <div class="card anim"><h3>Diária</h3><ul><li>Drenar o condensado do filtro e do reservatório.</li><li>Conferir pressão e nível de óleo.</li><li>Ouvir vazamentos.</li></ul></div>
       <div class="card anim"><h3>Semanal e mensal</h3><ul><li>Limpar ou trocar elementos filtrantes.</li><li>Verificar mangueiras: rachaduras, dobras, abrasão.</li><li>Reapertar fixações.</li></ul></div>
-      <div class="card hot anim"><h3>Periódica</h3><ul><li>Análise e troca do óleo hidráulico.</li><li>Troca de vedações de cilindros.</li><li>Teste de sensores e de emergências.</li></ul></div>
+      <div class="card anim"><h3>Periódica</h3><ul><li>Análise e troca do óleo hidráulico.</li><li>Troca de vedações de cilindros.</li><li>Teste de sensores e de emergências.</li></ul></div>
     </div>
     <p class="callout blue anim" style="margin-top:30px">Componentes <b>non-lube</b> não devem receber lubrificação. Se uma vez lubrificados, precisam continuar lubrificados: o óleo lava a graxa de fábrica.</p>
   </div>
@@ -4149,7 +4149,7 @@ setMode(&quot;sa&quot;);
       <div class="card anim"><h3>Extrusão</h3><p>Pressão alta e folga grande "empurram" a borracha para a folga, que é mordida.</p></div>
       <div class="card anim"><h3>Abrasão</h3><p>Desgaste por sujeira ou superfície áspera. Daí a importância do raspador na haste.</p></div>
       <div class="card anim"><h3>Deformação</h3><p>A borracha "achata" com calor e tempo e perde a vedação.</p></div>
-      <div class="card hot anim"><h3>Descompressão explosiva</h3><p>O gás absorvido sob pressão expande quando a pressão cai de repente e rompe a vedação.</p></div>
+      <div class="card anim"><h3>Descompressão explosiva</h3><p>O gás absorvido sob pressão expande quando a pressão cai de repente e rompe a vedação.</p></div>
     </div>
   </div>
 </section>
