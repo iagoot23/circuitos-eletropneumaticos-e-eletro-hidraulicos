@@ -394,20 +394,23 @@ W.relay=el=>{
     <g class="coil"><rect x="50" y="110" width="110" height="130" rx="10" fill="#fff" stroke="#27348B" stroke-width="5"/>
       <path d="M66 130 h78 M66 150 h78 M66 170 h78 M66 190 h78 M66 210 h78" stroke="#525B70" stroke-width="5" class="wind"/>
       <text x="105" y="270" text-anchor="middle" font-size="22" font-weight="700" fill="#1A2366">A1 – A2</text></g>
-    <g class="arm"><line x1="190" y1="175" x2="420" y2="175" stroke="#525B70" stroke-width="8" stroke-linecap="round"/></g>
+    <path d="M160 175 H190 M190 125 V225" fill="none" stroke="#525B70" stroke-width="3" stroke-dasharray="8 6"/>
+    <g class="arm1"><line x1="220" y1="135" x2="425" y2="135" stroke="#525B70" stroke-width="8" stroke-linecap="round"/></g>
+    <g class="arm2"><line x1="220" y1="215" x2="425" y2="215" stroke="#525B70" stroke-width="8" stroke-linecap="round"/></g>
     <g font-size="22" font-weight="700" fill="#1A2366">
+      <circle cx="220" cy="135" r="10" fill="#525B70"/><text x="220" y="116" text-anchor="middle">13</text>
+      <circle cx="220" cy="215" r="10" fill="#525B70"/><text x="220" y="251" text-anchor="middle">21</text>
       <circle cx="430" cy="110" r="10" fill="#525B70"/><text x="455" y="100">14</text><text x="455" y="126" font-size="18" font-weight="400">NA</text>
-      <circle cx="430" cy="240" r="10" fill="#525B70"/><text x="455" y="240">22</text><text x="455" y="264" font-size="18" font-weight="400">NF</text>
-      <text x="190" y="160">comum</text></g>
+      <circle cx="430" cy="240" r="10" fill="#525B70"/><text x="455" y="240">22</text><text x="455" y="264" font-size="18" font-weight="400">NF</text></g>
     <g class="h1"><circle cx="300" cy="62" r="24" fill="#fff" stroke="#525B70" stroke-width="4"/><text x="300" y="70" text-anchor="middle" font-size="20" font-weight="700" fill="#1A2366">H1</text></g>
     <g class="h2"><circle cx="300" cy="280" r="24" fill="#fff" stroke="#525B70" stroke-width="4"/><text x="300" y="288" text-anchor="middle" font-size="20" font-weight="700" fill="#1A2366">H2</text></g>
   </svg><div><button class="btn hot push">Manter bobina energizada</button>
   <p class="wtext"></p></div></div>`;
-  const arm=$(el,'.arm'),tx=$(el,'.wtext');
-  const set=on=>{arm.setAttribute('transform',on?'rotate(-17 190 175)':'rotate(15 190 175)');
+  const arm1=$(el,'.arm1'),arm2=$(el,'.arm2'),tx=$(el,'.wtext');
+  const set=on=>{arm1.setAttribute('transform',on?'rotate(-6.8 220 135)':'rotate(6 220 135)');arm2.setAttribute('transform',on?'rotate(-6 220 215)':'rotate(6.8 220 215)');
     $(el,'.coil rect').setAttribute('fill',on?'#FDE7DD':'#fff');$(el,'.wind').setAttribute('stroke',on?'#E8490F':'#525B70');
     $(el,'.h1 circle').setAttribute('fill',on?'#E8490F':'#fff');$(el,'.h2 circle').setAttribute('fill',on?'#fff':'#E8490F');
-    tx.innerHTML=on?'<b>Bobina energizada:</b> o eletroímã puxa o contato móvel. O contato NA (13‑14) <span class="hl">fecha</span> e acende H1; o NF (21‑22) <span class="hl">abre</span> e apaga H2.':'<b>Bobina desligada:</b> a mola mantém o contato NF (21‑22) fechado, então H2 fica acesa. O contato NA (13‑14) fica aberto.';};
+    tx.innerHTML=on?'<b>Bobina energizada:</b> o eletroímã puxa os contatos móveis. O contato NA (13‑14) <span class="hl">fecha</span> e acende H1; o NF (21‑22) <span class="hl">abre</span> e apaga H2.':'<b>Bobina desligada:</b> a mola mantém o contato NF (21‑22) fechado, então H2 fica acesa. O contato NA (13‑14) fica aberto.';};
   holdBtn($(el,'.btn'),set);set(false);
 };
 
@@ -422,7 +425,7 @@ W.solenoid=el=>{
     <g class="plg"><rect x="245" y="70" width="30" height="170" rx="6" fill="#8A92A6"/><rect x="236" y="234" width="48" height="16" rx="4" fill="#1A2366"/></g>
     <g class="air" fill="#E8490F"></g>
     <circle class="led" cx="350" cy="56" r="12" fill="#D3D8E3" stroke="#525B70" stroke-width="3"/><text x="370" y="64" font-size="20" fill="#525B70">LED</text>
-    <text x="100" y="60" font-size="22" font-weight="700" fill="#1A2366">bobina</text><text x="80" y="200" font-size="22" font-weight="700" fill="#1A2366">núcleo móvel</text>
+    <text x="100" y="60" font-size="22" font-weight="700" fill="#1A2366">bobina</text><text x="186" y="177" text-anchor="end" font-size="22" font-weight="700" fill="#1A2366">núcleo móvel</text><line x1="192" y1="170" x2="243" y2="170" stroke="#1A2366" stroke-width="2"/>
   </svg><div><button class="btn hot">Energizar 24 V</button><p class="wtext"></p></div></div>`;
   let on=false;const b=$(el,'.btn'),air=$(el,'.air'),tx=$(el,'.wtext');
   for(let i=0;i<8;i++)svgEl('circle',{r:7},air);
