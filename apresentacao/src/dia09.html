@@ -81,10 +81,10 @@
       <div class="anim">
         <ul class="list sm">
           <li>Válvula 4/3 centro <b>tandem</b>, centrada por molas.</li>
-          <li><b>S1</b> (pulsador) → <b>Y1</b>: avança enquanto pressionado.</li>
-          <li><b>S2</b> (pulsador) → <b>Y2</b>: recua enquanto pressionado.</li>
+          <li><b>S1</b> (pulsador) → <b>1Y1</b>: avança enquanto pressionado.</li>
+          <li><b>S2</b> (pulsador) → <b>1Y2</b>: recua enquanto pressionado.</li>
           <li>Soltou os botões: o cilindro <b>para</b> onde está.</li>
-          <li><b>Intertravamento:</b> contato NF de S2 na linha de Y1 e NF de S1 na linha de Y2. As duas bobinas nunca ligam juntas.</li>
+          <li><b>Intertravamento:</b> contato NF de S2 na linha de 1Y1 e NF de S1 na linha de 1Y2. As duas bobinas nunca ligam juntas.</li>
         </ul>
       </div>
     </div>
@@ -97,7 +97,7 @@
     <div class="anim">
       <div class="two" style="margin-bottom:22px">
         <div class="card"><h3>Parte A · Velocidade</h3><p>Instale uma <b>reguladora de fluxo com retenção</b> na linha de saída do avanço. Ajuste: avanço lento, retorno rápido. Cronometre o curso.</p></div>
-        <div class="card"><h3>Parte B · Retorno automático</h3><p>S1 dá a partida (relé K1 com auto-retenção → Y1). No fim do curso, o <b>fim de curso</b> ou o <b>pressostato</b> desliga K1 e liga Y2 até o cilindro voltar.</p></div>
+        <div class="card"><h3>Parte B · Retorno automático</h3><p>S1 dá a partida (relé K1 com auto-retenção → 1Y1). No fim do curso, o <b>fim de curso</b> ou o <b>pressostato</b> desliga K1 e liga 1Y2 até o cilindro voltar.</p></div>
       </div>
     </div>
     <div class="w anim" data-w="flow"></div>
@@ -147,7 +147,7 @@
 </section>
 <script>QZ.d9a={qs:[
   {q:'Antes de soltar uma mangueira hidráulica, é preciso:',o:['Aumentar a pressão','Desligar a bomba e aliviar a pressão','Apenas desligar o CLP','Esperar o óleo esfriar'],a:1,e:' Bomba desligada e pressão aliviada acionando a válvula nos dois sentidos.'},
-  {q:'Para que serve o intertravamento entre Y1 e Y2?',o:['Economizar energia','Impedir que as duas bobinas liguem juntas','Aumentar a velocidade','Medir a pressão'],a:1,e:' As duas bobinas juntas forçam o carretel e podem queimar.'},
+  {q:'Para que serve o intertravamento entre 1Y1 e 1Y2?',o:['Economizar energia','Impedir que as duas bobinas liguem juntas','Aumentar a velocidade','Medir a pressão'],a:1,e:' As duas bobinas juntas forçam o carretel e podem queimar.'},
   {q:'A pressão máxima aparece quando:',o:['O cilindro está no meio do curso','O cilindro chega ao fim do curso','A bomba está desligada','A válvula está no centro tandem'],a:1,e:' Sem para onde ir, o óleo pressuriza até a limitadora abrir.'},
   {q:'Ruído de "cascalho" na bomba indica:',o:['Cavitação','Óleo novo','Pressão baixa normal','Bom funcionamento'],a:0,e:' A bomba está puxando ar ou óleo com dificuldade.'}
 ],opts:{end:'Amanhã: avaliação prática.'}};</script>
