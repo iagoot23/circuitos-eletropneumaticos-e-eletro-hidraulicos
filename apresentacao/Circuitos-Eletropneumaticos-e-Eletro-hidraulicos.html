@@ -2576,7 +2576,7 @@ setMode(&quot;sa&quot;);
 </section>
 <script>QZ.d3b={qs:[
   {q:'O botão de emergência deve usar qual tipo de contato?',o:['NA','NF','Tanto faz','Nenhum'],a:1,e:' NF: se um fio romper, o circuito também desliga. É mais seguro.'},
-  {q:'Qual a vantagem principal da válvula de duplo solenoide?',o:['É mais barata','Memoriza a posição com um pulso','Não precisa de ar','Funciona sem energia'],a:1,e:' Basta um pulso em Y1 ou Y2; sem sinal, ela mantém a posição.'},
+  {q:'Qual a vantagem principal da válvula de duplo solenoide?',o:['É mais barata','Memoriza a posição com um pulso','Não precisa de ar','Funciona sem energia'],a:1,e:' Basta um pulso em 1Y1 ou 1Y2; sem sinal, ela mantém a posição.'},
   {q:'Em um relé, o contato 13-14 é:',o:['NF','NA','A bobina','O comum'],a:1,e:' Final 3-4 indica contato NA; final 1-2 indica NF.'},
   {q:'O fio preto de um sensor de 3 fios é:',o:['+24 V','0 V','O sinal','O terra'],a:2,e:' Marrom +24 V, azul 0 V, preto sinal.'}
 ],opts:{end:'Próxima aula: montar circuitos eletropneumáticos completos.'}};</script>
@@ -2627,7 +2627,7 @@ setMode(&quot;sa&quot;);
       </ul>
       <div class="anim">
         <div class="box"><h3>Diagrama pneumático + diagrama elétrico</h3>
-          <p>Todo circuito eletropneumático tem os <b>dois desenhos</b>. O pneumático mostra válvulas e cilindros; o elétrico mostra a lógica. A ligação entre eles é o <b>nome do solenoide</b> (Y1) e dos sensores (1S1, 1S2), que aparecem nos dois.</p></div>
+          <p>Todo circuito eletropneumático tem os <b>dois desenhos</b>. O pneumático mostra válvulas e cilindros; o elétrico mostra a lógica. A ligação entre eles é o <b>nome do solenoide</b> (1Y1) e dos sensores (1S1, 1S2), que aparecem nos dois.</p></div>
         <p class="callout" style="font-size:27px">Nas próximas telas: segure os botões com o mouse para simular. Contatos fechados e bobinas energizadas ficam em <b>laranja</b>.</p>
       </div>
     </div>
@@ -2719,9 +2719,9 @@ setMode(&quot;sa&quot;);
     <div class="two">
       <ol class="howto sm anim">
         <li>Monte a parte pneumática: fonte, lubrefil, <b>5/2 com solenoide e mola</b> e cilindro de dupla ação.</li>
-        <li>Dê dois cliques no solenoide da válvula e escreva o rótulo <b>Y1</b>.</li>
+        <li>Dê dois cliques no solenoide da válvula e escreva o rótulo <b>1Y1</b>.</li>
         <li>Na biblioteca <b>Elétrica</b>, arraste <b>+24 V</b>, <b>0 V</b>, botão NA, bobina de relé e uma <b>bobina de válvula</b>.</li>
-        <li>Dê o rótulo <b>Y1</b> à bobina de válvula: é assim que o FluidSIM liga o desenho elétrico ao pneumático.</li>
+        <li>Dê o rótulo <b>1Y1</b> à bobina de válvula: é assim que o FluidSIM liga o desenho elétrico ao pneumático.</li>
         <li>Rótulo <b>K1</b> na bobina do relé e nos contatos de K1.</li>
       </ol>
       <ol class="howto sm anim" style="counter-reset:h 5">
@@ -2942,7 +2942,7 @@ setMode(&quot;sa&quot;);
       <thead><tr><th>Sintoma</th><th>O que verificar</th></tr></thead>
       <tbody>
         <tr><td>Nenhum LED acende</td><td>Fonte ligada? Bornes +24 V e 0 V ligados ao bastidor? Fusível?</td></tr>
-        <tr><td>LED do relé acende, solenoide não</td><td>Contato de K1 usado é NA? Fio do contato até a bobina Y1? Retorno ao 0 V?</td></tr>
+        <tr><td>LED do relé acende, solenoide não</td><td>Contato de K1 usado é NA? Fio do contato até a bobina 1Y1? Retorno ao 0 V?</td></tr>
         <tr><td>LED do solenoide acende, cilindro parado</td><td>Ar aberto? Pressão no manômetro? Mangueiras nas vias 2 e 4? Reguladora fechada?</td></tr>
         <tr><td>Cilindro avança e não volta</td><td>Sensor 1S2 alinhado com o ímã? Contato usado é NF? Válvula é de duplo solenoide?</td></tr>
         <tr><td>Relé não "segura"</td><td>Contato de selo de K1 em paralelo com S1? S0 é NF?</td></tr>
@@ -2960,7 +2960,7 @@ setMode(&quot;sa&quot;);
   </div>
 </section>
 <script>QZ.d5a={qs:[
-  {q:'O relé acende o LED, mas o cilindro não se move e o LED do solenoide está apagado. O defeito mais provável está:',o:['Na mangueira','Entre o contato de K1 e a bobina Y1','No compressor','No cilindro'],a:1,e:' O comando chegou ao relé, mas não à bobina do solenoide.'},
+  {q:'O relé acende o LED, mas o cilindro não se move e o LED do solenoide está apagado. O defeito mais provável está:',o:['Na mangueira','Entre o contato de K1 e a bobina 1Y1','No compressor','No cilindro'],a:1,e:' O comando chegou ao relé, mas não à bobina do solenoide.'},
   {q:'No método passo a passo, o que desliga todos os relés de memória?',o:['O botão S1','O último passo','O temporizador','O contador'],a:1,e:' O relé do último passo reseta os anteriores.'},
   {q:'Antes de abrir o ar pela primeira vez, a pressão recomendada é:',o:['10 bar','4 bar','0,5 bar','A máxima da rede'],a:1,e:' Pressão baixa reduz o risco se algo estiver errado.'},
   {q:'Para alterar a montagem, primeiro:',o:['Puxe a mangueira','Desligue a fonte e feche o ar','Aumente a pressão','Chame um colega'],a:1,e:' Nunca altere com energia ou ar ligados.'}
@@ -3517,11 +3517,11 @@ setMode(&quot;sa&quot;);
         <li>Abra o <b>FluidSIM-H</b> (hidráulica) e crie um arquivo novo.</li>
         <li>Arraste a <b>unidade hidráulica</b> (ou bomba + motor + tanque) e uma <b>válvula limitadora</b>.</li>
         <li>Insira uma <b>válvula 4/3 com duplo solenoide</b> e centrada por molas. Dê dois cliques e escolha o centro <b>tandem</b>.</li>
-        <li>Rotule os solenoides <b>Y1</b> (avanço) e <b>Y2</b> (retorno).</li>
+        <li>Rotule os solenoides <b>1Y1</b> (avanço) e <b>1Y2</b> (retorno).</li>
         <li>Ligue P, T, A e B e um cilindro de dupla ação. Coloque um <b>manômetro</b> na linha P.</li>
       </ol>
       <ol class="howto sm anim" style="counter-reset:h 5">
-        <li>Na parte elétrica: dois botões pulsadores (S1 avança, S2 recua) e as bobinas Y1 e Y2.</li>
+        <li>Na parte elétrica: dois botões pulsadores (S1 avança, S2 recua) e as bobinas 1Y1 e 1Y2.</li>
         <li>Simule com <kbd>F9</kbd>. Observe a pressão no manômetro com o cilindro parado no fim do curso.</li>
         <li>Dois cliques na limitadora: mude o ajuste de pressão e compare.</li>
         <li>Troque o centro para <b>fechado</b>: o que acontece com a pressão no repouso?</li>
@@ -4000,10 +4000,10 @@ setMode(&quot;sa&quot;);
       <div class="anim">
         <ul class="list sm">
           <li>Válvula 4/3 centro <b>tandem</b>, centrada por molas.</li>
-          <li><b>S1</b> (pulsador) → <b>Y1</b>: avança enquanto pressionado.</li>
-          <li><b>S2</b> (pulsador) → <b>Y2</b>: recua enquanto pressionado.</li>
+          <li><b>S1</b> (pulsador) → <b>1Y1</b>: avança enquanto pressionado.</li>
+          <li><b>S2</b> (pulsador) → <b>1Y2</b>: recua enquanto pressionado.</li>
           <li>Soltou os botões: o cilindro <b>para</b> onde está.</li>
-          <li><b>Intertravamento:</b> contato NF de S2 na linha de Y1 e NF de S1 na linha de Y2. As duas bobinas nunca ligam juntas.</li>
+          <li><b>Intertravamento:</b> contato NF de S2 na linha de 1Y1 e NF de S1 na linha de 1Y2. As duas bobinas nunca ligam juntas.</li>
         </ul>
       </div>
     </div>
@@ -4016,7 +4016,7 @@ setMode(&quot;sa&quot;);
     <div class="anim">
       <div class="two" style="margin-bottom:22px">
         <div class="card"><h3>Parte A · Velocidade</h3><p>Instale uma <b>reguladora de fluxo com retenção</b> na linha de saída do avanço. Ajuste: avanço lento, retorno rápido. Cronometre o curso.</p></div>
-        <div class="card"><h3>Parte B · Retorno automático</h3><p>S1 dá a partida (relé K1 com auto-retenção → Y1). No fim do curso, o <b>fim de curso</b> ou o <b>pressostato</b> desliga K1 e liga Y2 até o cilindro voltar.</p></div>
+        <div class="card"><h3>Parte B · Retorno automático</h3><p>S1 dá a partida (relé K1 com auto-retenção → 1Y1). No fim do curso, o <b>fim de curso</b> ou o <b>pressostato</b> desliga K1 e liga 1Y2 até o cilindro voltar.</p></div>
       </div>
     </div>
     <div class="w anim" data-w="flow"></div>
@@ -4066,7 +4066,7 @@ setMode(&quot;sa&quot;);
 </section>
 <script>QZ.d9a={qs:[
   {q:'Antes de soltar uma mangueira hidráulica, é preciso:',o:['Aumentar a pressão','Desligar a bomba e aliviar a pressão','Apenas desligar o CLP','Esperar o óleo esfriar'],a:1,e:' Bomba desligada e pressão aliviada acionando a válvula nos dois sentidos.'},
-  {q:'Para que serve o intertravamento entre Y1 e Y2?',o:['Economizar energia','Impedir que as duas bobinas liguem juntas','Aumentar a velocidade','Medir a pressão'],a:1,e:' As duas bobinas juntas forçam o carretel e podem queimar.'},
+  {q:'Para que serve o intertravamento entre 1Y1 e 1Y2?',o:['Economizar energia','Impedir que as duas bobinas liguem juntas','Aumentar a velocidade','Medir a pressão'],a:1,e:' As duas bobinas juntas forçam o carretel e podem queimar.'},
   {q:'A pressão máxima aparece quando:',o:['O cilindro está no meio do curso','O cilindro chega ao fim do curso','A bomba está desligada','A válvula está no centro tandem'],a:1,e:' Sem para onde ir, o óleo pressuriza até a limitadora abrir.'},
   {q:'Ruído de "cascalho" na bomba indica:',o:['Cavitação','Óleo novo','Pressão baixa normal','Bom funcionamento'],a:0,e:' A bomba está puxando ar ou óleo com dificuldade.'}
 ],opts:{end:'Amanhã: avaliação prática.'}};</script>
@@ -4184,7 +4184,7 @@ setMode(&quot;sa&quot;);
   {q:'Um cilindro de Ø 40 mm trabalha a 6 bar. A força teórica de avanço é cerca de:',o:['75 N','750 N','7.500 N','75.000 N'],a:1,e:' A = π × 0,04² ÷ 4 ≈ 0,00126 m²; F = 600.000 Pa × 0,00126 ≈ 754 N.'},
   {q:'Qual equipamento retira a umidade do ar comprimido?',o:['Lubrificador','Secador','Silenciador','Regulador'],a:1,e:' O secador reduz o ponto de orvalho do ar.'},
   {q:'Em uma válvula 5/2, as vias 3 e 5 são:',o:['Entradas de pressão','Saídas para o cilindro','Escapes','Pilotagem'],a:2,e:' 1 é pressão, 2 e 4 são utilização, 3 e 5 são escapes.'},
-  {q:'O contato de selo de K1 fica ligado:',o:['Em série com S0','Em paralelo com S1','Em série com a bobina Y1','No 0 V'],a:1,e:' Em paralelo com o botão de partida, mantém K1 energizado.'},
+  {q:'O contato de selo de K1 fica ligado:',o:['Em série com S0','Em paralelo com S1','Em série com a bobina 1Y1','No 0 V'],a:1,e:' Em paralelo com o botão de partida, mantém K1 energizado.'},
   {q:'Qual sensor detecta o ímã no êmbolo do cilindro?',o:['Indutivo','Capacitivo','Óptico','Magnético (reed)'],a:3,e:' O sensor magnético fica preso no corpo do cilindro.'},
   {q:'Na sequência A+ B+ B− A−, o problema típico de um comando direto pelos sensores é:',o:['Falta de ar','Sobreposição de sinais','Excesso de velocidade','Falta de óleo'],a:1,e:' Sinais que continuam ativos quando o movimento oposto é comandado.'},
   {q:'Na hidráulica, a velocidade do cilindro depende principalmente:',o:['Da pressão','Da vazão','Da cor do óleo','Do manômetro'],a:1,e:' v = Q ÷ A.'},
@@ -4253,28 +4253,28 @@ setMode(&quot;sa&quot;);
 <script>
 /* Circuitos da bancada virtual. "!X" = contato NF. b = ramos em paralelo; pre/s = contatos em série antes/depois do paralelo. */
 window.LADDER_MODES={
-  direto:{t:'Comando direto',in:[['S1','push','S1 – pulsador']],r:[{b:[['S1']],c:'Y1'}],adv:'Y1',yl:['Y1'],
-    d:'O botão S1 alimenta a bobina Y1 diretamente. Soltou o botão, a mola da válvula faz o cilindro recuar.'},
-  indireto:{t:'Comando indireto (relé)',in:[['S1','push','S1 – pulsador']],r:[{b:[['S1']],c:'K1'},{b:[['K1']],c:'Y1'}],adv:'Y1',yl:['Y1'],show:['K1'],
-    d:'S1 energiza o relé K1, e um contato de K1 liga Y1. O botão trabalha com corrente baixa e o relé chaveia a carga.'},
-  ou:{t:'Lógica OU',in:[['S1','push','S1'],['S2','push','S2']],r:[{b:[['S1'],['S2']],c:'K1'},{b:[['K1']],c:'Y1'}],adv:'Y1',yl:['Y1'],show:['K1'],
+  direto:{t:'Comando direto',in:[['S1','push','S1 – pulsador']],r:[{b:[['S1']],c:'1Y1'}],adv:'1Y1',yl:['1Y1'],
+    d:'O botão S1 alimenta a bobina 1Y1 diretamente. Soltou o botão, a mola da válvula faz o cilindro recuar.'},
+  indireto:{t:'Comando indireto (relé)',in:[['S1','push','S1 – pulsador']],r:[{b:[['S1']],c:'K1'},{b:[['K1']],c:'1Y1'}],adv:'1Y1',yl:['1Y1'],show:['K1'],
+    d:'S1 energiza o relé K1, e um contato de K1 liga 1Y1. O botão trabalha com corrente baixa e o relé chaveia a carga.'},
+  ou:{t:'Lógica OU',in:[['S1','push','S1'],['S2','push','S2']],r:[{b:[['S1'],['S2']],c:'K1'},{b:[['K1']],c:'1Y1'}],adv:'1Y1',yl:['1Y1'],show:['K1'],
     d:'Contatos em <b>paralelo</b>: S1 <b>ou</b> S2 aciona o cilindro. Uso típico: comando de dois locais diferentes.'},
-  e:{t:'Lógica E',in:[['S1','push','S1'],['S2','push','S2']],r:[{b:[['S1','S2']],c:'K1'},{b:[['K1']],c:'Y1'}],adv:'Y1',yl:['Y1'],show:['K1'],
+  e:{t:'Lógica E',in:[['S1','push','S1'],['S2','push','S2']],r:[{b:[['S1','S2']],c:'K1'},{b:[['K1']],c:'1Y1'}],adv:'1Y1',yl:['1Y1'],show:['K1'],
     d:'Contatos em <b>série</b>: o cilindro só avança com S1 <b>e</b> S2 pressionados. Base do comando bimanual de segurança.'},
-  retdes:{t:'Auto-retenção: desligar dominante',in:[['S1','push','S1 – liga'],['S0','push','S0 – desliga (NF)']],r:[{pre:['!S0'],b:[['S1'],['K1']],c:'K1'},{b:[['K1']],c:'Y1'}],adv:'Y1',yl:['Y1'],show:['K1'],
+  retdes:{t:'Auto-retenção: desligar dominante',in:[['S1','push','S1 – liga'],['S0','push','S0 – desliga (NF)']],r:[{pre:['!S0'],b:[['S1'],['K1']],c:'K1'},{b:[['K1']],c:'1Y1'}],adv:'1Y1',yl:['1Y1'],show:['K1'],
     d:'O contato de K1 em paralelo com S1 "segura" o relé ligado depois que S1 é solto. S0 fica antes do paralelo: com os dois botões apertados, <b>desligar vence</b>.'},
-  retlig:{t:'Auto-retenção: ligar dominante',in:[['S1','push','S1 – liga'],['S0','push','S0 – desliga (NF)']],r:[{b:[['S1'],['!S0','K1']],c:'K1'},{b:[['K1']],c:'Y1'}],adv:'Y1',yl:['Y1'],show:['K1'],
+  retlig:{t:'Auto-retenção: ligar dominante',in:[['S1','push','S1 – liga'],['S0','push','S0 – desliga (NF)']],r:[{b:[['S1'],['!S0','K1']],c:'K1'},{b:[['K1']],c:'1Y1'}],adv:'1Y1',yl:['1Y1'],show:['K1'],
     d:'S0 está só no ramo de retenção. Com os dois botões apertados, o ramo de S1 continua conduzindo: <b>ligar vence</b>.'},
-  duplo:{t:'Duplo solenoide (memória)',in:[['S1','push','S1 – avança'],['S2','push','S2 – recua']],r:[{b:[['S1']],c:'Y1'},{b:[['S2']],c:'Y2'}],adv:'Y1',ret:'Y2',yl:['Y1','Y2'],
-    d:'Um pulso em Y1 avança, um pulso em Y2 recua. Sem sinal, a válvula <b>memoriza</b> a última posição: não precisa de auto-retenção.'},
+  duplo:{t:'Duplo solenoide (memória)',in:[['S1','push','S1 – avança'],['S2','push','S2 – recua']],r:[{b:[['S1']],c:'1Y1'},{b:[['S2']],c:'1Y2'}],adv:'1Y1',ret:'1Y2',yl:['1Y1','1Y2'],
+    d:'Um pulso em 1Y1 avança, um pulso em 1Y2 recua. Sem sinal, a válvula <b>memoriza</b> a última posição: não precisa de auto-retenção.'},
   retauto:{t:'Retorno automático (fim de curso)',in:[['S1','push','S1 – partida']],sens:['1S1','1S2'],sl:['1S1','1S2'],
-    r:[{pre:['!1S2'],b:[['S1','1S1'],['K1']],c:'K1'},{b:[['K1']],c:'Y1'}],adv:'Y1',yl:['Y1'],show:['K1','1S1','1S2'],
+    r:[{pre:['!1S2'],b:[['S1','1S1'],['K1']],c:'K1'},{b:[['K1']],c:'1Y1'}],adv:'1Y1',yl:['1Y1'],show:['K1','1S1','1S2'],
     d:'S1 só dá partida com o cilindro recuado (1S1). Ao chegar ao fim (1S2), o contato NF de 1S2 abre, K1 desliga e o cilindro <b>volta sozinho</b>.'},
   continuo:{t:'Ciclo contínuo',in:[['S1','push','S1 – ciclo único'],['S3','sw','S3 – ciclo contínuo (trava)']],sens:['1S1','1S2'],sl:['1S1','1S2'],
-    r:[{pre:['!1S2'],b:[['S1','1S1'],['S3','1S1'],['K1']],c:'K1'},{b:[['K1']],c:'Y1'}],adv:'Y1',yl:['Y1'],show:['K1','1S1','1S2'],
+    r:[{pre:['!1S2'],b:[['S1','1S1'],['S3','1S1'],['K1']],c:'K1'},{b:[['K1']],c:'1Y1'}],adv:'1Y1',yl:['1Y1'],show:['K1','1S1','1S2'],
     d:'Com o seletor S3 travado, cada retorno ao início (1S1) dispara um novo ciclo. Destrave S3 para parar ao fim do ciclo.'},
   tempo:{t:'Parada temporizada no fim de curso',in:[['S1','push','S1 – partida']],sens:['1S1','1S2'],sl:['1S1','1S2'],
-    r:[{pre:['!KT1'],b:[['S1','1S1'],['K1']],c:'K1'},{b:[['1S2']],c:'KT1',t:'ton',p:3},{b:[['K1']],c:'Y1'}],adv:'Y1',yl:['Y1'],show:['K1','KT1','1S2'],
+    r:[{pre:['!KT1'],b:[['S1','1S1'],['K1']],c:'K1'},{b:[['1S2']],c:'KT1',t:'ton',p:3},{b:[['K1']],c:'1Y1'}],adv:'1Y1',yl:['1Y1'],show:['K1','KT1','1S2'],
     d:'No fim de curso, 1S2 liga o temporizador KT1. Depois de 3 s, o contato NF de KT1 abre, K1 desliga e o cilindro recua. Exemplo de uso: prensagem ou colagem.'},
   /* ---- WEG Clic02: I = entrada, Q = saída, M = marcador, T = temporizador; minúscula = contato NF ---- */
   c_setreset:{t:'Clic02: SET / RESET',clic:1,in:[['I01','push','I01 – S1 liga'],['I02','push','I02 – S0 desliga']],
@@ -4566,11 +4566,11 @@ W.valve=el=>{
     <svg class="vsv" viewBox="0 0 900 290"></svg><div class="wrow vb"></div><p class="wtext"></p>`;
   let key=keys[0],pos=VT[key].rest;const svg=$(el,'.vsv'),vb=$(el,'.vb'),tx=$(el,'.wtext');
   const draw=()=>{const v=VT[key];const r=drawValve(svg,key,pos,{cx:450,top:70});
-    const nm=v.box.length===3?['esquerda (Y1)','central (repouso)','direita (Y2)'][pos]:(pos===v.rest?'repouso':'acionada');
+    const nm=v.box.length===3?['esquerda (1Y1)','central (repouso)','direita (1Y2)'][pos]:(pos===v.rest?'repouso':'acionada');
     tx.innerHTML=`<b>Posição ${nm}.</b> `+(r.hot.length?`A pressão de <b>${v.src}</b> segue para <span class="hl">${r.hot.join(' e ')}</span>.`:`A entrada <b>${v.src}</b> está bloqueada.`)+(r.ret.length?` Retorno/escape: ${r.ret.join(' → ')}.`:'');};
   const build=()=>{const v=VT[key];pos=v.rest;vb.innerHTML='';
-    if(v.box.length===3){[['Y1',0],['Y2',2]].forEach(([l,p])=>{const b=document.createElement('button');b.className='btn sm push';b.textContent='Manter '+l+' energizado';holdBtn(b,on=>{pos=on?p:1;draw();});vb.appendChild(b);});}
-    else if(v.mem){[['Sinal 14 (Y1)',0],['Sinal 12 (Y2)',1]].forEach(([l,p])=>{const b=document.createElement('button');b.className='btn sm';b.textContent='Pulso '+l;b.onclick=()=>{pos=p;draw();};vb.appendChild(b);});
+    if(v.box.length===3){[['1Y1',0],['1Y2',2]].forEach(([l,p])=>{const b=document.createElement('button');b.className='btn sm push';b.textContent='Manter '+l+' energizado';holdBtn(b,on=>{pos=on?p:1;draw();});vb.appendChild(b);});}
+    else if(v.mem){[['Sinal 14 (1Y1)',0],['Sinal 12 (1Y2)',1]].forEach(([l,p])=>{const b=document.createElement('button');b.className='btn sm';b.textContent='Pulso '+l;b.onclick=()=>{pos=p;draw();};vb.appendChild(b);});
       const s=document.createElement('span');s.className='note';s.style.margin='0';s.textContent='Sem sinal, a válvula mantém a última posição.';vb.appendChild(s);}
     else{const b=document.createElement('button');b.className='btn sm push';b.textContent='Manter acionada';holdBtn(b,on=>{pos=on?0:1;draw();});vb.appendChild(b);}
     $$(el,'.seg button').forEach(b=>b.classList.toggle('on',b.dataset.k===key));draw();};

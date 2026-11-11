@@ -274,11 +274,11 @@ W.valve=el=>{
     <svg class="vsv" viewBox="0 0 900 290"></svg><div class="wrow vb"></div><p class="wtext"></p>`;
   let key=keys[0],pos=VT[key].rest;const svg=$(el,'.vsv'),vb=$(el,'.vb'),tx=$(el,'.wtext');
   const draw=()=>{const v=VT[key];const r=drawValve(svg,key,pos,{cx:450,top:70});
-    const nm=v.box.length===3?['esquerda (Y1)','central (repouso)','direita (Y2)'][pos]:(pos===v.rest?'repouso':'acionada');
+    const nm=v.box.length===3?['esquerda (1Y1)','central (repouso)','direita (1Y2)'][pos]:(pos===v.rest?'repouso':'acionada');
     tx.innerHTML=`<b>Posição ${nm}.</b> `+(r.hot.length?`A pressão de <b>${v.src}</b> segue para <span class="hl">${r.hot.join(' e ')}</span>.`:`A entrada <b>${v.src}</b> está bloqueada.`)+(r.ret.length?` Retorno/escape: ${r.ret.join(' → ')}.`:'');};
   const build=()=>{const v=VT[key];pos=v.rest;vb.innerHTML='';
-    if(v.box.length===3){[['Y1',0],['Y2',2]].forEach(([l,p])=>{const b=document.createElement('button');b.className='btn sm push';b.textContent='Manter '+l+' energizado';holdBtn(b,on=>{pos=on?p:1;draw();});vb.appendChild(b);});}
-    else if(v.mem){[['Sinal 14 (Y1)',0],['Sinal 12 (Y2)',1]].forEach(([l,p])=>{const b=document.createElement('button');b.className='btn sm';b.textContent='Pulso '+l;b.onclick=()=>{pos=p;draw();};vb.appendChild(b);});
+    if(v.box.length===3){[['1Y1',0],['1Y2',2]].forEach(([l,p])=>{const b=document.createElement('button');b.className='btn sm push';b.textContent='Manter '+l+' energizado';holdBtn(b,on=>{pos=on?p:1;draw();});vb.appendChild(b);});}
+    else if(v.mem){[['Sinal 14 (1Y1)',0],['Sinal 12 (1Y2)',1]].forEach(([l,p])=>{const b=document.createElement('button');b.className='btn sm';b.textContent='Pulso '+l;b.onclick=()=>{pos=p;draw();};vb.appendChild(b);});
       const s=document.createElement('span');s.className='note';s.style.margin='0';s.textContent='Sem sinal, a válvula mantém a última posição.';vb.appendChild(s);}
     else{const b=document.createElement('button');b.className='btn sm push';b.textContent='Manter acionada';holdBtn(b,on=>{pos=on?0:1;draw();});vb.appendChild(b);}
     $$(el,'.seg button').forEach(b=>b.classList.toggle('on',b.dataset.k===key));draw();};
