@@ -224,10 +224,10 @@ const VT={
   '43tan':{n:'4/3 vias, centro tandem (P→T)',bw:150,top:[['A',.3],['B',.7]],bot:[['P',.3],['T',.7]],box:[[['a','P','A'],['a','B','T']],[['l','P','T'],['t','A'],['t','B']],[['x','P','B'],['x','A','T']]],rest:1,L:['sol','mola'],R:['sol','mola'],src:'P',hyd:1},
   '43flu':{n:'4/3 vias, centro flutuante (A e B→T)',bw:150,top:[['A',.3],['B',.7]],bot:[['P',.3],['T',.7]],box:[[['a','P','A'],['a','B','T']],[['j','A','B','T'],['t','P']],[['x','P','B'],['x','A','T']]],rest:1,L:['sol','mola'],R:['sol','mola'],src:'P',hyd:1},
 };
-function drawActuator(g,kind,x,y,dir){ // dir: -1 = lado esquerdo, +1 = direito
+function drawActuator(g,kind,x,y,dir,on){ // dir: -1 = lado esquerdo, +1 = direito
   const c='#1A2366',w=4;const X=v=>x+dir*v;
   if(kind==='mola'){let d=`M${X(0)} ${y}`;for(let i=0;i<6;i++)d+=` L${X(6+i*7)} ${y+(i%2?14:-14)}`;d+=` L${X(48)} ${y}`;svgEl('path',{d,fill:'none',stroke:c,'stroke-width':w},g);return 50;}
-  if(kind==='sol'){svgEl('rect',{x:Math.min(X(0),X(26)),y:y-22,width:26,height:44,fill:'#fff',stroke:c,'stroke-width':w},g);svgEl('line',{x1:X(0),y1:y+22,x2:X(26),y2:y-22,stroke:c,'stroke-width':w},g);return 28;}
+  if(kind==='sol'){svgEl('rect',{x:Math.min(X(0),X(26)),y:y-22,width:26,height:44,fill:on?'#E8490F':'#fff',stroke:c,'stroke-width':w},g);svgEl('line',{x1:X(0),y1:y+22,x2:X(26),y2:y-22,stroke:c,'stroke-width':w},g);return 28;}
   if(kind==='botao'){svgEl('line',{x1:X(0),y1:y,x2:X(22),y2:y,stroke:c,'stroke-width':w},g);svgEl('path',{d:`M${X(22)} ${y-18} A18 18 0 0 ${dir<0?0:1} ${X(22)} ${y+18} Z`,fill:'#fff',stroke:c,'stroke-width':w},g);return 44;}
   if(kind==='piloto'){svgEl('line',{x1:X(0),y1:y,x2:X(40),y2:y,stroke:c,'stroke-width':w,'stroke-dasharray':'8 6'},g);svgEl('path',{d:`M${X(0)} ${y} L${X(16)} ${y-10} L${X(16)} ${y+10}Z`,fill:c},g);return 42;}
   if(kind==='alavanca'){svgEl('line',{x1:X(0),y1:y,x2:X(30),y2:y-26,stroke:c,'stroke-width':w},g);svgEl('circle',{cx:X(32),cy:y-28,r:6,fill:c},g);return 36;}
@@ -264,8 +264,11 @@ function drawValve(svg,key,pos,opts={}){
         if(it[0]!=='l'){const ang=Math.atan2(y2-y1,x2-x1),L=18;svgEl('path',{d:`M${x2} ${y2} L${x2-L*Math.cos(ang-0.4)} ${y2-L*Math.sin(ang-0.4)} L${x2-L*Math.cos(ang+0.4)} ${y2-L*Math.sin(ang+0.4)}Z`,fill:col},g);}}
     });
   });
-  let lx=0;v.L.forEach(k=>{lx+=drawActuator(g,k,-lx,bh/2,-1)+2;});
-  let rx=totalW;v.R.forEach(k=>{rx+=drawActuator(g,k,rx,bh/2,1)+2;});
+  const on=opts.solOn||[],lb=opts.solLbl||[];
+  let lx=0;v.L.forEach((k,i)=>{lx+=drawActuator(g,k,-lx,bh/2,-1,!i&&on[0])+2;});
+  let rx=totalW;v.R.forEach((k,i)=>{rx+=drawActuator(g,k,rx,bh/2,1,!i&&on[1])+2;});
+  if(lb[0])svgEl('text',{x:-13,y:-14,'text-anchor':'middle','font-size':34,'font-weight':700,fill:'#1A2366'},g).textContent=lb[0];
+  if(lb[1])svgEl('text',{x:totalW+13,y:-14,'text-anchor':'middle','font-size':34,'font-weight':700,fill:'#1A2366'},g).textContent=lb[1];
   return {hot:[...hot],ret:[...ret]};
 }
 W.valve=el=>{
@@ -294,7 +297,7 @@ W.ladder=el=>{
   const keys=el.dataset.modes.split(',');
   el.innerHTML=`${keys.length>1?`<div class="seg">${keys.map(k=>`<button data-k="${k}">${LAD[k].t}</button>`).join('')}</div>`:''}
   <div class="lad"><div><svg class="ladsvg" viewBox="0 0 930 520"></svg><p class="wtext"></p></div>
-  <div><svg class="cylsvg" viewBox="0 0 560 300"></svg><div class="inputs"></div><div class="chips"></div></div></div>`;
+  <div><svg class="cylsvg" viewBox="0 0 560 340"></svg><div class="inputs"></div><div class="chips"></div></div></div>`;
   const ls=$(el,'.ladsvg'),cs=$(el,'.cylsvg'),inp=$(el,'.inputs'),chips=$(el,'.chips'),tx=$(el,'.wtext');
   let M,st,parts;
   function cylDraw(){
@@ -302,13 +305,9 @@ W.ladder=el=>{
     <g class="pis"><rect x="0" y="74" width="22" height="72" fill="#27348B"/><rect x="22" y="102" width="290" height="16" fill="#8A92A6"/><rect x="306" y="94" width="18" height="32" rx="4" fill="#525B70"/></g>
     <g class="s1g"><rect x="44" y="40" width="44" height="22" rx="4" fill="#fff" stroke="#525B70" stroke-width="3"/><text x="66" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#1A2366">${M.sl?M.sl[0]:''}</text></g>
     <g class="s2g"><rect x="292" y="40" width="44" height="22" rx="4" fill="#fff" stroke="#525B70" stroke-width="3"/><text x="314" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#1A2366">${M.sl?M.sl[1]:''}</text></g>
-    <g transform="translate(70 200)"><rect x="0" y="0" width="200" height="70" fill="#fff" stroke="#1A2366" stroke-width="4"/><line x1="100" y1="0" x2="100" y2="70" stroke="#1A2366" stroke-width="4"/>
-      <g class="ysol"><rect x="-30" y="15" width="28" height="40" fill="#fff" stroke="#1A2366" stroke-width="4"/><line x1="-30" y1="55" x2="-2" y2="15" stroke="#1A2366" stroke-width="4"/>
-      <text x="-16" y="90" text-anchor="middle" font-size="22" font-weight="700" fill="#1A2366">${M.yl[0]}</text></g>
-      ${M.yl[1]?`<g class="ysol2"><rect x="202" y="15" width="28" height="40" fill="#fff" stroke="#1A2366" stroke-width="4"/><line x1="202" y1="55" x2="230" y2="15" stroke="#1A2366" stroke-width="4"/><text x="216" y="90" text-anchor="middle" font-size="22" font-weight="700" fill="#1A2366">${M.yl[1]}</text></g>`
-      :`<path d="M202 35 l6 -12 l7 24 l7 -24 l7 24 l6 -12" fill="none" stroke="#1A2366" stroke-width="4"/>`}
-      <text class="vtx" x="100" y="-12" text-anchor="middle" font-size="20" fill="#525B70">válvula 5/2</text></g>
-    <text x="440" y="120" text-anchor="middle" font-size="22" fill="#525B70" class="posx"></text>`;
+    <svg class="vlv" x="30" y="158" width="430" height="182" viewBox="120 0 680 290"></svg>
+    <text x="190" y="52" text-anchor="middle" font-size="22" fill="#525B70" class="posx"></text>
+    <text x="500" y="250" text-anchor="middle" font-size="18" fill="#525B70">válvula 5/2</text>${M.ret?'<text x="500" y="272" text-anchor="middle" font-size="18" fill="#525B70">duplo</text><text x="500" y="294" text-anchor="middle" font-size="18" fill="#525B70">solenoide</text>':''}`;
   }
   function build(k){
     M=LAD[k];st={pos:0,valve:0,acc:{},v:{}};
@@ -375,8 +374,8 @@ W.ladder=el=>{
     if(M.ret){if(y1&&!y2)st.valve=1;else if(y2&&!y1)st.valve=0;}else st.valve=y1?1:0;
     st.pos=Math.max(0,Math.min(1,st.pos+(st.valve?1:-1)*dt*0.55));
     $(cs,'.pis').setAttribute('transform',`translate(${44+st.pos*270} 0)`);
-    $(cs,'.ysol rect').setAttribute('fill',y1?'#E8490F':'#fff');
-    if(M.ret)$(cs,'.ysol2 rect').setAttribute('fill',y2?'#E8490F':'#fff');
+    const vk=[st.valve,y1,y2].join();
+    if(vk!==st.vk){st.vk=vk;drawValve($(cs,'.vlv'),M.ret?'52d':'52',st.valve?0:1,{cx:450,top:70,solOn:[y1,y2],solLbl:M.yl});}
     if(M.sens){$(cs,'.s1g rect').setAttribute('fill',st.v[M.sens[0]]?'#E8490F':'#fff');$(cs,'.s2g rect').setAttribute('fill',st.v[M.sens[1]]?'#E8490F':'#fff');}
     $(cs,'.posx').textContent=st.pos<0.02?'recuado':st.pos>0.98?'avançado':(st.valve?'avançando…':'recuando…');
     $$(chips,'span').forEach(s=>s.classList.toggle('on',!!st.v[s.dataset.v]));
@@ -527,13 +526,13 @@ W.prop=el=>{
   el.innerHTML=`<div class="two"><div>
     <div class="ctrl"><label>Sinal de comando (CLP → amplificador): <span class="hl sv"></span></label><input class="s" type="range" min="0" max="10" step="0.1" value="5"></div>
     <svg viewBox="0 0 640 300">
-      <rect x="10" y="40" width="160" height="80" rx="10" fill="#27348B"/><text x="90" y="87" text-anchor="middle" font-size="19" font-weight="700" fill="#fff">Amplificador</text>
-      <path d="M170 80 H250" stroke="#E8490F" stroke-width="6" class="flowdash"/><text x="210" y="66" text-anchor="middle" font-size="20" fill="#525B70" class="ma"></text>
-      <rect x="250" y="40" width="70" height="80" fill="#fff" stroke="#1A2366" stroke-width="5"/><line x1="250" y1="120" x2="320" y2="40" stroke="#1A2366" stroke-width="5"/>
+      <rect x="10" y="40" width="140" height="80" rx="10" fill="#27348B"/><text x="80" y="87" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">Amplificador</text>
+      <path d="M150 80 H270" stroke="#E8490F" stroke-width="6" class="flowdash"/><text x="210" y="60" text-anchor="middle" font-size="18" fill="#525B70" class="ma"></text>
+      <g transform="translate(20 0)"><rect x="250" y="40" width="70" height="80" fill="#fff" stroke="#1A2366" stroke-width="5"/><line x1="250" y1="120" x2="320" y2="40" stroke="#1A2366" stroke-width="5"/>
       <rect x="320" y="30" width="290" height="100" rx="8" fill="#ECEEF3" stroke="#8A92A6" stroke-width="4"/>
       <rect class="spool" x="330" y="62" width="150" height="36" rx="6" fill="#525B70"/>
       <rect x="330" y="140" width="270" height="26" rx="13" fill="#D3D8E3"/><rect class="open" x="330" y="140" width="0" height="26" rx="13" fill="#E8490F"/>
-      <text x="330" y="196" font-size="22" fill="#525B70">abertura da válvula</text>
+      <text x="330" y="196" font-size="22" fill="#525B70">abertura da válvula</text></g>
       <rect x="20" y="220" width="440" height="60" rx="8" fill="#E6E9F5" stroke="#27348B" stroke-width="4"/><g class="pis"><rect x="0" y="224" width="16" height="52" fill="#27348B"/><rect x="16" y="244" width="400" height="12" fill="#8A92A6"/></g>
     </svg></div>
     <div><div class="ro" style="--c:1"><div><b class="pc o"></b><span>abertura do carretel</span></div><div><b class="vv"></b><span>velocidade relativa do cilindro</span></div></div>

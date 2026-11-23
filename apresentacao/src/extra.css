@@ -110,7 +110,7 @@ kbd{font-family:var(--serif);font-size:.82em;font-weight:700;background:#fff;col
 .ro b{display:block;font-size:38px;color:var(--blue);line-height:1.15}
 .ro b.o{color:var(--orange-d)}
 .ro span{font-size:22px;color:var(--gray-4)}
-.ctrl input[type=range]{margin:12px 0 18px}
+.ctrl input[type=range]{margin:30px 0 16px}
 .ctrl label{font-size:28px}
 .wtext{font-size:27px;line-height:1.4;margin:14px 0 0;min-height:76px}
 .chips{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
