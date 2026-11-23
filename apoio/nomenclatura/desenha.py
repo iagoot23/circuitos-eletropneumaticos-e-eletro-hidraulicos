@@ -109,6 +109,11 @@ def mola(x, yc):
     return pl(pts, 2.5)
 
 
+def bloqueio(x, B, k=1):
+    """Via bloqueada (T) dentro do quadrado, saindo da borda de baixo em B."""
+    return ln(x, B, x, B - 16 * k, 2.5) + ln(x - 9 * k, B - 16 * k, x + 9 * k, B - 16 * k, 2.5)
+
+
 def valvula_52(L, T, s=120, duplo=False):
     """Válvula 5/2; quadrado da direita = posição de repouso (1→2, 4→5). Devolve svg e posições das vias."""
     R, B = L + s, T + s
@@ -119,6 +124,8 @@ def valvula_52(L, T, s=120, duplo=False):
     g += arrow(L + 60 * k, B, L + 32 * k, T) + arrow(L + 88 * k, T, L + 102 * k, B)
     # posição de repouso (quadrado direito): 1→2 e 4→5
     g += arrow(v["1"], B, v["2"], T) + arrow(v["4"], T, v["5"], B)
+    # vias bloqueadas (T): em cada posição, a via que não é usada (repouso: 3; acionada: 5)
+    g += bloqueio(v["3"], B, k) + bloqueio(L + 18 * k, B, k)
     yc = T + s / 2
     g += solenoide(L, yc, "e")
     g += solenoide(R + s, yc, "d") if duplo else mola(R + s, yc)
